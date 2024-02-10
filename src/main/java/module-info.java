@@ -1,4 +1,4 @@
-module com.mapoverlay.mapoverlayb {
+module com.mapoverlay.mapoverlay {
     requires javafx.controls;
     requires javafx.fxml;
 
