@@ -12,5 +12,5 @@
   </padding>
 
   <Label fx:id="welcomeText"/>
-  <Button text="next in Q" onAction="#onHelloButtonClick"/>
+  <Button text="next even point in Q" onAction="#onHelloButtonClick"/>
 </VBox>

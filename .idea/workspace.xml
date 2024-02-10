@@ -5,16 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="135d24f7-82a8-41f3-999a-cfe44390c259" name="Changes" comment="JavaFX - JDK 19 amazon pour gradle, il veux pas en 21 2">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/AVLTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/MapOverlay.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/Point.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/QTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/Segment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/TTree.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HELP.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/mapoverlay/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/mapoverlay/hello-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,6 +86,10 @@
     "git-widget-placeholder": "dev",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/odanl/Documents/GitHub/MapOverlay",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
   }
 }]]></component>
@@ -109,7 +109,7 @@
     </configuration>
     <configuration name="com.mapoverlay.HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.mapoverlay.HelloApplication" />
-      <module name="MapOverlayb.main" />
+      <module name="MapOverlay.main" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.mapoverlay.*" />
