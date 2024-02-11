@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="135d24f7-82a8-41f3-999a-cfe44390c259" name="Changes" comment="JavaFX - JDK 19 amazon pour gradle, il veux pas en 21 2">
-      <change afterPath="$PROJECT_DIR$/HELP.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/mapoverlay/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/mapoverlay/hello-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/MapOverlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/MapOverlay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/Segment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/Segment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +30,7 @@
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="MapOverlayb" type="f1a62948:ProjectNode" />
+                <item name="MapOverlay" type="f1a62948:ProjectNode" />
               </path>
             </expand>
             <select />
@@ -64,6 +63,9 @@
       </UrlAndAccount>
     </option>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 7
@@ -76,7 +78,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Gradle.MapOverlay [:HelloApplication.main()].executor": "Run",
+    "Gradle.MapOverlay [:HelloApplication.main()].executor": "Debug",
     "Gradle.MapOverlayb [:HelloApplication.main()].executor": "Run",
     "Gradle.Upgrade Gradle wrapper.executor": "Run",
     "Gradle.mapoverlayb [:HelloApplication.main()].executor": "Run",
