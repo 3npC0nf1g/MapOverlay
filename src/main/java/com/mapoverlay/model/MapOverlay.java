@@ -11,6 +11,7 @@ public class MapOverlay {
      */
 
     QTree q = new QTree();
+    TTree t = new TTree();
 
 
     public MapOverlay(){

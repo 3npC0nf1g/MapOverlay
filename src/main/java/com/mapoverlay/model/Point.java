@@ -1,6 +1,6 @@
 package com.mapoverlay.model;
 
-public class Point {
+public class Point extends Data{
 
     private final float x;
     private final float y;

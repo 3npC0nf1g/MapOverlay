@@ -2,7 +2,7 @@ package com.mapoverlay.model;
 
 import javafx.util.Pair;
 
-public class Segment {
+public class Segment extends Data{
     private final Point p1,p2;
 
     Segment(float x1,float y1,float x2,float y2) {

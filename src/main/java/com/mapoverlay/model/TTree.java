@@ -6,8 +6,20 @@ public class TTree extends AVLTree {
     }
 
     @Override
-    protected void insert(Point p) {
+    protected void insertEmpty(Data d) {
+        super.insertEmpty(d);
+        setLeftTree(new TTree());
+        setRightTree(new TTree());
+    }
 
+    @Override
+    protected void insert(Data data) {
+        Segment s = (Segment)data;
+        if(isEmpty()){
+            insertEmpty(data);
+        }else{
+
+        }
     }
 
 
