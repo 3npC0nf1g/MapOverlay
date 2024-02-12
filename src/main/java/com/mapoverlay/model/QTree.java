@@ -5,22 +5,25 @@ public class QTree extends AVLTree{
     public QTree(){
         super();
     }
-    private void insertEmpty(Point p){
-        setPoint(p);
+
+    @Override
+    protected void insertEmpty(Data d) {
+        super.insertEmpty(d);
         setLeftTree(new QTree());
         setRightTree(new QTree());
-        setHeight(1);
     }
 
     @Override
-    public void insert(Point p){
+    public void insert(Data data){
+        Point p = (Point)data;
         if(isEmpty()){
             insertEmpty(p);
         }else{
-            if(this.getPoint().getY() < p.getY() || (this.getPoint().getY() == p.getY() && this.getPoint().getX() > p.getX())){
+            Point currentPoint = (Point)this.getData();
+            if(currentPoint.getY() < p.getY() || (currentPoint.getY() == p.getY() && currentPoint.getX() > p.getX())){
                 this.getLeftTree().insert(p);
             }else {
-                if (!(this.getPoint().getY() == p.getY() && this.getPoint().getX() == p.getX())) {
+                if (!(currentPoint.getY() == p.getY() && currentPoint.getX() == p.getX())) {
                     this.getRightTree().insert(p);
                 }
             }
@@ -32,9 +35,9 @@ public class QTree extends AVLTree{
         Point minPoint;
 
         if(getLeftTree().isEmpty()){
-            minPoint = getPoint();
+            minPoint = (Point)getData();
             AVLTree t = getRightTree();
-            setPoint(t.getPoint());
+            setData(t.getData());
             setLeftTree(t.getLeftTree());
             setRightTree(t.getRightTree());
         }else{

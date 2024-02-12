@@ -14,7 +14,7 @@ public class HelloController {
 
     @FXML
     protected void onHelloButtonClick() {
-        Point p = MO.testSortInOrder();
+        Point p = MO.testIntersection();
         if(p != null){
             welcomeText.setText(p.getX() + "x " + p.getY() + "Y ");
         }else{

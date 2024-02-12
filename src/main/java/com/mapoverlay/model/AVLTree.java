@@ -2,27 +2,26 @@ package com.mapoverlay.model;
 
 public abstract class AVLTree {
 
-    private Point point;
+    private Data data;
     private AVLTree leftTree;
     private AVLTree rightTree;
     private int height;
 
-    public AVLTree(Point point,AVLTree left,AVLTree right){
-        this.point = point;
+    public AVLTree(Data data,AVLTree left,AVLTree right){
+        this.data = data;
         this.leftTree = left;
         this.rightTree = right;
         this.height = 0;
     }
-
     public AVLTree(){
         this(null,null,null);
     }
 
-    public Point getPoint() {
-        return point;
+    public Data getData() {
+        return data;
     }
-    public void setPoint(Point point) {
-        this.point = point;
+    public void setData(Data data) {
+        this.data = data;
     }
     public int getHeight() {
         return height;
@@ -70,11 +69,11 @@ public abstract class AVLTree {
     }
 
     private void RotateLeft() {
-        Point p = getPoint();
+        Data d = getData();
         AVLTree t = getRightTree();
 
-        setPoint(t.getPoint());
-        t.setPoint(p);
+        setData(t.getData());
+        t.setData(d);
 
         setRightTree(t.getRightTree());
         t.setRightTree(t.getLeftTree());
@@ -85,11 +84,11 @@ public abstract class AVLTree {
     }
 
     private void RotateRight() {
-        Point p = getPoint();
+        Data d = getData();
         AVLTree t = getLeftTree();
 
-        setPoint(t.getPoint());
-        t.setPoint(p);
+        setData(t.getData());
+        t.setData(d);
 
         setLeftTree(t.getLeftTree());
         t.setLeftTree(t.getRightTree());
@@ -107,8 +106,13 @@ public abstract class AVLTree {
     }
 
     protected boolean isEmpty(){
-        return this.point == null && this.leftTree == null && this.rightTree == null;
+        return this.data == null && this.leftTree == null && this.rightTree == null;
     }
 
-    protected abstract void insert(Point p);
+    protected abstract void insert(Data d);
+
+    protected void insertEmpty(Data d){
+        setData(d);
+        setHeight(1);
+    }
 }
