@@ -1,4 +1,7 @@
-package com.mapoverlay.model;
+package com.mapoverlay.model.dataStructure;
+
+import com.mapoverlay.model.data.Data;
+import com.mapoverlay.model.data.Point;
 
 public class QTree extends AVLTree{
 
@@ -20,12 +23,12 @@ public class QTree extends AVLTree{
             insertEmpty(p);
         }else{
             Point currentPoint = (Point)this.getData();
-            if(currentPoint.getY() < p.getY() || (currentPoint.getY() == p.getY() && currentPoint.getX() > p.getX())){
-                this.getLeftTree().insert(p);
-            }else {
-                if (!(currentPoint.getY() == p.getY() && currentPoint.getX() == p.getX())) {
+            if(currentPoint.isHigherThan(p)){
+                if (!currentPoint.equals(p)) {
                     this.getRightTree().insert(p);
                 }
+            }else {
+                this.getLeftTree().insert(p);
             }
         }
         equilibrateAVL();

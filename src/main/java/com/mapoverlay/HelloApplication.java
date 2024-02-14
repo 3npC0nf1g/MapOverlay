@@ -1,8 +1,6 @@
 package com.mapoverlay;
 
-import com.mapoverlay.model.AVLTree;
 import com.mapoverlay.model.MapOverlay;
-import com.mapoverlay.model.Point;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -21,6 +19,7 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
+        MapOverlay Mo = new MapOverlay();
         launch();
     }
 }
