@@ -1,7 +1,14 @@
 package com.mapoverlay.model;
 
+import com.mapoverlay.model.data.Point;
+import com.mapoverlay.model.data.Segment;
+import com.mapoverlay.model.data.StartPoint;
+import com.mapoverlay.model.dataStructure.QTree;
+import com.mapoverlay.model.dataStructure.TTree;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class MapOverlay {
 
@@ -17,31 +24,19 @@ public class MapOverlay {
     public MapOverlay(){
         // LOAD FICHIER
         List<Segment> segmentList = new ArrayList<>();
-        segmentList.add(new Segment(5,5,3,3));
-        segmentList.add(new Segment(1,6,3,4));
-        segmentList.add(new Segment(4,5,5,2));
-        segmentList.add(new Segment(1,1,2,0.5F));
-        segmentList.add(new Segment(7,2,6,1));
+        segmentList.add(new Segment(new Point(5,5),new Point(3,3)));
+        segmentList.add(new Segment(new Point(1,6),new Point(3,4)));
+        segmentList.add(new Segment(new Point(4,5),new Point(5,2)));
+        segmentList.add(new Segment(new Point(1,1),new Point(2,0.5F)));
+        segmentList.add(new Segment(new Point(7,2),new Point(6,1)));
 
         FindInterSections(segmentList);
     }
 
-    public Point testSortInOrder(){
-        if(!q.isEmpty()){
-            return q.getNextPoint();
-        }else {
-            return null;
-        }
-    }
-
-    public Point testIntersection(){
-        return findPoint(new Segment(5,6,3,3),new Segment(4,5,5,2));
-    }
-
     public void FindInterSections(List<Segment> segmentList){
         for(Segment s: segmentList){
-            q.insert(s.getP1());
-            q.insert(s.getP2());
+            q.insert(s.getSPoint());
+            q.insert(s.getEPoint());
         }
 
         while (!q.isEmpty()){
@@ -50,30 +45,26 @@ public class MapOverlay {
     }
 
     public void HandleEventPoint(Point point){
+        UpdateT(point);
 
+        Set<Segment> U = t.getSegmentWithUpper(point);
+        Set<Segment> L = t.getAdjacentSegmentWithLower(point);
+        Set<Segment> C = t.getAdjacentSegmentContains(point);
+
+    }
+
+    private void UpdateT(Point point){
+        if (point instanceof StartPoint){
+            t.insert(point);
+        }
     }
 
     public void FindNewEvent(Segment sl,Segment sr,Point currentPoint){
         // Créer le point avec ces coord
-        Point iPoint = findPoint(sl,sr);
+        Point Point = sl.ComputeIntesectPoint(sr);
         // Check si le point est en dessous de la sweepline avec le dernier point selectionner
-        if(currentPoint.getY() > iPoint.getY() || (currentPoint.getY() == iPoint.getY() && currentPoint.getX() < iPoint.getX())){
-            // l'insert ( l'insertion n'ajoute pas de point si y1 = y2 et x1 = x2 donc pas de doublons )
-            q.insert(iPoint);
+        if(currentPoint.isHigherThan(Point)){
+            q.insert(Point);
         }
-    }
-
-    public Point findPoint(Segment S1,Segment S2){
-        float den = S1.getA() * S2.getB() - S1.getB() * S2.getA();
-        float numX = S1.getC() * S2.getB() - S1.getB() * S2.getC();
-        float numY = S1.getA() * S2.getC() - S1.getC() * S2.getA();
-
-        if(den != 0){ // Normalement pas possible car on appelle la fonction car on sait qu'il y a une intersection mais on sait jamais :x
-            float X = numX / den;
-            float Y = numY / den;
-
-            return new Point(X,Y);
-        }
-        return null;
     }
 }

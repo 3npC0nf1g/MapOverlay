@@ -1,22 +1,26 @@
-package com.mapoverlay.model;
+package com.mapoverlay.model.dataStructure;
+
+import com.mapoverlay.model.data.Data;
 
 public abstract class AVLTree {
 
     private Data data;
-    private AVLTree leftTree;
-    private AVLTree rightTree;
+    private AVLTree leftTree,rightTree;
     private int height;
 
+    // Constructor
     public AVLTree(Data data,AVLTree left,AVLTree right){
         this.data = data;
         this.leftTree = left;
         this.rightTree = right;
         this.height = 0;
     }
+
     public AVLTree(){
         this(null,null,null);
     }
 
+    // Getter & Setter
     public Data getData() {
         return data;
     }
@@ -42,14 +46,7 @@ public abstract class AVLTree {
         return rightTree;
     }
 
-    protected void computeHeight() {
-        if(isEmpty()){
-            this.height = 0;
-        }else{
-            this.height = Math.max(leftTree.getHeight(),rightTree.getHeight()) + 1;
-        }
-    }
-
+    // Principe AVL
     protected void equilibrateAVL(){
         switch (getBalance()){
             case 2:
@@ -105,11 +102,25 @@ public abstract class AVLTree {
             return this.rightTree.getHeight() - this.leftTree.getHeight();
     }
 
-    protected boolean isEmpty(){
+    private void computeHeight() {
+        if(isEmpty()){
+            this.height = 0;
+        }else{
+            this.height = Math.max(leftTree.getHeight(),rightTree.getHeight()) + 1;
+        }
+    }
+
+    // Status méthode
+    public boolean isEmpty(){
         return this.data == null && this.leftTree == null && this.rightTree == null;
     }
 
-    protected abstract void insert(Data d);
+    protected boolean isLeaf(){
+        return getLeftTree().isEmpty() && getRightTree().isEmpty();
+    }
+
+    // Override méthod
+    public abstract void insert(Data d);
 
     protected void insertEmpty(Data d){
         setData(d);
