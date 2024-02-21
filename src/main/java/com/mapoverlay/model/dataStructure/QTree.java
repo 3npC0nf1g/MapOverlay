@@ -2,6 +2,8 @@ package com.mapoverlay.model.dataStructure;
 
 import com.mapoverlay.model.data.Data;
 import com.mapoverlay.model.data.Point;
+import com.mapoverlay.model.data.Segment;
+import com.mapoverlay.model.data.StartPoint;
 
 public class QTree extends AVLTree{
 
@@ -24,7 +26,17 @@ public class QTree extends AVLTree{
         }else{
             Point currentPoint = (Point)this.getData();
             if(currentPoint.isHigherThan(p)){
-                if (!currentPoint.equals(p)) {
+                if (currentPoint.equals(p)) {
+                    if(p instanceof StartPoint){
+                        if(currentPoint instanceof StartPoint){
+                            for(Segment s : ((StartPoint) p).getSegments()){
+                                ((StartPoint) currentPoint).addSegment(s);
+                            }
+                        }else{
+                            this.setData(p);
+                        }
+                    }
+                }else{
                     this.getRightTree().insert(p);
                 }
             }else {

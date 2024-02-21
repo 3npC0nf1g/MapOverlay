@@ -1,4 +1,5 @@
 package com.mapoverlay.model.data;
+import static java.lang.Math.sqrt;
 
 public class Segment extends Data {
     private final StartPoint sPoint;
@@ -13,8 +14,7 @@ public class Segment extends Data {
             this.sPoint = new StartPoint(p2.getX(),p2.getY());
             this.ePoint = p1;
         }
-
-        this.sPoint.setSegment(this);
+        this.sPoint.addSegment(this);
     }
 
     // getter
@@ -38,6 +38,10 @@ public class Segment extends Data {
 
     public boolean contains(Point point){
         return false;
+    }
+
+    public boolean isLeftOf(Segment segment){
+        return this.sPoint.isLeftOf(segment.sPoint);
     }
 
     // USE FOR CALCULATE INTERSECTION

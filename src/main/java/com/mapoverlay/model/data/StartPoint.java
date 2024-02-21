@@ -1,18 +1,20 @@
 package com.mapoverlay.model.data;
 
+import java.util.List;
+
 public class StartPoint extends Point{
 
-    private Segment segment;
+    private List<Segment> segments;
 
     public StartPoint(float x, float y) {
         super(x, y);
     }
 
-    public Segment getSegment() {
-        return segment;
+    public List<Segment> getSegments() {
+        return segments;
     }
 
-    public void setSegment(Segment segment) {
-        this.segment = segment;
+    public void addSegment(Segment segment) {
+        segments.add(segment);
     }
 }

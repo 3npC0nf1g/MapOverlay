@@ -1,6 +1,8 @@
 package com.mapoverlay.model.dataStructure;
 
 import com.mapoverlay.model.data.*;
+
+import java.util.List;
 import java.util.Set;
 
 public class TTree extends AVLTree{
@@ -18,24 +20,22 @@ public class TTree extends AVLTree{
 
     @Override
     public void insert(Data data) {
+        Segment insertedSegment = (Segment)data;
+
         if(isEmpty()){
-            insertEmpty(data);
-            return;
-        }
-
-        StartPoint np = ((StartPoint)data);
-        StartPoint cp = ((StartPoint)getData());
-
-        if(isLeaf()){
-            if(np.getX() <= cp.getX())
-                insertSegment(np,cp);
-            else
-                insertSegment(cp,np);
+            insertEmpty(insertedSegment);
         }else{
-            if(np.getX() <= cp.getX())
-                getLeftTree().insert(data);
-            else
-                getRightTree().insert(data);
+            Segment currentSegment = (Segment)this.getData();
+            if(isLeaf()){
+                if(insertedSegment.isLeftOf(currentSegment)){
+                    insertSegment(insertedSegment,currentSegment);
+                }else{
+                    insertSegment(currentSegment,insertedSegment);
+                }
+            }else{
+                AVLTree subtree = insertedSegment.isLeftOf(currentSegment) ? getLeftTree() : getRightTree();
+                subtree.insert(insertedSegment);
+            }
         }
         equilibrateAVL();
         setData(getMaxOfTree(getLeftTree()));
@@ -59,15 +59,43 @@ public class TTree extends AVLTree{
 
     }
 
-    public Set<Segment> getSegmentWithUpper(Point point) {
-        return null;
+    public Set<Segment> getSegmentsWithLower(Point point,Set<Segment> result) {
+
+
+
+
+
+
+        Segment currentSegment = ((Segment)getData());
+        Point sPoint = currentSegment.getSPoint();
+        Point ePoint = currentSegment.getEPoint();
+
+        if(!isLeaf()){
+            if(sPoint.isLeftOf(point)){
+
+            }
+        }
+
+        //if(isLeaf()){
+        //  if(point.equals(ePoint)){
+        //    result.add(currentSegment);
+        //  }
+        //}else {
+        //    if(sPoint.getX() <= point.getX()){
+        //        ((TTree)getRightTree()).getSegmentWithLower(point,result);
+        //        if(sPoint.getX() == point.getX()){
+        //            ((TTree)getLeftTree()).getSegmentWithLower(point,result);
+        //        }
+        //    }else{
+        //        ((TTree)getLeftTree()).getSegmentWithLower(point,result);
+        //    }
+        //}
+        return result;
     }
+
+    public
 
     public Set<Segment> getAdjacentSegmentContains(Point point) {
-        return null;
-    }
-
-    public Set<Segment> getAdjacentSegmentWithLower(Point point) {
         return null;
     }
 }

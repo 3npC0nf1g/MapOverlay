@@ -7,6 +7,7 @@ import com.mapoverlay.model.dataStructure.QTree;
 import com.mapoverlay.model.dataStructure.TTree;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -25,7 +26,7 @@ public class MapOverlay {
         // LOAD FICHIER
         List<Segment> segmentList = new ArrayList<>();
         segmentList.add(new Segment(new Point(5,5),new Point(3,3)));
-        segmentList.add(new Segment(new Point(1,6),new Point(3,4)));
+        segmentList.add(new Segment(new Point(5,5),new Point(3,4)));
         segmentList.add(new Segment(new Point(4,5),new Point(5,2)));
         segmentList.add(new Segment(new Point(1,1),new Point(2,0.5F)));
         segmentList.add(new Segment(new Point(7,2),new Point(6,1)));
@@ -45,21 +46,46 @@ public class MapOverlay {
     }
 
     public void HandleEventPoint(Point point){
-        UpdateT(point);
+        Set<Segment> U = new HashSet<>();
+        if(point instanceof StartPoint){
+            U.addAll(((StartPoint) point).getSegments());
+        }
+        Set<Segment> L = t.getSegmentWithLower(point);
+        Set<Segment> C = t.getSegmentContains(point);
 
-        Set<Segment> U = t.getSegmentWithUpper(point);
-        Set<Segment> L = t.getAdjacentSegmentWithLower(point);
-        Set<Segment> C = t.getAdjacentSegmentContains(point);
+        Set<Segment> UC = UnionSet(U, C);
 
-    }
+        // equivalent de regarder si ULC > 1
+        if(UnionSet(UC,L).size() > 1){
 
-    private void UpdateT(Point point){
-        if (point instanceof StartPoint){
-            t.insert(point);
+        }
+
+        if(UnionSet(U, C).isEmpty()){
+            // sl, sr voisin de gauche et droite de pµ
+            Segment sl;
+            Segment sr;
+            FindNewEvent(sl,sr,point);
+        }else{
+            // s' le segment le plus à gauche de U,C
+            // sl segment à gauche de p
+            Segment sl;
+            Segment sprime;
+            FindNewEvent(sl,sprime,point);
+            // s'' le segment le plus à droite de U,C
+            // sr segment a droite de p
+            Segment sdprime;
+            Segment sr;
+            FindNewEvent(sdprime,sr,point);
         }
     }
 
-    public void FindNewEvent(Segment sl,Segment sr,Point currentPoint){
+    private Set<Segment> UnionSet(Set<Segment> a,Set<Segment> b){
+        Set<Segment> result = new HashSet<>(a);
+        result.addAll(b);
+        return result;
+    }
+
+    private void FindNewEvent(Segment sl,Segment sr,Point currentPoint){
         // Créer le point avec ces coord
         Point Point = sl.ComputeIntesectPoint(sr);
         // Check si le point est en dessous de la sweepline avec le dernier point selectionner

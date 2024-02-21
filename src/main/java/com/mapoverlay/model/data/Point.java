@@ -22,6 +22,10 @@ public class Point extends Data {
         return this.getY() > point.getY() || (this.getY() == point.getY() && this.getX() < point.getX());
     }
 
+    public boolean isLeftOf(Point p){
+        return this.getX() <= p.getX();
+    }
+
     @Override
     public boolean equals(Object object){
         if(object == null)
