@@ -4,16 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0c82e52e-fd60-4507-80d1-84cc2470d604" name="Changes" comment="feat: début de l'interface">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+    <list default="true" id="0c82e52e-fd60-4507-80d1-84cc2470d604" name="Changes" comment="feat: affichage des droites sur depuis un fichier txt">
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/cartes/fichier1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cartes/fichier1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/cartes/fichier2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cartes/fichier2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/cartes/fichier3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cartes/fichier3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/cartes/fichier4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cartes/fichier4.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/cartes/fichier5.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cartes/fichier5.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/mapoverlay/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/mapoverlay/hello-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +145,7 @@
       <workItem from="1711393324006" duration="2614000" />
       <workItem from="1711405309640" duration="84000" />
       <workItem from="1711741465431" duration="2014000" />
-      <workItem from="1711775481279" duration="7849000" />
+      <workItem from="1711775481279" duration="7923000" />
     </task>
     <task id="LOCAL-00001" summary="feat: début de l'interface">
       <option name="closed" value="true" />
@@ -163,7 +155,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711779057503</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat: affichage des droites sur depuis un fichier txt">
+      <option name="closed" value="true" />
+      <created>1711786161896</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1711786161896</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,6 +171,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: début de l'interface" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: début de l'interface" />
+    <MESSAGE value="feat: affichage des droites sur depuis un fichier txt" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: affichage des droites sur depuis un fichier txt" />
   </component>
 </project>

@@ -13,13 +13,6 @@ repositories {
   mavenCentral()
 }
 
-/**sourceSets {
-  main {
-    resources {
-      srcDirs = ['src/main/cartes']
-    }
-  }**/
-
 ext {
   junitVersion = '5.10.0'
 }

@@ -1,14 +1,10 @@
 package com.mapoverlay;
 
 import com.mapoverlay.model.MapOverlay;
-import com.mapoverlay.model.data.Point;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import java.io.BufferedReader;
 import java.io.File;
@@ -43,9 +39,6 @@ public class HelloController {
             try (BufferedReader reader = new BufferedReader(new FileReader(selectedFile))) {
                 GraphicsContext gc = canvas.getGraphicsContext2D();
                 gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-
-                double canvasWidth = canvas.getWidth();
-                double canvasHeight = canvas.getHeight();
 
                 String line;
                 while ((line = reader.readLine()) != null) {
