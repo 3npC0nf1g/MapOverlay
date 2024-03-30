@@ -59,6 +59,11 @@ public class Segment extends Data {
         return null;
     }
 
+    @Override
+    public String toString() {
+        return sPoint.getX() + " " + sPoint.getY() + " " + ePoint.getX() + " " + ePoint.getY();
+    }
+
     private float getA(){
         return sPoint.getY() - ePoint.getY();
     }
