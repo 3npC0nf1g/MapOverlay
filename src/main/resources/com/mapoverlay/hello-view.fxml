@@ -5,6 +5,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.SplitPane?>
 
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
@@ -16,14 +17,18 @@
   <SplitPane VBox.vgrow="ALWAYS">
 
     <VBox alignment="CENTER" style="-fx-background-color: lightgray;">
-      <Label text="Informations relatives au projet"/>
+      <Canvas fx:id="canvas" width="800" height="600"/>
+
     </VBox>
 
-    <VBox alignment="CENTER" style="-fx-background-color: lightblue;">
+    <!--
+     <VBox alignment="CENTER" style="-fx-background-color: lightblue;">
       <VBox alignment="CENTER">
-        <Label text="Coordonnées des points d'intersections"/>
+        <Canvas fx:id="intersectionCanvas"/>
       </VBox>
     </VBox>
+     -->
+
   </SplitPane>
 
   <HBox alignment="CENTER" spacing="20">
