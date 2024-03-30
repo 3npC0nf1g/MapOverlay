@@ -17,14 +17,14 @@
   <SplitPane VBox.vgrow="ALWAYS">
 
     <VBox alignment="CENTER" style="-fx-background-color: lightgray;">
-      <Canvas fx:id="canvas" width="500" height="400"/>
+      <Canvas fx:id="canvas" width="600" height="600"/>
 
     </VBox>
 
 
      <VBox alignment="CENTER" style="-fx-background-color: lightblue;">
       <VBox alignment="CENTER">
-        <Canvas fx:id="mapOverlayCanvas" width="500" height="400"/>
+        <Canvas fx:id="mapOverlayCanvas" width="600" height="600"/>
       </VBox>
     </VBox>
 

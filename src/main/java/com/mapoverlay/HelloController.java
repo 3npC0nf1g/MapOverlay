@@ -32,6 +32,7 @@ public class HelloController {
 
     @FXML
     protected void onImportButtonClick() {
+
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choisir des fichiers de segments de droite");
 
@@ -47,8 +48,9 @@ public class HelloController {
             gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
             // Calculer la largeur et la hauteur totale des fichiers
-            double totalWidth = 0;
+           double totalWidth = 0;
             double totalHeight = 0;
+
             for (File selectedFile : selectedFiles) {
                 try (BufferedReader reader = new BufferedReader(new FileReader(selectedFile))) {
                     String line;
@@ -61,6 +63,7 @@ public class HelloController {
                             double y2 = Double.parseDouble(coords[3]);
                             totalWidth = Math.max(totalWidth, Math.max(x1, x2));
                             totalHeight = Math.max(totalHeight, Math.max(y1, y2));
+
                         }
                     }
                 } catch (IOException e) {
@@ -99,33 +102,31 @@ public class HelloController {
     }
 
     private void drawAxes(GraphicsContext gc, double width, double height, double startX, double startY) {
+        // Calculer le centre du canvas
+        double centerX = width / 2;
+        double centerY = height / 2;
+
         // Dessiner l'axe x
         gc.setStroke(Color.BLACK);
-        gc.strokeLine(0, startY + height / 2, width, startY + height / 2);
+        gc.strokeLine(0, centerY, width, centerY);
 
         // Dessiner l'axe y
-        gc.strokeLine(startX + width / 2, 0, startX + width / 2, height);
+        gc.strokeLine(centerX, 0, centerX, height);
 
         // Dessiner les graduations sur l'axe x
-        gc.setStroke(Color.RED); // Changer la couleur en rouge
+        gc.setStroke(Color.RED);
         for (int i = -5; i <= 5; i++) {
-            double x = startX + width / 2 + i * 50;
-            double y = startY + height / 2;
-            gc.strokeLine(x, y - 5, x, y + 5);
-            gc.strokeText(Integer.toString(i * 50), x - 10, y + 20);
+            double x = centerX + i * 50;
+            gc.strokeLine(x, centerY - 5, x, centerY + 5);
+            gc.strokeText(Integer.toString(i * 50), x - 10, centerY + 20);
         }
 
         // Dessiner les graduations sur l'axe y
-        gc.setStroke(Color.RED); // Changer la couleur en rouge
         for (int i = -5; i <= 5; i++) {
-            double x = startX + width / 2;
-            double y = startY + height / 2 + i * 50;
-            gc.strokeLine(x - 5, y, x + 5, y);
-            gc.strokeText(Integer.toString(-i * 50), x + 10, y + 5);
+            double y = centerY + i * 50;
+            gc.strokeLine(centerX - 5, y, centerX + 5, y);
+            gc.strokeText(Integer.toString(-i * 50), centerX + 10, y + 5);
         }
     }
-
-
-
 
 }
