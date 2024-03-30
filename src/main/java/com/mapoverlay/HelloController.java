@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 
@@ -33,9 +34,9 @@ public class HelloController {
 
     @FXML
     protected void onCreateButtonClick() {
+
+
         canvas.setOnMouseClicked(event -> {
-
-
 
             if (isFirstPoint) {
                 // Récupérer les coordonnées du premier clic
@@ -60,14 +61,20 @@ public class HelloController {
 
                 Point endPoint = new Point((float)endX,(float)endY);
                 Point startPoint = new Point((float)startX,(float)startY);
+
+                if (segments == null) {
+                    segments = new ArrayList<>();
+                }
+
                 Segment segment = new Segment(startPoint, endPoint);
-                segments.add(segment);
-
-
+                segments.add(segment); // un problème bizarre ici
 
             }
 
         });
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+
     }
 
 
@@ -106,7 +113,7 @@ public class HelloController {
                 writer.write(startPoint.getX() + " " + startPoint.getY() + " " +
                         endPoint.getX() + " " + endPoint.getY());
                 writer.newLine();
-            }
+            } // ensuite il faut vider segments !!!!
         } catch (IOException e) {
             e.printStackTrace();
         }
