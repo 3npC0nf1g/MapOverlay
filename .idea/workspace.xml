@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0c82e52e-fd60-4507-80d1-84cc2470d604" name="Changes" comment="feat: affichage des droites sur depuis un fichier txt">
+    <list default="true" id="0c82e52e-fd60-4507-80d1-84cc2470d604" name="Changes" comment="feat: affichage superposé de plusieurs droites">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/mapoverlay/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/mapoverlay/hello-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +146,7 @@
       <workItem from="1711393324006" duration="2614000" />
       <workItem from="1711405309640" duration="84000" />
       <workItem from="1711741465431" duration="2014000" />
-      <workItem from="1711775481279" duration="12684000" />
+      <workItem from="1711775481279" duration="15736000" />
     </task>
     <task id="LOCAL-00001" summary="feat: début de l'interface">
       <option name="closed" value="true" />
@@ -173,7 +172,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711786304961</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="feat: affichage superposé de plusieurs droites">
+      <option name="closed" value="true" />
+      <created>1711819851681</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1711819851681</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,6 +189,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: début de l'interface" />
     <MESSAGE value="feat: affichage des droites sur depuis un fichier txt" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: affichage des droites sur depuis un fichier txt" />
+    <MESSAGE value="feat: affichage superposé de plusieurs droites" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: affichage superposé de plusieurs droites" />
   </component>
 </project>
