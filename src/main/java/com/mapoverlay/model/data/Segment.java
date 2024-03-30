@@ -55,7 +55,7 @@ public class Segment extends Data {
             float Y = numY / den;
 
             return new Point(X,Y);
-        }
+        } 
         return null;
     }
 

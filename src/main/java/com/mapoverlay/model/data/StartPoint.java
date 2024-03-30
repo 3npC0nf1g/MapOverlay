@@ -3,7 +3,6 @@ package com.mapoverlay.model.data;
 import java.util.List;
 
 public class StartPoint extends Point{
-
     private List<Segment> segments;
 
     public StartPoint(float x, float y) {

@@ -93,7 +93,7 @@ public class TTree extends AVLTree{
         return result;
     }
 
-    public
+ //   public
 
     public Set<Segment> getAdjacentSegmentContains(Point point) {
         return null;

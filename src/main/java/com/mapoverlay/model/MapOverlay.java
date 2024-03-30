@@ -18,6 +18,7 @@ public class MapOverlay {
      * Structure de données Q
      */
 
+    /**
     QTree q = new QTree();
     TTree t = new TTree();
 
@@ -93,4 +94,6 @@ public class MapOverlay {
             q.insert(Point);
         }
     }
+
+     **/
 }
