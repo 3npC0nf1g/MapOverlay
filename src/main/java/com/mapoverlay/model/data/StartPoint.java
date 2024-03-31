@@ -1,9 +1,10 @@
 package com.mapoverlay.model.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StartPoint extends Point{
-    private List<Segment> segments;
+    private List<Segment> segments = new ArrayList<>();;
 
     public StartPoint(float x, float y) {
         super(x, y);

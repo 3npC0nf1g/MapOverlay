@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0c82e52e-fd60-4507-80d1-84cc2470d604" name="Changes" comment="feat: affichage superposé de plusieurs droites avec un repère">
+    <list default="true" id="0c82e52e-fd60-4507-80d1-84cc2470d604" name="Changes" comment="feat: import d'une ou plusieurs carte ok! création d'une carte ok!">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/CreateMapWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/data/StartPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/data/StartPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/mapoverlay/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/mapoverlay/hello-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,26 +67,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.MapOverlay [:HelloApplication.main()].executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "odan",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/3npc0nf1g/Documents/Etude_Mons/Passerelle/Quad-2/Projet SDD2/mapOverlay/src/main/java/com/mapoverlay",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Problems",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.MapOverlay [:HelloApplication.main()].executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;odan&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/3npc0nf1g/Documents/Etude_Mons/Passerelle/Quad-2/Projet SDD2/mapOverlay/src/main/java/com/mapoverlay&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/mapoverlay" />
@@ -146,7 +149,9 @@
       <workItem from="1711393324006" duration="2614000" />
       <workItem from="1711405309640" duration="84000" />
       <workItem from="1711741465431" duration="2014000" />
-      <workItem from="1711775481279" duration="26450000" />
+      <workItem from="1711775481279" duration="26791000" />
+      <workItem from="1711834237783" duration="2000" />
+      <workItem from="1711882184934" duration="9385000" />
     </task>
     <task id="LOCAL-00001" summary="feat: début de l'interface">
       <option name="closed" value="true" />
@@ -204,7 +209,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711832260443</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="feat: import d'une ou plusieurs carte ok! création d'une carte ok!">
+      <option name="closed" value="true" />
+      <created>1711833966984</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1711833966984</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -215,6 +228,7 @@
     <MESSAGE value="feat: affichage des droites sur depuis un fichier txt" />
     <MESSAGE value="feat: affichage superposé de plusieurs droites" />
     <MESSAGE value="feat: affichage superposé de plusieurs droites avec un repère" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: affichage superposé de plusieurs droites avec un repère" />
+    <MESSAGE value="feat: import d'une ou plusieurs carte ok! création d'une carte ok!" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: import d'une ou plusieurs carte ok! création d'une carte ok!" />
   </component>
 </project>
