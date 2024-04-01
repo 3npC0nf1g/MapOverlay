@@ -6,7 +6,7 @@ import java.util.List;
 public class StartPoint extends Point{
     private List<Segment> segments = new ArrayList<>();;
 
-    public StartPoint(float x, float y) {
+    public StartPoint(double x, double y) {
         super(x, y);
     }
 

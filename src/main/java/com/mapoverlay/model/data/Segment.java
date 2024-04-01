@@ -46,13 +46,13 @@ public class Segment extends Data {
 
     // USE FOR CALCULATE INTERSECTION
     public Point ComputeIntesectPoint(Segment s){
-        float den = this.getA() * s.getB() - this.getB() * s.getA();
-        float numX = this.getC() * s.getB() - this.getB() * s.getC();
-        float numY = this.getA() * s.getC() - this.getC() * s.getA();
+        double den = this.getA() * s.getB() - this.getB() * s.getA();
+        double numX = this.getC() * s.getB() - this.getB() * s.getC();
+        double numY = this.getA() * s.getC() - this.getC() * s.getA();
 
         if(den != 0){ // Normalement pas possible car on appelle la fonction car on sait qu'il y a une intersection mais on sait jamais :x
-            float X = numX / den;
-            float Y = numY / den;
+            double X = numX / den;
+            double Y = numY / den;
 
             return new Point(X,Y);
         } 
@@ -64,13 +64,13 @@ public class Segment extends Data {
         return sPoint.getX() + " " + sPoint.getY() + " " + ePoint.getX() + " " + ePoint.getY();
     }
 
-    private float getA(){
+    private double getA(){
         return sPoint.getY() - ePoint.getY();
     }
-    private float getB(){
+    private double getB(){
         return ePoint.getX() - sPoint.getX();
     }
-    private float getC(){
+    private double getC(){
         return -((sPoint.getX() * ePoint.getY())-(ePoint.getX() * sPoint.getY()));
     }
 }

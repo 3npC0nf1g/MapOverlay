@@ -4,6 +4,8 @@ module com.mapoverlay.mapoverlay {
 
     requires org.kordamp.bootstrapfx.core;
 
-    opens com.mapoverlay to javafx.fxml;
-    exports com.mapoverlay;
+    exports com.mapoverlay.controller;
+    exports com.mapoverlay.model;
+    exports com.mapoverlay.view;
+    opens com.mapoverlay.view to javafx.fxml;
 }

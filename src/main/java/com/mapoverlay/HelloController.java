@@ -1,5 +1,6 @@
 package com.mapoverlay;
 
+import com.mapoverlay.model.data.Point;
 import com.mapoverlay.model.data.Segment;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
@@ -20,8 +21,89 @@ public class HelloController {
 
     @FXML
     protected void onCreateButtonClick() {
-        CreateMapWindow createMapWindow = new CreateMapWindow(segments);
-        createMapWindow.show();
+       //CreateMapWindow createMapWindow = new CreateMapWindow(segments);
+       //createMapWindow.show();
+
+       //canvas.setOnMouseClicked(event -> {
+
+       //    if (isFirstPoint) {
+       //        // Récupérer les coordonnées du premier clic
+       //        startX = event.getX();
+       //        startY = event.getY();
+       //        isFirstPoint = false;
+       //    } else {
+
+
+       //        // Récupérer les coordonnées du deuxième clic
+       //        double endX = event.getX();
+       //        double endY = event.getY();
+
+
+       //        // Dessiner le segment entre les deux points
+       //        GraphicsContext gc = canvas.getGraphicsContext2D();
+       //        gc.setStroke(Color.BLACK);
+       //        gc.strokeLine(startX, startY, endX, endY);
+
+       //        // Réinitialiser l'état pour permettre la création d'un nouveau segment
+       //        isFirstPoint = true;
+
+       //        Point endPoint = new Point(endX,endY);
+       //        Point startPoint = new Point(startX,startY);
+
+       //        if (segments == null) {
+       //            segments = new ArrayList<>();
+       //        }
+
+       //        Segment segment = new Segment(startPoint, endPoint);
+       //        segments.add(segment); // un problème bizarre ici
+
+       //    }
+
+       //});
+       //GraphicsContext gc = canvas.getGraphicsContext2D();
+       //gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+
+    }
+
+    @FXML
+    protected void onSaveButtonClick() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Enregistrer les segments");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Fichiers texte (*.txt)", "*.txt"));
+        File file = fileChooser.showSaveDialog(canvas.getScene().getWindow());
+        System.out.println("Segments: yo " );
+
+        if (file != null) {
+            System.out.println("Segments: yep " );
+
+            saveSegmentsToFile(file);
+        }
+    }
+
+    private void saveSegmentsToFile(File file) {
+        System.out.println("Segments: yoo " );
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            System.out.println("Segments: yeep " );
+            for (Segment segment : segments) {
+                System.out.println(segment); // Suppose que vous avez une méthode toString() définie dans votre classe Segment
+            }
+
+            for (Segment segment : segments) {
+                // Récupérer les points de début et de fin du segment
+                Point startPoint = segment.getSPoint();
+                System.out.println("Segments: yessssss " + startPoint.getX());
+
+                Point endPoint = segment.getEPoint();
+
+                // Écrire les coordonnées des points de début et de fin dans le fichier
+                writer.write(startPoint.getX() + " " + startPoint.getY() + " " +
+                        endPoint.getX() + " " + endPoint.getY());
+                writer.newLine();
+            } // ensuite il faut vider segments !!!!
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -41,7 +123,7 @@ public class HelloController {
             GraphicsContext gc = canvas.getGraphicsContext2D();
             gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
-            // Calculer la largeur et la hauteur totale des fichiers
+            // Calculer la largeur et la hauteur totale des fichiers²²
            double totalWidth = 0;
             double totalHeight = 0;
 
@@ -90,7 +172,7 @@ public class HelloController {
                 }
             }
 
-            // Dessiner le repère gradué au centre du canvas
+            // Dessiner le repère gradué au centre du canvas²²
             drawAxes(gc, canvas.getWidth(), canvas.getHeight(), startX, startY);
         }
     }
