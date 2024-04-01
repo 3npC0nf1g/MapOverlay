@@ -93,17 +93,24 @@ public class CanvasViewController {
     }
 
     private void drawAxes(GraphicsContext gc, double centerX, double centerY) {
+        int interval = setInterval();
+
+        int numberOfInterval = 100;
+
+        for(int i = -1000; i <= 1000; i++){
+            gc.setStroke(Color.LIGHTGRAY);
+            double x = centerX + (zoomFactor*i*interval);
+            double y = centerY + (zoomFactor*i*interval);
+            gc.strokeLine(0, y, canvas.getWidth(), y);
+            gc.strokeLine(x, 0, x, canvas.getHeight());
+        }
+
         // Dessiner l'axe x
         gc.setStroke(Color.GRAY);
         gc.strokeLine(0, centerY, canvas.getWidth(), centerY);
 
         // Dessiner l'axe y
-        System.out.println(canvas.getWidth());
         gc.strokeLine(centerX, 0, centerX, canvas.getHeight());
-
-        int interval = setInterval();
-
-        int numberOfInterval = 100;
 
         // Dessiner les graduations sur l'axe x
         gc.setStroke(Color.GRAY);
