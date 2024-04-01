@@ -15,8 +15,8 @@ public class CanvasController {
         try{
             Canvas canvas = fxmlLoader.load();
             CVC = fxmlLoader.getController();
-            container.getChildren().add(canvas);
             CVC.initialize();
+            container.getChildren().add(canvas);
         }catch (Exception e){
             // TODO gérer execption
         }

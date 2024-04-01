@@ -32,6 +32,11 @@ public class MapOverlayViewController {
     }
 
     @FXML
+    void clearGraph(ActionEvent event) {
+        listener.clearGraph();
+    }
+
+    @FXML
     void importGraph(ActionEvent event) {
         listener.importGraph();
     }
@@ -65,6 +70,7 @@ public class MapOverlayViewController {
     }
 
     public AnchorPane getCanvasContainer() {
+        System.out.println(canvasContainer.getWidth());
         return canvasContainer;
     }
 
@@ -82,6 +88,8 @@ public class MapOverlayViewController {
         void deleteSegment(Segment segment);
 
         void saveSegmentList();
+
+        void clearGraph();
     }
 
 }

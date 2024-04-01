@@ -37,9 +37,9 @@ public class CanvasViewController {
     void setOnScroll(ScrollEvent event) {
         double deltaY = event.getDeltaY();
         if(deltaY > 0 && zoomFactor < 5){
-            zoomFactor += 0.01;
+            zoomFactor += 0.05;
         } else if (deltaY < 0 && zoomFactor > 0.18) {
-            zoomFactor -= 0.01;
+            zoomFactor -= 0.05;
         }
         updateCanvas();
     }
@@ -95,9 +95,10 @@ public class CanvasViewController {
     private void drawAxes(GraphicsContext gc, double centerX, double centerY) {
         // Dessiner l'axe x
         gc.setStroke(Color.GRAY);
-        gc.strokeLine(0, centerY, canvas.getHeight(), centerY);
+        gc.strokeLine(0, centerY, canvas.getWidth(), centerY);
 
         // Dessiner l'axe y
+        System.out.println(canvas.getWidth());
         gc.strokeLine(centerX, 0, centerX, canvas.getHeight());
 
         int interval = setInterval();

@@ -3,4 +3,4 @@
 <?import javafx.scene.canvas.Canvas?>
 
 
-<Canvas fx:id="canvas" height="410.0" onMouseDragged="#mouseDrag" onMousePressed="#mouseClick" onMouseReleased="#mouseRelease" onScroll="#setOnScroll" width="410.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mapoverlay.view.CanvasViewController" />
+<Canvas fx:id="canvas" height="650.0" onMouseDragged="#mouseDrag" onMousePressed="#mouseClick" onMouseReleased="#mouseRelease" onScroll="#setOnScroll" width="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mapoverlay.view.CanvasViewController" />

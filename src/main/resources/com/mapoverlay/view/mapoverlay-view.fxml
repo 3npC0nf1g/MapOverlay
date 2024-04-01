@@ -5,17 +5,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="489.0" prefWidth="712.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mapoverlay.view.MapOverlayViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mapoverlay.view.MapOverlayViewController">
    <children>
-      <Button id="save" layoutX="14.0" layoutY="432.0" mnemonicParsing="false" onAction="#saveGraph" prefHeight="42.0" prefWidth="142.0" text="Sauvegarder" />
-      <Button id="import" layoutX="166.0" layoutY="432.0" mnemonicParsing="false" onAction="#importGraph" prefHeight="42.0" prefWidth="142.0" text="importer" />
-      <ScrollPane layoutX="436.0" layoutY="14.0" prefHeight="410.0" prefWidth="250.0">
+      <Button id="save" layoutX="14.0" layoutY="671.0" mnemonicParsing="false" onAction="#saveGraph" prefHeight="42.0" prefWidth="142.0" text="Sauvegarder" />
+      <Button id="import" layoutX="164.0" layoutY="671.0" mnemonicParsing="false" onAction="#importGraph" prefHeight="42.0" prefWidth="142.0" text="importer" />
+      <ScrollPane layoutX="1026.0" layoutY="14.0" prefHeight="650.0" prefWidth="250.0">
          <content>
-            <VBox fx:id="SegmentList" prefHeight="398.0" prefWidth="230.0" />
+            <VBox fx:id="SegmentList" prefHeight="646.0" prefWidth="236.0" />
          </content>
       </ScrollPane>
-      <Button id="addSegment" layoutX="436.0" layoutY="432.0" mnemonicParsing="false" onAction="#addSegment" prefHeight="42.0" prefWidth="121.0" text="Ajouter" />
-      <Button id="startMapOverlay" layoutX="565.0" layoutY="432.0" mnemonicParsing="false" onAction="#launchMapOverlay" prefHeight="42.0" prefWidth="121.0" text="Lancer" />
-      <AnchorPane fx:id="canvasContainer" layoutX="14.0" layoutY="14.0" prefHeight="410.0" prefWidth="410.0" style="-fx-border-color: LIGHTGRAY; -fx-background-color: GAINSBORO;" />
+      <Button id="addSegment" layoutX="1026.0" layoutY="671.0" mnemonicParsing="false" onAction="#addSegment" prefHeight="42.0" prefWidth="121.0" text="Ajouter" />
+      <Button id="startMapOverlay" layoutX="1151.0" layoutY="671.0" mnemonicParsing="false" onAction="#launchMapOverlay" prefHeight="42.0" prefWidth="121.0" text="Lancer" />
+      <AnchorPane fx:id="canvasContainer" layoutX="14.0" layoutY="14.0" prefHeight="650.0" prefWidth="1000.0" style="-fx-border-color: LIGHTGRAY; -fx-background-color: GAINSBORO;" />
+      <Button id="import" layoutX="872.0" layoutY="671.0" mnemonicParsing="false" onAction="#clearGraph" prefHeight="42.0" prefWidth="142.0" text="clear" />
    </children>
 </AnchorPane>

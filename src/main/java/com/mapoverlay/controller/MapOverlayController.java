@@ -110,6 +110,12 @@ public class MapOverlayController implements MapOverlayViewController.Listener {
         saveSegmentsToFile(file);
     }
 
+    @Override
+    public void clearGraph() {
+        segments.clear();
+        update();
+    }
+
     private void saveSegmentsToFile(File file) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             for (Segment segment : segments) {
