@@ -1,16 +1,16 @@
-package com.mapoverlay.controller;
+package com.mapoverlay;
 
+import com.mapoverlay.controller.MapOverlayController;
 import com.mapoverlay.model.MapOverlay;
 import com.mapoverlay.model.data.InterserctionPoint;
 import com.mapoverlay.model.data.Segment;
-import com.mapoverlay.view.MapOverlayViewController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ApplicationController extends Application implements MapOverlayController.listener{
+public class ApplicationController extends Application implements MapOverlayController.listener {
 
     private final MapOverlayController MOC = new MapOverlayController();
     private final MapOverlay MO = new MapOverlay();
