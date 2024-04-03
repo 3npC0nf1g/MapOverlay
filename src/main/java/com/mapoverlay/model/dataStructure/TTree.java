@@ -58,24 +58,26 @@ public class TTree extends AVLTree{
         }
     }
 
-    public void delete(Point point) {
-        if (root == null || point == null) {
-            return; // Arrêtez si l'arbre est vide ou le point est null
+    public void delete(Set<Segment> UC) {
+        if (root == null || UC == null || UC.isEmpty()) {
+            return; // Arrêtez si l'arbre est vide ou l'ensemble UC est null ou vide
         }
 
-        // Appel de la méthode pour supprimer le segment associé au point
-        root = deleteSegment(root, point);
+        // Parcourir tous les segments dans l'ensemble UC et les supprimer de l'arbre
+        for (Segment segment : UC) {
+            root = deleteSegment(root, segment);
+        }
     }
 
-    private AVLTree deleteSegment(AVLTree tree, Point point) {
+    private AVLTree deleteSegment(AVLTree tree, Segment segment) {
         if (tree == null) {
             return null;
         }
 
-        Segment segment = (Segment) tree.getData();
+        Segment currentSegment = (Segment) tree.getData();
 
-        // Si le segment contient le point spécifié, supprimez-le de l'arbre
-        if (segment.contains(point)) {
+        // Si le segment actuel est celui que nous voulons supprimer, procédez à la suppression
+        if (currentSegment.equals(segment)) {
             // Si le nœud est une feuille, retournez null pour indiquer qu'il doit être supprimé
             if (tree.isLeaf()) {
                 return null;
@@ -96,13 +98,13 @@ public class TTree extends AVLTree{
             tree.setData(successor.getData());
 
             // Supprimez le nœud successeur du sous-arbre droit
-            tree.setRightTree(deleteSegment(tree.getRightTree(), ((Segment) successor.getData()).getEPoint()));
-        } else if (segment.getEPoint().isHigherThan(point)) {
-            // Si le point est inférieur à l'ePoint du segment, continuez la recherche dans le sous-arbre gauche
-            tree.setLeftTree(deleteSegment(tree.getLeftTree(), point));
+            tree.setRightTree(deleteSegment(tree.getRightTree(), (Segment) successor.getData()));
+        } else if (segment.getEPoint().isHigherThan(currentSegment.getEPoint())) {
+            // Si le segment actuel est inférieur au segment à supprimer, continuez la recherche dans le sous-arbre gauche
+            tree.setLeftTree(deleteSegment(tree.getLeftTree(), segment));
         } else {
-            // Si le point est supérieur à l'ePoint du segment, continuez la recherche dans le sous-arbre droit
-            tree.setRightTree(deleteSegment(tree.getRightTree(), point));
+            // Si le segment actuel est supérieur au segment à supprimer, continuez la recherche dans le sous-arbre droit
+            tree.setRightTree(deleteSegment(tree.getRightTree(), segment));
         }
 
         // Équilibrez l'arbre AVL après la suppression
@@ -144,12 +146,8 @@ public class TTree extends AVLTree{
             result.add(treeNodeSegment);
         }
 
-        // Si le point est inférieur au point du nœud de l'arbre, on continue la recherche dans le sous-arbre gauche
-        if (point.isLeftOf(treeNodeSegment.getEPoint())) {
-            searchSegmentsWithLower(tree.getLeftTree(), point, result);
-        } else {
-            searchSegmentsWithLower(tree.getRightTree(), point, result);
-        }
+        searchSegmentsWithLower(tree.getLeftTree(), point, result);
+        searchSegmentsWithLower(tree.getRightTree(), point, result);
     }
 
 
@@ -166,25 +164,162 @@ public class TTree extends AVLTree{
             return;
         }
 
-        Point treeNodePoint = (Point)tree.getData();
+        Segment segment = (Segment) tree.getData();
 
-        //   Segment segment = (Segment)tree.getData();
-        //  if (segment.contains(point)) {
-           //  result.add(segment);
-           //   }
-
-
-        // Si le point est égal au point du nœud de l'arbre, on récupère les segments associés au point et on les ajoute au résultat
-       if (treeNodePoint.equals(point)) {
-            result.addAll(((StartPoint) point).getSegments());
+        // Vérifie si le segment contient le point spécifié
+        if (segment.contains(point)) {
+            result.add(segment);
         }
 
-        // Si le point est inférieur au point du nœud de l'arbre, on continue la recherche dans le sous-arbre gauche
-        if (point.isLeftOf(treeNodePoint)) {
-            searchSegmentsContains(tree.getLeftTree(), point, result);
-        } else {
-            searchSegmentsContains(tree.getRightTree(), point, result);
+        // Continue la recherche dans les sous-arbres gauche et droit
+        searchSegmentsContains(tree.getLeftTree(), point, result);
+        searchSegmentsContains(tree.getRightTree(), point, result);
+    }
+
+    public Segment getLeftNeighbor(Point point) {
+        return findLeftNeighbor(root, point);
+    }
+
+    private Segment findLeftNeighbor(AVLTree tree, Point point) {
+        if (tree == null || point == null) {
+            return null;
         }
+
+        // Chercher dans le sous-arbre gauche
+        Segment leftNeighbor = findLeftNeighbor(tree.getLeftTree(), point);
+
+        // Si un voisin gauche a été trouvé dans le sous-arbre gauche, retournez-le
+        if (leftNeighbor != null) {
+            return leftNeighbor;
+        }
+
+        Segment currentSegment = (Segment) tree.getData();
+
+        // Si le segment actuel est inférieur au point spécifié, continuez la recherche dans le sous-arbre droit
+        if (currentSegment.getEPoint().isLeftOf(point)) {
+            return findLeftNeighbor(tree.getRightTree(), point);
+        }
+
+        // Sinon, retournez le segment associé au nœud actuel, qui sera le voisin gauche le plus proche
+        return currentSegment;
+    }
+
+
+    public Segment getRightNeighbor(Point point) {
+        return findRightNeighbor(root, point);
+    }
+
+    private Segment findRightNeighbor(AVLTree tree, Point point) {
+        if (tree == null || point == null) {
+            return null;
+        }
+
+        // Chercher dans le sous-arbre droit
+        Segment rightNeighbor = findRightNeighbor(tree.getRightTree(), point);
+
+        // Si un voisin droit a été trouvé dans le sous-arbre droit, retournez-le
+        if (rightNeighbor != null) {
+            return rightNeighbor;
+        }
+
+        Segment currentSegment = (Segment) tree.getData();
+
+        // Si le segment actuel est inférieur au point spécifié, continuez la recherche dans le sous-arbre droit
+        if (currentSegment.getEPoint().isLeftOf(point)) {
+            return findRightNeighbor(tree.getRightTree(), point);
+        }
+
+        // Sinon, retournez le segment associé au nœud actuel, qui sera le voisin droit le plus proche
+        return currentSegment;
+    }
+
+    //--------------------------------------------
+    public Segment getLeftmostSegment(Point p) {
+        return findLeftmostSegment(root, p);
+    }
+
+    private Segment findLeftmostSegment(AVLTree tree, Point p) {
+        if (tree == null) {
+            return null;
+        }
+
+        Segment currentSegment = (Segment) tree.getData();
+
+        // Vérifiez si le segment actuel est à gauche du point spécifié
+        if (currentSegment.getEPoint().isLeftOf(p)) {
+            // Si oui, continuez la recherche dans le sous-arbre gauche
+            return findLeftmostSegment(tree.getLeftTree(), p);
+        }
+
+        // Sinon, le segment actuel est le plus à gauche dans le sous-arbre gauche
+        // Retournez ce segment
+        return currentSegment;
+    }
+
+//--------------------------------
+public Segment getRightmostSegment(Point p) {
+    return findRightmostSegment(root, p);
+}
+    private Segment findRightmostSegment(AVLTree tree, Point p) {
+        if (tree == null) {
+            return null;
+        }
+
+        Segment currentSegment = (Segment) tree.getData();
+
+        // Vérifiez si le segment actuel est à droite du point spécifié
+        if (!currentSegment.getEPoint().isLeftOf(p)) {
+            // Si oui, continuez la recherche dans le sous-arbre droit
+            return findRightmostSegment(tree.getRightTree(), p);
+        }
+
+        // Sinon, le segment actuel est le plus à droite dans le sous-arbre droit
+        // Retournez ce segment
+        return currentSegment;
+    }
+
+    //----------------------
+
+    public Segment getRightNeighborSegment(Segment segment) {
+        return findRightNeighbor(root, segment);
+    }
+
+    private Segment findRightNeighbor(AVLTree tree, Segment segment) {
+        if (tree == null || segment == null) {
+            return null;
+        }
+
+        Segment currentSegment = (Segment) tree.getData();
+
+        // Si le segment donné est plus petit que le segment actuel, recherchez dans le sous-arbre gauche
+        if (segment.isLeftOf(currentSegment)) {
+            return findRightNeighbor(tree.getLeftTree(), segment);
+        }
+
+        // Sinon, si le segment donné est plus grand que le segment actuel, recherchez dans le sous-arbre droit
+        return findRightNeighbor(tree.getRightTree(), segment);
+    }
+
+    //-----------------------
+
+    public Segment getLeftNeighborSegment(Segment segment) {
+        return findLeftNeighbor(root, segment);
+    }
+
+    private Segment findLeftNeighbor(AVLTree tree, Segment segment) {
+        if (tree == null || segment == null) {
+            return null;
+        }
+
+        Segment currentSegment = (Segment) tree.getData();
+
+        // Si le segment donné est plus grand que le segment actuel, recherchez dans le sous-arbre droit
+        if (segment.isLeftOf(currentSegment)) {
+            return findLeftNeighbor(tree.getRightTree(), segment);
+        }
+
+        // Sinon, si le segment donné est plus petit que le segment actuel, recherchez dans le sous-arbre gauche
+        return findLeftNeighbor(tree.getLeftTree(), segment);
     }
 
 
