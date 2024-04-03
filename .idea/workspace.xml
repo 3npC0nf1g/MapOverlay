@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b5c0d7c9-3def-474c-b003-f88749cdc596" name="Changes" comment="MapOverlay">
+    <list default="true" id="b5c0d7c9-3def-474c-b003-f88749cdc596" name="Changes" comment="MapOverlay--">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/MapOverlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/MapOverlay.java" afterDir="false" />
     </list>
@@ -19,14 +19,32 @@
         <entry key="$PROJECT_DIR$" value="odan-2" />
       </map>
     </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
+  <component name="ProjectId" id="2ebkUMnqfGpydDvw3sftBjdkSTZ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;git-widget-placeholder&quot;: &quot;steve&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "steve",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="ApplicationController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.mapoverlay.ApplicationController" />
@@ -42,6 +60,7 @@
       </method>
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task id="LOCAL-00001" summary="g">
       <option name="closed" value="true" />
@@ -83,8 +102,27 @@
       <option name="project" value="LOCAL" />
       <updated>1712178900877</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="MapOverlay--">
+      <option name="closed" value="true" />
+      <created>1712179732566</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1712179732566</updated>
+    </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b5c0d7c9-3def-474c-b003-f88749cdc596" name="Changes" comment="MapOverlay--" />
+      <created>1712180680920</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1712180680920</updated>
+      <workItem from="1712180682509" duration="761000" />
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="g" />
@@ -94,6 +132,7 @@
     <MESSAGE value="Cooking HandleEvenPonit" />
     <MESSAGE value="delete" />
     <MESSAGE value="MapOverlay" />
-    <option name="LAST_COMMIT_MESSAGE" value="MapOverlay" />
+    <MESSAGE value="MapOverlay--" />
+    <option name="LAST_COMMIT_MESSAGE" value="MapOverlay--" />
   </component>
 </project>
