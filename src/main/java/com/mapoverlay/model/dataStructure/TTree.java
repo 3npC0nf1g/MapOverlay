@@ -2,10 +2,13 @@ package com.mapoverlay.model.dataStructure;
 
 import com.mapoverlay.model.data.*;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class TTree extends AVLTree{
+
+
 
     public TTree(){
         super();
@@ -59,41 +62,68 @@ public class TTree extends AVLTree{
 
     }
 
-    public Set<Segment> getSegmentsWithLower(Point point,Set<Segment> result) {
+    // Logique pour L(p)
 
+    private Node root;
 
-
-
-
-
-        Segment currentSegment = ((Segment)getData());
-        Point sPoint = currentSegment.getSPoint();
-        Point ePoint = currentSegment.getEPoint();
-
-        if(!isLeaf()){
-            if(sPoint.isLeftOf(point)){
-
-            }
-        }
-
-        //if(isLeaf()){
-        //  if(point.equals(ePoint)){
-        //    result.add(currentSegment);
-        //  }
-        //}else {
-        //    if(sPoint.getX() <= point.getX()){
-        //        ((TTree)getRightTree()).getSegmentWithLower(point,result);
-        //        if(sPoint.getX() == point.getX()){
-        //            ((TTree)getLeftTree()).getSegmentWithLower(point,result);
-        //        }
-        //    }else{
-        //        ((TTree)getLeftTree()).getSegmentWithLower(point,result);
-        //    }
-        //}
+    public Set<Segment> getSegmentsWithLower(Point point) {
+        Set<Segment> result = new HashSet<>();
+        searchSegmentsWithLower(root, point, result);
         return result;
     }
 
- //   public
+    private void searchSegmentsWithLower(Node node, Point point, Set<Segment> result) {
+        if (node == null) {
+            return; // Arrêtez la recherche si le nœud est nul
+        }
+
+        Segment segment = node.getData();
+        Point ePoint = segment.getEPoint();
+
+        // Si le point inférieur du segment est égal au point spécifié, ajoutez le segment au résultat
+        if (ePoint.equals(point)) {
+            result.add(segment);
+        }
+
+        // Si le point est inférieur à l'ePoint du segment, recherchez dans le sous-arbre gauche
+        if (point.isLeftOf(ePoint)) {
+            searchSegmentsWithLower(node.getLeft(), point, result);
+        }
+    }
+
+
+    // Logique pour C(p)
+    public Set<Segment> getSegmentsContains(Point point) {
+        Set<Segment> result = new HashSet<>();
+        searchSegmentsContains(root, point, result);
+        return result;
+    }
+
+    private void searchSegmentsContains(Node node, Point point, Set<Segment> result) {
+        if (node == null) {
+            return;
+        }
+
+        Segment segment = node.getData();
+
+        // Vérifie si le segment contient le point spécifié
+        if (segment.contains(point)) {
+            result.add(segment);
+        }
+
+        // Détermine la direction orientée en fonction de la position du point
+        boolean searchLeft = point.getY() <= segment.getEPoint().getY();
+
+        // Recherche dans le sous-arbre approprié
+        if (searchLeft) {
+            searchSegmentsContains(node.getLeft(), point, result);
+        } else {
+            searchSegmentsContains(node.getRight(), point, result);
+        }
+    }
+
+
+
 
     public Set<Segment> getAdjacentSegmentContains(Point point) {
         return null;
