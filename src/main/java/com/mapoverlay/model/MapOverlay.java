@@ -1,5 +1,6 @@
 package com.mapoverlay.model;
 
+import com.mapoverlay.model.data.Data;
 import com.mapoverlay.model.data.Point;
 import com.mapoverlay.model.data.Segment;
 import com.mapoverlay.model.data.StartPoint;
@@ -31,7 +32,9 @@ public class MapOverlay {
         Set<Segment> Up = new HashSet<>();
         if (point instanceof StartPoint) {
             Up.addAll(((StartPoint) point).getSegments());
-            t.insert(point);
+            for (Segment segment : Up) {
+                t.insert(segment);
+            }
         }
 
         Set<Segment> Lp = t.getSegmentsWithLower(point);

@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class TTree extends AVLTree{
-    private final AVLTree root;
+    private AVLTree root;
 
 
     public TTree(){
@@ -59,8 +59,63 @@ public class TTree extends AVLTree{
     }
 
     public void delete(Point point) {
+        if (root == null || point == null) {
+            return; // Arrêtez si l'arbre est vide ou le point est null
+        }
 
+        // Appel de la méthode pour supprimer le segment associé au point
+        root = deleteSegment(root, point);
     }
+
+    private AVLTree deleteSegment(AVLTree tree, Point point) {
+        if (tree == null) {
+            return null;
+        }
+
+        Segment segment = (Segment) tree.getData();
+
+        // Si le segment contient le point spécifié, supprimez-le de l'arbre
+        if (segment.contains(point)) {
+            // Si le nœud est une feuille, retournez null pour indiquer qu'il doit être supprimé
+            if (tree.isLeaf()) {
+                return null;
+            }
+
+            // Si le nœud a un seul sous-arbre, retournez le sous-arbre non vide
+            if (tree.getLeftTree().isEmpty()) {
+                return tree.getRightTree();
+            }
+            if (tree.getRightTree().isEmpty()) {
+                return tree.getLeftTree();
+            }
+
+            // Si le nœud a deux sous-arbres, trouvez le nœud successeur (le plus petit nœud dans le sous-arbre droit)
+            AVLTree successor = findSuccessor(tree.getRightTree());
+
+            // Remplacez le nœud actuel par le nœud successeur
+            tree.setData(successor.getData());
+
+            // Supprimez le nœud successeur du sous-arbre droit
+            tree.setRightTree(deleteSegment(tree.getRightTree(), ((Segment) successor.getData()).getEPoint()));
+        } else if (segment.getEPoint().isHigherThan(point)) {
+            // Si le point est inférieur à l'ePoint du segment, continuez la recherche dans le sous-arbre gauche
+            tree.setLeftTree(deleteSegment(tree.getLeftTree(), point));
+        } else {
+            // Si le point est supérieur à l'ePoint du segment, continuez la recherche dans le sous-arbre droit
+            tree.setRightTree(deleteSegment(tree.getRightTree(), point));
+        }
+
+        return tree;
+    }
+
+    private AVLTree findSuccessor(AVLTree tree) {
+        AVLTree current = tree;
+        while (!current.getLeftTree().isEmpty()) {
+            current = current.getLeftTree();
+        }
+        return current;
+    }
+
 
     // Logique pour L(p)
 
