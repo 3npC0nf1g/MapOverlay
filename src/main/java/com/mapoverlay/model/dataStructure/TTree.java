@@ -3,15 +3,15 @@ package com.mapoverlay.model.dataStructure;
 import com.mapoverlay.model.data.*;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class TTree extends AVLTree{
-
+    private final AVLTree root;
 
 
     public TTree(){
         super();
+        this.root = null; // La racine est initialement nulle car l'arbre est vide
     }
 
     @Override
@@ -64,30 +64,34 @@ public class TTree extends AVLTree{
 
     // Logique pour L(p)
 
-    private Node root;
-
     public Set<Segment> getSegmentsWithLower(Point point) {
-        Set<Segment> result = new HashSet<>();
-        searchSegmentsWithLower(root, point, result);
-        return result;
+        if( point instanceof StartPoint) {
+            return null;
+        } else {
+            Set<Segment> result = new HashSet<>();
+            searchSegmentsWithLower(root, point, result);
+            return result;
+        }
     }
 
-    private void searchSegmentsWithLower(Node node, Point point, Set<Segment> result) {
-        if (node == null) {
-            return; // Arrêtez la recherche si le nœud est nul
+    private void searchSegmentsWithLower(AVLTree tree, Point point, Set<Segment> result) {
+        if (tree == null || point == null) {
+            return; // Arrêtez la recherche si l'arbre est nul ou le point est null
         }
 
-        Segment segment = node.getData();
-        Point ePoint = segment.getEPoint();
+        Point treeNodePoint = (Point)tree.getData(); // On récupère un point dans T
 
-        // Si le point inférieur du segment est égal au point spécifié, ajoutez le segment au résultat
-        if (ePoint.equals(point)) {
-            result.add(segment);
+        // On vérifie si le point inférieur du segment est égal au point spécifié
+        if (treeNodePoint.equals(point)) {
+            // Si c'est le cas, on récupère les segments associés au point et on les ajoute au résultat
+            result.addAll(((StartPoint) point).getSegments());
         }
 
-        // Si le point est inférieur à l'ePoint du segment, recherchez dans le sous-arbre gauche
-        if (point.isLeftOf(ePoint)) {
-            searchSegmentsWithLower(node.getLeft(), point, result);
+        // Si le point est inférieur au point du nœud de l'arbre, on continue la recherche dans le sous-arbre gauche
+        if (point.isLeftOf(treeNodePoint)) {
+            searchSegmentsWithLower(tree.getLeftTree(), point, result);
+        } else {
+            searchSegmentsContains(tree.getRightTree(), point, result);
         }
     }
 
@@ -99,30 +103,31 @@ public class TTree extends AVLTree{
         return result;
     }
 
-    private void searchSegmentsContains(Node node, Point point, Set<Segment> result) {
-        if (node == null) {
+    private void searchSegmentsContains(AVLTree tree, Point point, Set<Segment> result) {
+        if (tree == null || point == null) {
             return;
         }
 
-        Segment segment = node.getData();
+        Point treeNodePoint = (Point)tree.getData();
 
-        // Vérifie si le segment contient le point spécifié
-        if (segment.contains(point)) {
-            result.add(segment);
+        //   Segment segment = (Segment)tree.getData();
+        //  if (segment.contains(point)) {
+           //  result.add(segment);
+           //   }
+
+
+        // Si le point est égal au point du nœud de l'arbre, on récupère les segments associés au point et on les ajoute au résultat
+       if (treeNodePoint.equals(point)) {
+            result.addAll(((StartPoint) point).getSegments());
         }
 
-        // Détermine la direction orientée en fonction de la position du point
-        boolean searchLeft = point.getY() <= segment.getEPoint().getY();
-
-        // Recherche dans le sous-arbre approprié
-        if (searchLeft) {
-            searchSegmentsContains(node.getLeft(), point, result);
+        // Si le point est inférieur au point du nœud de l'arbre, on continue la recherche dans le sous-arbre gauche
+        if (point.isLeftOf(treeNodePoint)) {
+            searchSegmentsContains(tree.getLeftTree(), point, result);
         } else {
-            searchSegmentsContains(node.getRight(), point, result);
+            searchSegmentsContains(tree.getRightTree(), point, result);
         }
     }
-
-
 
 
     public Set<Segment> getAdjacentSegmentContains(Point point) {

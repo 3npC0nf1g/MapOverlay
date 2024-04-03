@@ -36,6 +36,7 @@ public class Point extends Data {
         return this.x == ((Point) object).x && this.y == ((Point) object).y;
     }
 
+
     @Override
     public String toString() {
         return "(" + getX()+","+getY()+")";

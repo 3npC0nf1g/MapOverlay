@@ -27,12 +27,13 @@ public class MapOverlay {
     }
 
     public void HandleEventPoint(Point point){
-        //Set<Segment> U = new HashSet<>();
-        //if(point instanceof StartPoint){
-        //    U.addAll(((StartPoint) point).getSegments());
-        //}
-        //Set<Segment> L = t.getSegmentWithLower(point);
-        //Set<Segment> C = t.getSegmentContains(point);
+        if(point instanceof StartPoint){
+            Set<Segment> Up = new HashSet<>(((StartPoint) point).getSegments());
+            t.insert(point);
+        }
+        Set<Segment> Lp = t.getSegmentsWithLower(point);
+        Set<Segment> Cp = t.getSegmentsContains(point);
+
         //Set<Segment> UC = UnionSet(U, C);
         //// equivalent de regarder si ULC > 1
         //if(UnionSet(UC,L).size() > 1){
