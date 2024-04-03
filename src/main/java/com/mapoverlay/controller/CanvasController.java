@@ -1,5 +1,6 @@
 package com.mapoverlay.controller;
 
+import com.mapoverlay.model.data.Map;
 import com.mapoverlay.model.data.Segment;
 import com.mapoverlay.view.CanvasViewController;
 import javafx.fxml.FXMLLoader;
@@ -23,7 +24,7 @@ public class CanvasController {
 
     }
 
-    public void setSegments(List<Segment> segments){
-        CVC.setSegmentList(segments);
+    public void setMap(List<Map> maps) {
+        CVC.setMapList(maps);
     }
 }
