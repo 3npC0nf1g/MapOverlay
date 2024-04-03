@@ -1,5 +1,6 @@
 package com.mapoverlay.view;
 
+import com.mapoverlay.model.data.Map;
 import com.mapoverlay.model.data.Point;
 import com.mapoverlay.model.data.Segment;
 import javafx.fxml.FXML;
@@ -15,7 +16,7 @@ import java.util.List;
 public class CanvasViewController {
 
     private double zoomFactor = 1;
-    private List<Segment> segments = new ArrayList<>();
+    private List<Map> maps = new ArrayList<>();
 
     double centerX,centerY;
     double currentCenterX,currentCenterY;
@@ -65,9 +66,9 @@ public class CanvasViewController {
         offsetY = 0;
     }
 
-    public void setSegmentList(List<Segment> segments){
-        this.segments = segments;
-        updateCanvas();
+    public void setMapList(List<Map> maps) {
+       this.maps = maps;
+       updateCanvas();
     }
 
     private void updateCanvas(){
@@ -78,17 +79,19 @@ public class CanvasViewController {
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         drawAxes(gc, currentCenterX, currentCenterY);
 
-        for(Segment s : segments){
-            Point SPoint = s.getSPoint();
-            Point EPoint = s.getEPoint();
+        for(Map m : maps){
+            for(Segment s: m.getSegments()){
+                Point SPoint = s.getSPoint();
+                Point EPoint = s.getEPoint();
 
-            double startX = currentCenterX + (SPoint.getX() * zoomFactor);
-            double startY = currentCenterY + (SPoint.getY() * zoomFactor) * -1;
-            double endX = currentCenterX + (EPoint.getX() * zoomFactor);
-            double endY = currentCenterY + (EPoint.getY() * zoomFactor) * -1;
+                double startX = currentCenterX + (SPoint.getX() * zoomFactor);
+                double startY = currentCenterY + (SPoint.getY() * zoomFactor) * -1;
+                double endX = currentCenterX + (EPoint.getX() * zoomFactor);
+                double endY = currentCenterY + (EPoint.getY() * zoomFactor) * -1;
 
-            gc.setStroke(Color.BLACK);
-            gc.strokeLine(startX, startY, endX, endY);
+                gc.setStroke(m.getColor());
+                gc.strokeLine(startX, startY, endX, endY);
+            }
         }
     }
 
@@ -140,5 +143,4 @@ public class CanvasViewController {
             return 200;
         }
     }
-
 }

@@ -15,7 +15,7 @@ public class SegmentItemViewController {
 
     private Segment segment;
 
-    void setSegment(Segment segment){
+    public void setSegment(Segment segment){
         this.segment = segment;
         startPointLabel.setText(segment.getSPoint().toString());
         endPointLabel.setText(segment.getEPoint().toString());

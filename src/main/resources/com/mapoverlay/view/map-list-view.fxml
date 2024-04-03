@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="337.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mapoverlay.view.MapItemListViewController">
+   <children>
+      <ColorPicker fx:id="colorPicker" layoutX="232.0" layoutY="2.0" onAction="#chooseColor" prefHeight="25.0" prefWidth="80.0" />
+      <Button layoutX="312.0" layoutY="2.0" mnemonicParsing="false" onAction="#deleteMap" text="X" />
+      <Button layoutX="110.0" layoutY="2.0" mnemonicParsing="false" onAction="#addSegment" prefHeight="25.0" prefWidth="122.0" text="Add segment" />
+      <TitledPane fx:id="tiltedMap" animated="false" layoutY="27.0" onMouseClicked="#colapseClick" prefWidth="335.0" text="Segment :" />
+      <Button layoutY="2.0" mnemonicParsing="false" onAction="#saveMap" prefHeight="25.0" prefWidth="111.0" text="Save map" />
+   </children>
+</AnchorPane>

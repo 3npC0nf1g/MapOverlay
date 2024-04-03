@@ -1,11 +1,14 @@
 package com.mapoverlay.controller;
 
 import com.mapoverlay.model.data.InterserctionPoint;
+import com.mapoverlay.model.data.Map;
 import com.mapoverlay.model.data.Point;
 import com.mapoverlay.model.data.Segment;
 import com.mapoverlay.view.MapOverlayViewController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -13,14 +16,14 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MapOverlayController implements MapOverlayViewController.Listener {
+public class MapOverlayController implements MapOverlayViewController.Listener,MapItemController.Listener {
     private Stage stage;
 
     private MapOverlayViewController MOVC;
 
     private CanvasController CC;
 
-    private List<Segment> segments = new ArrayList<>();
+    private List<Map> maps = new ArrayList<>();
 
     public void show() throws IOException {
         stage = new Stage();
@@ -39,21 +42,32 @@ public class MapOverlayController implements MapOverlayViewController.Listener {
         updateCanvas();
     }
 
-    private void update(){
+    @Override
+    public void update(){
         updateListView();
         updateCanvas();
     }
 
     private void updateCanvas(){
-        CC.setSegments(segments);
+        CC.setMap(maps);
     }
 
     private void updateListView(){
-        MOVC.updateSegmentList(segments);
+        VBox list = MOVC.getList();
+        list.getChildren().clear();
+        for(Map m : maps){
+            try {
+                MapItemController MIC = new MapItemController(m,stage);
+                MIC.setListener(this);
+                list.getChildren().add(MIC.getPane());
+            } catch (IOException e) {
+                // TODO
+            }
+        }
     }
 
     @Override
-    public void importGraph() {
+    public void importMap() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choisir des fichiers de segments de droite");
 
@@ -67,6 +81,7 @@ public class MapOverlayController implements MapOverlayViewController.Listener {
         for (File selectedFile : selectedFiles) {
             try (BufferedReader reader = new BufferedReader(new FileReader(selectedFile))) {
                 String line;
+                Map map = new Map(new ArrayList<>(), Color.BLACK);
                 while ((line = reader.readLine()) != null) {
                     String[] coords = line.trim().split("\\s+");
                     if (coords.length == 4) {
@@ -75,9 +90,10 @@ public class MapOverlayController implements MapOverlayViewController.Listener {
                         double x2 = Double.parseDouble(coords[2]);
                         double y2 = Double.parseDouble(coords[3]);
                         Segment s = new Segment(new Point(x1,y1),new Point(x2,y2));
-                        segments.add(s);
+                        map.addSegment(s);
                     }
                 }
+                maps.add(map);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -86,46 +102,22 @@ public class MapOverlayController implements MapOverlayViewController.Listener {
     }
 
     @Override
-    public void openAddSegment() throws IOException {
-        NewSegmentController NSC = new NewSegmentController();
-        NSC.show();
-        NSC.setListener((segment) -> {
-            segments.add(segment);
-            update();
-        });
-    }
-
-    @Override
-    public void deleteSegment(Segment segment) {
-        segments.remove(segment);
+    public void addMap() {
+        Map newMap = new Map(new ArrayList<>(),Color.BLACK);
+        maps.add(newMap);
         update();
-    }
-
-    @Override
-    public void saveSegmentList() {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Enregistrer les segments");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Fichiers texte (*.txt)", "*.txt"));
-        File file = fileChooser.showSaveDialog(stage);
-        saveSegmentsToFile(file);
     }
 
     @Override
     public void clearGraph() {
-        segments.clear();
+        maps.clear();
         update();
     }
 
-    private void saveSegmentsToFile(File file) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
-            for (Segment segment : segments) {
-                // Écrire les coordonnées des points de début et de fin dans le fichier
-                writer.write(segment.toString());
-                writer.newLine();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    @Override
+    public void deleteMap(Map map) {
+        maps.remove(map);
+        update();
     }
 
     // Listener implementation
