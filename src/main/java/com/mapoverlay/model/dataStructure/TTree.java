@@ -105,6 +105,9 @@ public class TTree extends AVLTree{
             tree.setRightTree(deleteSegment(tree.getRightTree(), point));
         }
 
+        // Équilibrez l'arbre AVL après la suppression
+        tree.equilibrateAVL();
+
         return tree;
     }
 
@@ -115,6 +118,7 @@ public class TTree extends AVLTree{
         }
         return current;
     }
+
 
 
     // Logique pour L(p)
