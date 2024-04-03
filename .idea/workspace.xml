@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b5c0d7c9-3def-474c-b003-f88749cdc596" name="Changes" comment="Lp Cp essaie">
+    <list default="true" id="b5c0d7c9-3def-474c-b003-f88749cdc596" name="Changes" comment="hey">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/MapOverlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/MapOverlay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/dataStructure/TTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/dataStructure/TTree.java" afterDir="false" />
@@ -15,12 +15,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "git-widget-placeholder": "steve",
-    "node.js.selected.package.tslint": "(autodetect)"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;git-widget-placeholder&quot;: &quot;steve&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="ApplicationController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.mapoverlay.ApplicationController" />
@@ -68,6 +68,7 @@
     <MESSAGE value="g" />
     <MESSAGE value="steve" />
     <MESSAGE value="Lp Cp essaie" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lp Cp essaie" />
+    <MESSAGE value="hey" />
+    <option name="LAST_COMMIT_MESSAGE" value="hey" />
   </component>
 </project>

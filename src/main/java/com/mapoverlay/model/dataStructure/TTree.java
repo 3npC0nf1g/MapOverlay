@@ -65,13 +65,11 @@ public class TTree extends AVLTree{
     // Logique pour L(p)
 
     public Set<Segment> getSegmentsWithLower(Point point) {
-        if( point instanceof StartPoint) {
-            return null;
-        } else {
+
             Set<Segment> result = new HashSet<>();
             searchSegmentsWithLower(root, point, result);
             return result;
-        }
+
     }
 
     private void searchSegmentsWithLower(AVLTree tree, Point point, Set<Segment> result) {
@@ -79,21 +77,22 @@ public class TTree extends AVLTree{
             return; // Arrêtez la recherche si l'arbre est nul ou le point est null
         }
 
-        Point treeNodePoint = (Point)tree.getData(); // On récupère un point dans T
+        Segment treeNodeSegment = (Segment) tree.getData(); // On récupère un segment dans T
 
         // On vérifie si le point inférieur du segment est égal au point spécifié
-        if (treeNodePoint.equals(point)) {
-            // Si c'est le cas, on récupère les segments associés au point et on les ajoute au résultat
-            result.addAll(((StartPoint) point).getSegments());
+        if (treeNodeSegment.getEPoint().equals(point)) {
+            // Si c'est le cas, on ajoute ce segment au résultat
+            result.add(treeNodeSegment);
         }
 
         // Si le point est inférieur au point du nœud de l'arbre, on continue la recherche dans le sous-arbre gauche
-        if (point.isLeftOf(treeNodePoint)) {
+        if (point.isLeftOf(treeNodeSegment.getEPoint())) {
             searchSegmentsWithLower(tree.getLeftTree(), point, result);
         } else {
-            searchSegmentsContains(tree.getRightTree(), point, result);
+            searchSegmentsWithLower(tree.getRightTree(), point, result);
         }
     }
+
 
 
     // Logique pour C(p)
@@ -129,38 +128,6 @@ public class TTree extends AVLTree{
         }
     }
 
-
-
-    // Méthode pour trouver tous les segments stockés dans T qui contiennent p et qui sont adjacents dans T
-    public Set<Segment> getAdjacentSegmentsContainingPoint(Point p) {
-        Set<Segment> adjacentSegments = new HashSet<>();
-        searchAdjacentSegments(root, p, adjacentSegments);
-        return adjacentSegments;
-    }
-
-    // Méthode récursive pour rechercher les segments adjacents contenant le point dans l'arbre T
-    private void searchAdjacentSegments(AVLTree tree, Point point, Set<Segment> result) {
-        if (tree == null || point == null) {
-            return;
-        }
-
-        Segment segment = (Segment) tree.getData();
-
-        // Vérifie si le segment contient le point spécifié
-        if (segment.contains(point)) {
-            result.add(segment);
-        }
-
-        // Détermine la direction orientée en fonction de la position du point
-        boolean searchLeft = point.getY() <= segment.getEPoint().getY();
-
-        // Recherche dans le sous-arbre gauche
-        if (searchLeft) {
-            searchAdjacentSegments(tree.getLeftTree(), point, result);
-        } else {
-            searchAdjacentSegments(tree.getRightTree(), point, result);
-        }
-    }
 
 
 

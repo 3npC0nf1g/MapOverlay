@@ -41,23 +41,24 @@ public class MapOverlay {
         ULC.addAll(Up);
         ULC.addAll(Cp);
 
-
         // Si L(p)∪U(p)∪C(p) contient plus d'un segment
         if (ULC.size() > 1) {
 
-
         }
-
 
         //// equivalent de regarder si ULC > 1
         //if(UnionSet(UC,L).size() > 1){
         //}
-        //if(UnionSet(U, C).isEmpty()){
+        Set<Segment> UC = new HashSet<>(Up);
+        ULC.addAll(Cp);
+
+        if(UC.isEmpty()){
         //    // sl, sr voisin de gauche et droite de pµ
-        //    Segment sl;
-        //    Segment sr;
-        //    FindNewEvent(sl,sr,point);
-        //}else{
+         Segment sl;
+         Segment sr;
+      // FindNewEvent(sl,sr,point);
+       }else
+       {
         //    // s' le segment le plus à gauche de U,C
         //    // sl segment à gauche de p
         //    Segment sl;
@@ -68,14 +69,9 @@ public class MapOverlay {
         //    Segment sdprime;
         //    Segment sr;
         //    FindNewEvent(sdprime,sr,point);
-        //}
+        }
     }
 
-    private Set<Segment> UnionSet(Set<Segment> a,Set<Segment> b){
-        Set<Segment> result = new HashSet<>(a);
-        result.addAll(b);
-        return result;
-    }
 
     private void FindNewEvent(Segment sl,Segment sr,Point currentPoint){
         // Créer le point avec ces coord
