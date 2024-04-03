@@ -72,9 +72,12 @@ public class MapOverlay {
         } else {
             // sPrime le segment le plus à gauche de U(p)uC(p)
             // sl segment à gauche de sPrime
-            Segment sPrime = t.getLeftmostSegment(point);
-            Segment sl =     t.getLeftNeighborSegment(sPrime);
-            FindNewEvent(sl,sPrime,point);
+            if (UC.contains(t.getLeftmostSegment(point))){
+                Segment sPrime = t.getLeftmostSegment(point);
+                Segment sl =     t.getLeftNeighborSegment(sPrime);
+                FindNewEvent(sl,sPrime,point);
+            }
+
             // sSecond le segment le plus à droite de U(p)uC(p)
             // sr segment a droite de sSecond
               Segment sSecond = t.getRightmostSegment(point) ;
