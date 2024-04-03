@@ -27,14 +27,28 @@ public class MapOverlay {
     }
 
     public void HandleEventPoint(Point point){
-        if(point instanceof StartPoint){
-            Set<Segment> Up = new HashSet<>(((StartPoint) point).getSegments());
+
+        Set<Segment> Up = new HashSet<>();
+        if (point instanceof StartPoint) {
+            Up.addAll(((StartPoint) point).getSegments());
             t.insert(point);
         }
+
         Set<Segment> Lp = t.getSegmentsWithLower(point);
         Set<Segment> Cp = t.getSegmentsContains(point);
 
-        //Set<Segment> UC = UnionSet(U, C);
+        Set<Segment> ULC = new HashSet<>(Lp);
+        ULC.addAll(Up);
+        ULC.addAll(Cp);
+
+
+        // Si L(p)∪U(p)∪C(p) contient plus d'un segment
+        if (ULC.size() > 1) {
+
+
+        }
+
+
         //// equivalent de regarder si ULC > 1
         //if(UnionSet(UC,L).size() > 1){
         //}
