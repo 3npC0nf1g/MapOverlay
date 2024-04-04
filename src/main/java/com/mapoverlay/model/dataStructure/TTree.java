@@ -121,10 +121,7 @@ public class TTree extends AVLTree{
         return current;
     }
 
-
-
     // Logique pour L(p)
-
     public Set<Segment> getSegmentsWithLower(Point point) {
 
             Set<Segment> result = new HashSet<>();
@@ -149,8 +146,6 @@ public class TTree extends AVLTree{
         searchSegmentsWithLower(tree.getLeftTree(), point, result);
         searchSegmentsWithLower(tree.getRightTree(), point, result);
     }
-
-
 
     // Logique pour C(p)
     public Set<Segment> getSegmentsContains(Point point) {

@@ -37,8 +37,23 @@ public class Segment extends Data {
     }
 
     public boolean contains(Point point){
-        return false;
+        // Vecteur représentant le segment
+        Point segmentVector = new Point(ePoint.getX() - sPoint.getX(), ePoint.getY() - sPoint.getY());
+
+        // Vecteur allant du début du segment au point donné
+        Point pointVector = new Point(point.getX() - sPoint.getX(), point.getY() - sPoint.getY());
+
+        // Calcul du produit scalaire
+        double dotProduct = segmentVector.getX() * pointVector.getX() + segmentVector.getY() * pointVector.getY();
+
+        // Calcul de la norme au carré du segment
+        double segmentLengthSquare = segmentVector.getX() * segmentVector.getX() + segmentVector.getY() * segmentVector.getY();
+
+        // Le produit scalaire est positif si le point est dans la même direction que le segment
+        // et inférieur ou égal à la longueur du segment au carré
+        return dotProduct >= 0 && dotProduct <= segmentLengthSquare;
     }
+
 
     public boolean isLeftOf(Segment segment){
         return this.sPoint.isLeftOf(segment.sPoint);
