@@ -27,6 +27,7 @@ public class TTree extends AVLTree{
 
         if(isEmpty()){
             insertEmpty(insertedSegment);
+            equilibrateAVL();
         }else{
             Segment currentSegment = (Segment)this.getData();
             if(isLeaf()){
@@ -39,9 +40,10 @@ public class TTree extends AVLTree{
                 AVLTree subtree = insertedSegment.isLeftOf(currentSegment) ? getLeftTree() : getRightTree();
                 subtree.insert(insertedSegment);
             }
+            equilibrateAVL();
+            setData(getMaxOfTree(getLeftTree()));
         }
-        equilibrateAVL();
-        setData(getMaxOfTree(getLeftTree()));
+
     }
 
     private void insertSegment(Data ls,Data rs){

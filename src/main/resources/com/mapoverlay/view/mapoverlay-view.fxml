@@ -17,5 +17,7 @@
       <Button id="startMapOverlay" layoutX="793.0" layoutY="671.0" mnemonicParsing="false" onAction="#launchMapOverlay" prefHeight="42.0" prefWidth="121.0" text="Lancer" />
       <AnchorPane fx:id="canvasContainer" layoutX="14.0" layoutY="14.0" prefHeight="650.0" prefWidth="900.0" style="-fx-border-color: LIGHTGRAY; -fx-background-color: GAINSBORO;" />
       <Button id="import" layoutX="640.0" layoutY="671.0" mnemonicParsing="false" onAction="#clearGraph" prefHeight="42.0" prefWidth="142.0" text="clear" />
+      <Button id="startMapOverlay" layoutX="147.0" layoutY="671.0" mnemonicParsing="false" onAction="#launchMapOverlayStep" prefHeight="42.0" prefWidth="121.0" text="pas à pas" />
+      <Button id="startMapOverlay" layoutX="14.0" layoutY="671.0" mnemonicParsing="false" onAction="#InitQ" prefHeight="42.0" prefWidth="121.0" text="Init Q" />
    </children>
 </AnchorPane>

@@ -16,6 +16,8 @@ import java.util.List;
 public class CanvasViewController {
 
     private double zoomFactor = 1;
+
+    private double sweepLine = 0;
     private List<Map> maps = new ArrayList<>();
 
     double centerX,centerY;
@@ -77,6 +79,7 @@ public class CanvasViewController {
         currentCenterY = centerY + offsetY;
 
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+        gc.strokeLine(0, currentCenterY-(sweepLine*zoomFactor), canvas.getWidth(), currentCenterY-(sweepLine*zoomFactor));
         drawAxes(gc, currentCenterX, currentCenterY);
 
         for(Map m : maps){
@@ -149,5 +152,10 @@ public class CanvasViewController {
         gc.setStroke(Color.BLACK);
 
         gc.strokeRect(p.getX()+0.05, p.getY()+0.05,p.getX()-0.05, p.getY()-0.05);
+    }
+
+    public void setSweepLine(double y) {
+       this.sweepLine = y;
+       updateCanvas();
     }
 }

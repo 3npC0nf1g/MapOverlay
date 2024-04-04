@@ -30,4 +30,14 @@ public class ApplicationController extends Application implements MapOverlayCont
     public List<Point> computeMapOverlay(List<Segment> segments) {
         return MO.FindInterSections(segments);
     }
+
+    @Override
+    public void InitQ(List<Segment> segments) {
+        MO.InitQ(segments);
+    }
+
+    @Override
+    public Point computeMapOverlayStep() {
+        return MO.FindInterSectionsStep();
+    }
 }

@@ -39,6 +39,16 @@ public class MapOverlayViewController {
         listener.launchMapOverlay();
     }
 
+    @FXML
+    void launchMapOverlayStep(ActionEvent event) {
+        listener.launchMapOverlayStep();
+    }
+
+    @FXML
+    void InitQ(ActionEvent event) {
+        listener.InitQ();
+    }
+
     public AnchorPane getCanvasContainer() {
         return canvasContainer;
     }
@@ -60,6 +70,10 @@ public class MapOverlayViewController {
         void clearGraph();
 
         void launchMapOverlay();
+
+        void launchMapOverlayStep();
+
+        void InitQ();
     }
 
 }

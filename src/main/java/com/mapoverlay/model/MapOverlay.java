@@ -15,10 +15,7 @@ public class MapOverlay {
 
     public List<Point> FindInterSections(List<Segment> segmentList) {
         List<Point> intersections = new ArrayList<>();
-        for (Segment s : segmentList) {
-            q.insert(s.getSPoint());
-            q.insert(s.getEPoint());
-        }
+        InitQ(segmentList);
 
         while (!q.isEmpty()) {
             Point intersection = HandleEventPoint(q.getNextPoint());
@@ -29,8 +26,12 @@ public class MapOverlay {
         return intersections;
     }
 
+    public Point FindInterSectionsStep(){
+        return HandleEventPoint(q.getNextPoint());
+    }
+
     public Point HandleEventPoint(Point point) {
-        Point intersection = null;
+        Point nPoint = point;
 
         Set<Segment> Up = new HashSet<>();
         if (point instanceof StartPoint) {
@@ -55,7 +56,7 @@ public class MapOverlay {
 
         // Si L(p)∪U(p)∪C(p) contient plus d'un segment
         if (ULC.size() > 1) {
-            intersection = point;
+            nPoint = new InterserctionPoint(point);
             // renvoyer le point comme point d'intersection
             // return du point comme point d'intersection
             t.delete(LC); // suppression des segments de L(p)UC(p) dans T
@@ -80,11 +81,11 @@ public class MapOverlay {
         } else {
             // sPrime le segment le plus à gauche de U(p)uC(p)
             // sl segment à gauche de sPrime
-            if (UC.contains(t.getLeftmostSegment(point))){
-                Segment sPrime = t.getLeftmostSegment(point);
-                Segment sl =     t.getLeftNeighborSegment(sPrime);
-                FindNewEvent(sl,sPrime,point);
-            }
+            List<Segment> up = new ArrayList<>(UC);
+            Point l = up.get(0).getSPoint();
+            Segment sPrime = t.getLeftmostSegment(l);
+            Segment sl =     t.getLeftNeighborSegment(sPrime);
+            FindNewEvent(sl,sPrime,point);
 
             // sSecond le segment le plus à droite de U(p)uC(p)
             // sr segment a droite de sSecond
@@ -92,7 +93,7 @@ public class MapOverlay {
               Segment sr =      t.getRightNeighborSegment(sSecond);;
               FindNewEvent(sSecond,sr,point);
         }
-        return intersection;
+        return nPoint;
     }
 
 
@@ -109,4 +110,10 @@ public class MapOverlay {
         }
     }
 
+    public void InitQ(List<Segment> segments) {
+        for (Segment s : segments) {
+            q.insert(s.getSPoint());
+            q.insert(s.getEPoint());
+        }
+    }
 }

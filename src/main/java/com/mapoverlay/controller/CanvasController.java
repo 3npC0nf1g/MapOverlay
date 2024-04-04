@@ -2,7 +2,6 @@ package com.mapoverlay.controller;
 
 import com.mapoverlay.model.data.Map;
 import com.mapoverlay.model.data.Point;
-import com.mapoverlay.model.data.Segment;
 import com.mapoverlay.view.CanvasViewController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.canvas.Canvas;
@@ -33,5 +32,9 @@ public class CanvasController {
         for (Point p : intersectionPoint){
             CVC.addPoint(p);
         }
+    }
+
+    public void MakeSweepLine(double y) {
+        CVC.setSweepLine(y);
     }
 }

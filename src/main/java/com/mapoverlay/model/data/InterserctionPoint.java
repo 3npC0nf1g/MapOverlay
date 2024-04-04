@@ -5,12 +5,8 @@ import java.util.List;
 
 public class InterserctionPoint extends Point{
 
-    private List<Segment> intersectSegmentsLists;
-    public InterserctionPoint(double x, double y) {
-        super(x, y);
-        intersectSegmentsLists = new ArrayList<>();
+    public InterserctionPoint(Point point) {
+        super(point.getX(), point.getY());
     }
-
-
 
 }

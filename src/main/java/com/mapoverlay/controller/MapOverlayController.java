@@ -86,7 +86,22 @@ public class MapOverlayController {
                     segments.addAll(m.getSegments());
                 }
                 List<Point> intersectionPoint = listener.computeMapOverlay(segments);
-                CC.addPoint(intersectionPoint);
+                CC.addPoint(intersectionPoint.stream().filter(x -> x instanceof InterserctionPoint).toList());
+            }
+
+            @Override
+            public void launchMapOverlayStep() {
+                Point p = listener.computeMapOverlayStep();
+                CC.MakeSweepLine(p.getY());
+            }
+
+            @Override
+            public void InitQ() {
+                List<Segment> segments = new ArrayList<>();
+                for(Map m : maps){
+                    segments.addAll(m.getSegments());
+                }
+                listener.InitQ(segments);
             }
         });
         CreateCanvas();
@@ -143,6 +158,10 @@ public class MapOverlayController {
 
     public interface listener {
         List<Point> computeMapOverlay(List<Segment> segments);
+
+        void InitQ(List<Segment> segments);
+
+        Point computeMapOverlayStep();
     }
 
 }
