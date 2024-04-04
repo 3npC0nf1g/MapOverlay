@@ -62,7 +62,6 @@ public class MapOverlay {
             for (Segment segment : UC) { // insertion des segments de U(p)UC(p) dans T
                 t.insert(segment);
             }
-
             // Delete and re-insert segments of C(p) to reverse their order
             t.delete(Cp); // Delete segments of C(p)
             List<Segment> CpList = new ArrayList<>(Cp); // Convert Cp to a list
@@ -70,7 +69,6 @@ public class MapOverlay {
                 t.insert(CpList.get(i));
             }
         }
-
         if (UC.isEmpty()) {
 
             // sl, sr voisin de gauche et droite de p

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b5c0d7c9-3def-474c-b003-f88749cdc596" name="Changes" comment="MapOverlay--">
+    <list default="true" id="b5c0d7c9-3def-474c-b003-f88749cdc596" name="Changes" comment="MapOverlay suppression et inversion">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/ApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/ApplicationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/controller/CanvasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/controller/CanvasController.java" afterDir="false" />
@@ -51,7 +51,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "vue.rearranger.settings.migration": "true"
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="ApplicationController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.mapoverlay.ApplicationController" />
@@ -130,9 +130,18 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1712180680920</updated>
-      <workItem from="1712180682509" duration="761000" />
+      <workItem from="1712180682509" duration="1051000" />
+      <workItem from="1712218339533" duration="4050000" />
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="MapOverlay suppression et inversion">
+      <option name="closed" value="true" />
+      <created>1712181733830</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1712181733831</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -147,6 +156,7 @@
     <MESSAGE value="delete" />
     <MESSAGE value="MapOverlay" />
     <MESSAGE value="MapOverlay--" />
-    <option name="LAST_COMMIT_MESSAGE" value="MapOverlay--" />
+    <MESSAGE value="MapOverlay suppression et inversion" />
+    <option name="LAST_COMMIT_MESSAGE" value="MapOverlay suppression et inversion" />
   </component>
 </project>
