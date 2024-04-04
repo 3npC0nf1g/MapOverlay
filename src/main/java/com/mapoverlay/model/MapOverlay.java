@@ -82,16 +82,16 @@ public class MapOverlay {
             // sPrime le segment le plus à gauche de U(p)uC(p)
             // sl segment à gauche de sPrime
             List<Segment> up = new ArrayList<>(UC);
-            Point l = up.get(0).getSPoint();
-            Segment sPrime = t.getLeftmostSegment(l);
-            Segment sl =     t.getLeftNeighborSegment(sPrime);
+            Segment sPrime  = up.get(0);
+            Segment sl =     t.getLeftNeighbor(sPrime.getSPoint());
             FindNewEvent(sl,sPrime,point);
 
             // sSecond le segment le plus à droite de U(p)uC(p)
             // sr segment a droite de sSecond
-              Segment sSecond = t.getRightmostSegment(point) ;
-              Segment sr =      t.getRightNeighborSegment(sSecond);;
-              FindNewEvent(sSecond,sr,point);
+            List<Segment> up2 = new ArrayList<>(UC);
+            Segment sSecond = up2.get(up2.size()-1);
+            Segment sr =      t.getRightNeighborSegment(sSecond);;
+            FindNewEvent(sSecond,sr,point);
         }
         return nPoint;
     }
