@@ -16,7 +16,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MapOverlayController implements MapOverlayViewController.Listener,MapItemController.Listener {
+public class MapOverlayController {
     private Stage stage;
 
     private MapOverlayViewController MOVC;
@@ -30,7 +30,65 @@ public class MapOverlayController implements MapOverlayViewController.Listener,M
         FXMLLoader fxmlLoader = new FXMLLoader(MapOverlayViewController.class.getResource("mapoverlay-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         MOVC = fxmlLoader.getController();
-        MOVC.setListener(this);
+        MOVC.setListener(new MapOverlayViewController.Listener() {
+            @Override
+            public void importMap() {
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle("Choisir des fichiers de segments de droite");
+
+                // Définir un filtre pour ne montrer que les fichiers avec l'extension .txt
+                FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Fichiers texte (*.txt)", "*.txt");
+                fileChooser.getExtensionFilters().add(extFilter);
+
+                // Afficher la boîte de dialogue de sélection de fichiers
+                List<File> selectedFiles = fileChooser.showOpenMultipleDialog(null);
+
+                for (File selectedFile : selectedFiles) {
+                    try (BufferedReader reader = new BufferedReader(new FileReader(selectedFile))) {
+                        String line;
+                        Map map = new Map(new ArrayList<>(), Color.BLACK);
+                        while ((line = reader.readLine()) != null) {
+                            String[] coords = line.trim().split("\\s+");
+                            if (coords.length == 4) {
+                                double x1 = Double.parseDouble(coords[0]);
+                                double y1 = Double.parseDouble(coords[1]);
+                                double x2 = Double.parseDouble(coords[2]);
+                                double y2 = Double.parseDouble(coords[3]);
+                                Segment s = new Segment(new Point(x1,y1),new Point(x2,y2));
+                                map.addSegment(s);
+                            }
+                        }
+                        maps.add(map);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                updateView();
+            }
+
+            @Override
+            public void addMap() {
+                Map newMap = new Map(new ArrayList<>(),Color.BLACK);
+                maps.add(newMap);
+                updateView();
+            }
+
+            @Override
+            public void clearGraph() {
+                maps.clear();
+                updateView();
+            }
+
+            @Override
+            public void launchMapOverlay() {
+                List<Segment> segments = new ArrayList<>();
+                for(Map m : maps){
+                    segments.addAll(m.getSegments());
+                }
+                List<Point> intersectionPoint = listener.computeMapOverlay(segments);
+                CC.addPoint(intersectionPoint);
+            }
+        });
         CreateCanvas();
         stage.setTitle("MapOverlay project of Odan and Steve");
         stage.setScene(scene);
@@ -42,8 +100,7 @@ public class MapOverlayController implements MapOverlayViewController.Listener,M
         updateCanvas();
     }
 
-    @Override
-    public void update(){
+    public void updateView(){
         updateListView();
         updateCanvas();
     }
@@ -58,66 +115,23 @@ public class MapOverlayController implements MapOverlayViewController.Listener,M
         for(Map m : maps){
             try {
                 MapItemController MIC = new MapItemController(m,stage);
-                MIC.setListener(this);
+                MIC.setListener(new MapItemController.Listener() {
+                    @Override
+                    public void deleteMap(Map map) {
+                        maps.remove(map);
+                        updateView();
+                    }
+
+                    @Override
+                    public void update() {
+                        updateView();
+                    }
+                });
                 list.getChildren().add(MIC.getPane());
             } catch (IOException e) {
                 // TODO
             }
         }
-    }
-
-    @Override
-    public void importMap() {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Choisir des fichiers de segments de droite");
-
-        // Définir un filtre pour ne montrer que les fichiers avec l'extension .txt
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Fichiers texte (*.txt)", "*.txt");
-        fileChooser.getExtensionFilters().add(extFilter);
-
-        // Afficher la boîte de dialogue de sélection de fichiers
-        List<File> selectedFiles = fileChooser.showOpenMultipleDialog(null);
-
-        for (File selectedFile : selectedFiles) {
-            try (BufferedReader reader = new BufferedReader(new FileReader(selectedFile))) {
-                String line;
-                Map map = new Map(new ArrayList<>(), Color.BLACK);
-                while ((line = reader.readLine()) != null) {
-                    String[] coords = line.trim().split("\\s+");
-                    if (coords.length == 4) {
-                        double x1 = Double.parseDouble(coords[0]);
-                        double y1 = Double.parseDouble(coords[1]);
-                        double x2 = Double.parseDouble(coords[2]);
-                        double y2 = Double.parseDouble(coords[3]);
-                        Segment s = new Segment(new Point(x1,y1),new Point(x2,y2));
-                        map.addSegment(s);
-                    }
-                }
-                maps.add(map);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        update();
-    }
-
-    @Override
-    public void addMap() {
-        Map newMap = new Map(new ArrayList<>(),Color.BLACK);
-        maps.add(newMap);
-        update();
-    }
-
-    @Override
-    public void clearGraph() {
-        maps.clear();
-        update();
-    }
-
-    @Override
-    public void deleteMap(Map map) {
-        maps.remove(map);
-        update();
     }
 
     // Listener implementation
@@ -128,7 +142,7 @@ public class MapOverlayController implements MapOverlayViewController.Listener,M
     }
 
     public interface listener {
-        List<InterserctionPoint> computeMapOverlay(List<Segment> segments);
+        List<Point> computeMapOverlay(List<Segment> segments);
     }
 
 }

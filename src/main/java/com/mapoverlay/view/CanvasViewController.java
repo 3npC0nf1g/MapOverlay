@@ -143,4 +143,11 @@ public class CanvasViewController {
             return 200;
         }
     }
+
+    public void addPoint(Point p) {
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        gc.setStroke(Color.BLACK);
+
+        gc.strokeRect(p.getX()+0.05, p.getY()+0.05,p.getX()-0.05, p.getY()-0.05);
+    }
 }

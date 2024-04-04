@@ -1,9 +1,6 @@
 package com.mapoverlay.model;
 
-import com.mapoverlay.model.data.Data;
-import com.mapoverlay.model.data.Point;
-import com.mapoverlay.model.data.Segment;
-import com.mapoverlay.model.data.StartPoint;
+import com.mapoverlay.model.data.*;
 import com.mapoverlay.model.dataStructure.QTree;
 import com.mapoverlay.model.dataStructure.TTree;
 
@@ -16,18 +13,24 @@ public class MapOverlay {
     QTree q = new QTree();
     TTree t = new TTree();
 
-    public void FindInterSections(List<Segment> segmentList) {
+    public List<Point> FindInterSections(List<Segment> segmentList) {
+        List<Point> intersections = new ArrayList<>();
         for (Segment s : segmentList) {
             q.insert(s.getSPoint());
             q.insert(s.getEPoint());
         }
 
         while (!q.isEmpty()) {
-            HandleEventPoint(q.getNextPoint());
+            Point intersection = HandleEventPoint(q.getNextPoint());
+            if(intersection != null){
+                intersections.add(intersection);
+            }
         }
+        return intersections;
     }
 
-    public void HandleEventPoint(Point point) {
+    public Point HandleEventPoint(Point point) {
+        Point intersection = null;
 
         Set<Segment> Up = new HashSet<>();
         if (point instanceof StartPoint) {
@@ -52,7 +55,7 @@ public class MapOverlay {
 
         // Si L(p)∪U(p)∪C(p) contient plus d'un segment
         if (ULC.size() > 1) {
-
+            intersection = point;
             // renvoyer le point comme point d'intersection
             // return du point comme point d'intersection
             t.delete(LC); // suppression des segments de L(p)UC(p) dans T
@@ -91,6 +94,7 @@ public class MapOverlay {
               Segment sr =      t.getRightNeighborSegment(sSecond);;
               FindNewEvent(sSecond,sr,point);
         }
+        return intersection;
     }
 
 
@@ -106,11 +110,5 @@ public class MapOverlay {
             }
         }
     }
-
-
-
-
-
-
 
 }

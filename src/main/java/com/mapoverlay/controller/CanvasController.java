@@ -1,6 +1,7 @@
 package com.mapoverlay.controller;
 
 import com.mapoverlay.model.data.Map;
+import com.mapoverlay.model.data.Point;
 import com.mapoverlay.model.data.Segment;
 import com.mapoverlay.view.CanvasViewController;
 import javafx.fxml.FXMLLoader;
@@ -26,5 +27,11 @@ public class CanvasController {
 
     public void setMap(List<Map> maps) {
         CVC.setMapList(maps);
+    }
+
+    public void addPoint(List<Point> intersectionPoint) {
+        for (Point p : intersectionPoint){
+            CVC.addPoint(p);
+        }
     }
 }

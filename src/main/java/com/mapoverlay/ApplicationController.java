@@ -3,6 +3,7 @@ package com.mapoverlay;
 import com.mapoverlay.controller.MapOverlayController;
 import com.mapoverlay.model.MapOverlay;
 import com.mapoverlay.model.data.InterserctionPoint;
+import com.mapoverlay.model.data.Point;
 import com.mapoverlay.model.data.Segment;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -26,8 +27,7 @@ public class ApplicationController extends Application implements MapOverlayCont
     }
 
     @Override
-    public List<InterserctionPoint> computeMapOverlay(List<Segment> segments) {
-        MO.FindInterSections(segments);
-        return new ArrayList<>();
+    public List<Point> computeMapOverlay(List<Segment> segments) {
+        return MO.FindInterSections(segments);
     }
 }
