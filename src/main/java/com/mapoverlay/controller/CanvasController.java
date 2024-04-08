@@ -34,7 +34,7 @@ public class CanvasController {
         }
     }
 
-    public void MakeSweepLine(double y) {
-        CVC.setSweepLine(y);
+    public void MakeSweepLine(double x, double y) {
+        CVC.setSweepLine(x,y);
     }
 }

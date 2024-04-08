@@ -92,7 +92,7 @@ public class MapOverlayController {
             @Override
             public void launchMapOverlayStep() {
                 Point p = listener.computeMapOverlayStep();
-                CC.MakeSweepLine(p.getY());
+                CC.MakeSweepLine(p.getX(),p.getY());
             }
 
             @Override

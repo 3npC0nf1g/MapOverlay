@@ -4,8 +4,8 @@ import com.mapoverlay.model.data.Data;
 
 public abstract class AVLTree {
 
-    private Data data;
-    private AVLTree leftTree,rightTree;
+    protected Data data;
+    protected AVLTree leftTree,rightTree;
     private int height;
 
     // Constructor
@@ -21,29 +21,20 @@ public abstract class AVLTree {
     }
 
     // Getter & Setter
-    public Data getData() {
-        return data;
-    }
     public void setData(Data data) {
         this.data = data;
     }
     public int getHeight() {
         return height;
     }
-    public void setHeight(int height) {
+    private void setHeight(int height) {
         this.height = height;
     }
     public void setLeftTree(AVLTree leftTree) {
         this.leftTree = leftTree;
     }
-    public AVLTree getLeftTree() {
-        return leftTree;
-    }
     public void setRightTree(AVLTree rightTree) {
         this.rightTree = rightTree;
-    }
-    public AVLTree getRightTree() {
-        return rightTree;
     }
 
     // Principe AVL
@@ -102,7 +93,7 @@ public abstract class AVLTree {
             return this.rightTree.getHeight() - this.leftTree.getHeight();
     }
 
-    private void computeHeight() {
+    protected void computeHeight() {
         if(isEmpty()){
             this.height = 0;
         }else{
@@ -121,6 +112,9 @@ public abstract class AVLTree {
 
     // Override méthod
     public abstract void insert(Data d);
+    public abstract AVLTree getLeftTree();
+    public abstract AVLTree getRightTree();
+    public abstract Data getData();
 
     protected void insertEmpty(Data d){
         setData(d);

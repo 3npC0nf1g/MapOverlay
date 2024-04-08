@@ -14,17 +14,18 @@ public class QTree extends AVLTree{
     @Override
     protected void insertEmpty(Data d) {
         super.insertEmpty(d);
+        System.out.println(d.toString());
         setLeftTree(new QTree());
         setRightTree(new QTree());
     }
 
     @Override
-    public void insert(Data data){
-        Point p = (Point)data;
+    public void insert(Data d) {
+        Point p = (Point)d;
         if(isEmpty()){
             insertEmpty(p);
         }else{
-            Point currentPoint = (Point)this.getData();
+            Point currentPoint = this.getData();
             if(currentPoint.isHigherThan(p)){
                 if (currentPoint.equals(p)) {
                     if(p instanceof StartPoint){
@@ -44,21 +45,39 @@ public class QTree extends AVLTree{
             }
         }
         equilibrateAVL();
+
     }
 
     public Point getNextPoint(){
         Point minPoint;
 
         if(getLeftTree().isEmpty()){
-            minPoint = (Point)getData();
+            minPoint = getData();
             AVLTree t = getRightTree();
             setData(t.getData());
             setLeftTree(t.getLeftTree());
             setRightTree(t.getRightTree());
         }else{
-            minPoint = ((QTree)getLeftTree()).getNextPoint();
+            minPoint = getLeftTree().getNextPoint();
         }
         equilibrateAVL();
         return minPoint;
     }
+
+    @Override
+    public QTree getLeftTree() {
+        return (QTree) this.leftTree;
+    }
+
+    @Override
+    public QTree getRightTree() {
+        return (QTree) this.rightTree;
+    }
+
+    @Override
+    public Point getData() {
+        return (Point) this.data;
+    }
+
+
 }

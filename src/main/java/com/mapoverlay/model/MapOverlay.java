@@ -4,10 +4,7 @@ import com.mapoverlay.model.data.*;
 import com.mapoverlay.model.dataStructure.QTree;
 import com.mapoverlay.model.dataStructure.TTree;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class MapOverlay {
     QTree q = new QTree();
@@ -33,7 +30,7 @@ public class MapOverlay {
     public Point HandleEventPoint(Point point) {
         Point nPoint = point;
 
-        Set<Segment> Up = new HashSet<>();
+        Set<Segment> Up = new LinkedHashSet<>();
         if (point instanceof StartPoint) {
             Up.addAll(((StartPoint) point).getSegments());
             for (Segment segment : Up) { // O(n)
@@ -44,55 +41,52 @@ public class MapOverlay {
         Set<Segment> Lp = t.getSegmentsWithLower(point); // O(n)
         Set<Segment> Cp = t.getSegmentsContains(point); // O(n)
 
-        Set<Segment> ULC = new HashSet<>(Lp);
+        Set<Segment> ULC = new LinkedHashSet<>(Lp);
         ULC.addAll(Up);
         ULC.addAll(Cp);
 
-        Set<Segment> LC = new HashSet<>(Lp);
-        ULC.addAll(Cp);
+        Set<Segment> LC = new LinkedHashSet<>(Lp);
+        LC.addAll(Cp);
 
-        Set<Segment> UC = new HashSet<>(Up);
-        ULC.addAll(Cp);
+        Set<Segment> UC = new LinkedHashSet<>(Up);
+        UC.addAll(Cp);
+        List<Segment> UClist = new ArrayList<>(UC);
 
-        // Si L(p)∪U(p)∪C(p) contient plus d'un segment
         if (ULC.size() > 1) {
             nPoint = new InterserctionPoint(point);
-            // renvoyer le point comme point d'intersection
-            // return du point comme point d'intersection
-            t.delete(LC); // suppression des segments de L(p)UC(p) dans T
-            for (Segment segment : UC) { // insertion des segments de U(p)UC(p) dans T
-                t.insert(segment);
-            }
-            // Delete and re-insert segments of C(p) to reverse their order
-            t.delete(Cp); // Delete segments of C(p)
-            List<Segment> CpList = new ArrayList<>(Cp); // Convert Cp to a list
-            for (int i = CpList.size() - 1; i >= 0; i--) { // Re-insert segments of C(p) in reverse order
-                t.insert(CpList.get(i));
+            t.delete(LC);
+
+            for(int i = 0;i < UC.size();i++){
+                Segment newSegment = new Segment(point,UClist.get(i).getEPoint());
+                UClist.set(i,newSegment);
+                t.insert(newSegment);
             }
         }
         if (UC.isEmpty()) {
-
             // sl, sr voisin de gauche et droite de p
-            Segment sl = t.getLeftNeighbor(point);
-            Segment sr = t.getRightNeighbor(point);
+            Segment sl = t.findLeftNeighbor(point);
+            Segment sr = t.findRightNeighbor(point);
 
             // Trouver un nouvel événement
             FindNewEvent(sl, sr, point);
         } else {
             // sPrime le segment le plus à gauche de U(p)uC(p)
             // sl segment à gauche de sPrime
-            List<Segment> up = new ArrayList<>(UC);
-            Segment sPrime  = up.get(0);
-            Segment sl =     t.getLeftNeighbor(sPrime.getSPoint());
+            Segment sPrime  = UClist.get(UClist.size()-1);
+            Segment sl =     t.findLeftAdjacentSegment(sPrime);
             FindNewEvent(sl,sPrime,point);
 
             // sSecond le segment le plus à droite de U(p)uC(p)
             // sr segment a droite de sSecond
-            List<Segment> up2 = new ArrayList<>(UC);
-            Segment sSecond = up2.get(up2.size()-1);
-            Segment sr =      t.getRightNeighborSegment(sSecond);;
+            Segment sSecond = UClist.get(0);
+            Segment sr =      t.findRightAdjacentSegment(sSecond);;
             FindNewEvent(sSecond,sr,point);
         }
+
+        for(Segment s : Lp){
+            t.delete(s);
+        }
+
         return nPoint;
     }
 
@@ -103,7 +97,7 @@ public class MapOverlay {
             // Calculer le point d'intersection
             Point intersectionPoint = sl.ComputeIntesectPoint(sr);
             // Vérifier si le point est en dessous de la sweepline avec le dernier point sélectionné
-            if (currentPoint.isHigherThan(intersectionPoint)) {
+            if (intersectionPoint != null && currentPoint.isHigherThan(intersectionPoint)) {
                 // Insérer le point dans la file d'attente des événements
                 q.insert(intersectionPoint);
             }
@@ -111,6 +105,8 @@ public class MapOverlay {
     }
 
     public void InitQ(List<Segment> segments) {
+        q = new QTree();
+        t = new TTree();
         for (Segment s : segments) {
             q.insert(s.getSPoint());
             q.insert(s.getEPoint());

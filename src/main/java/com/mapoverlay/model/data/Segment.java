@@ -37,21 +37,16 @@ public class Segment extends Data {
     }
 
     public boolean contains(Point point){
-        // Vecteur représentant le segment
-        Point segmentVector = new Point(ePoint.getX() - sPoint.getX(), ePoint.getY() - sPoint.getY());
+        double ab = distance(sPoint.getX(), sPoint.getY(),ePoint.getX(), ePoint.getY());
+        double ac = distance(sPoint.getX(), sPoint.getY(), point.getX(), point.getY());
+        double cb = distance(ePoint.getX(), ePoint.getY(), point.getX(), point.getY());
+        double ad = ac + cb;
 
-        // Vecteur allant du début du segment au point donné
-        Point pointVector = new Point(point.getX() - sPoint.getX(), point.getY() - sPoint.getY());
+        return Math.abs(ab - ad) < 0.0001;
+    }
 
-        // Calcul du produit scalaire
-        double dotProduct = segmentVector.getX() * pointVector.getX() + segmentVector.getY() * pointVector.getY();
-
-        // Calcul de la norme au carré du segment
-        double segmentLengthSquare = segmentVector.getX() * segmentVector.getX() + segmentVector.getY() * segmentVector.getY();
-
-        // Le produit scalaire est positif si le point est dans la même direction que le segment
-        // et inférieur ou égal à la longueur du segment au carré
-        return dotProduct >= 0 && dotProduct <= segmentLengthSquare;
+    public static double distance(double x1, double y1, double x2, double y2) {
+        return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
     }
 
 
@@ -69,14 +64,17 @@ public class Segment extends Data {
             double X = numX / den;
             double Y = numY / den;
 
-            return new Point(X,Y);
+            Point p = new Point(X,Y);
+
+            if(this.contains(p) && s.contains(p)){
+                return p;
+            }else {
+                return null;
+            }
+
+
         } 
         return null;
-    }
-
-    @Override
-    public String toString() {
-        return sPoint.getX() + " " + sPoint.getY() + " " + ePoint.getX() + " " + ePoint.getY();
     }
 
     private double getA(){
@@ -87,5 +85,10 @@ public class Segment extends Data {
     }
     private double getC(){
         return -((sPoint.getX() * ePoint.getY())-(ePoint.getX() * sPoint.getY()));
+    }
+
+    @Override
+    public String toString() {
+        return sPoint.getX() + " " + sPoint.getY() + " " + ePoint.getX() + " " + ePoint.getY();
     }
 }

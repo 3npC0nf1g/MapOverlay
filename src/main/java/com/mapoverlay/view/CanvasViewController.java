@@ -17,7 +17,10 @@ public class CanvasViewController {
 
     private double zoomFactor = 1;
 
-    private double sweepLine = 0;
+    private double sweepLineY = 0;
+    private double sweepLineX = 0;
+
+    private boolean haveSweepLine = false;
     private List<Map> maps = new ArrayList<>();
 
     double centerX,centerY;
@@ -39,9 +42,9 @@ public class CanvasViewController {
     @FXML
     void setOnScroll(ScrollEvent event) {
         double deltaY = event.getDeltaY();
-        if(deltaY > 0 && zoomFactor < 5){
+        if(deltaY > 0 && zoomFactor < 10){
             zoomFactor += 0.05;
-        } else if (deltaY < 0 && zoomFactor > 0.18) {
+        } else if (deltaY < 0 && zoomFactor > 0.05) {
             zoomFactor -= 0.05;
         }
         updateCanvas();
@@ -79,8 +82,12 @@ public class CanvasViewController {
         currentCenterY = centerY + offsetY;
 
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        gc.strokeLine(0, currentCenterY-(sweepLine*zoomFactor), canvas.getWidth(), currentCenterY-(sweepLine*zoomFactor));
         drawAxes(gc, currentCenterX, currentCenterY);
+        if(haveSweepLine){
+            gc.strokeLine(0, currentCenterY-(sweepLineY *zoomFactor), canvas.getWidth(), currentCenterY-(sweepLineY *zoomFactor));
+            gc.strokeOval((currentCenterX+(sweepLineX *zoomFactor))-5,(currentCenterY-(sweepLineY *zoomFactor))-5,10,10);
+        }
+
 
         for(Map m : maps){
             for(Segment s: m.getSegments()){
@@ -120,13 +127,13 @@ public class CanvasViewController {
 
         // Dessiner les graduations sur l'axe x
         gc.setStroke(Color.GRAY);
-        for (int i = -(numberOfInterval/2); i <= (numberOfInterval/2); i++) {
+        for (int i = -numberOfInterval; i <= numberOfInterval; i++) {
             double x = centerX + (zoomFactor*i*interval);
             gc.strokeLine(x, centerY - 5, x, centerY + 5);
             gc.strokeText(Integer.toString(i * interval), x - 10, centerY + 20);
         }
         // Dessiner les graduations sur l'axe y
-        for (int i = -(numberOfInterval/2); i <= (numberOfInterval/2); i++) {
+        for (int i = -numberOfInterval; i <= numberOfInterval; i++) {
             double y = centerY + (zoomFactor*i*interval);
             gc.strokeLine(centerX - 5, y, centerX + 5, y);
             gc.strokeText(Integer.toString(-i * interval), centerX + 10, y + 5);
@@ -154,8 +161,10 @@ public class CanvasViewController {
         gc.strokeRect(p.getX()+0.05, p.getY()+0.05,p.getX()-0.05, p.getY()-0.05);
     }
 
-    public void setSweepLine(double y) {
-       this.sweepLine = y;
+    public void setSweepLine(double x, double y) {
+       this.haveSweepLine = true;
+       this.sweepLineX = x;
+       this.sweepLineY = y;
        updateCanvas();
     }
 }
