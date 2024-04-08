@@ -248,11 +248,19 @@ public class TTree extends AVLTree{
     }
 
    public Segment findLeftAdjacentSegment(Segment segment){
-        return findLeft(findLeave(segment));
+       TTree leaf = findLeave(segment);
+       if (leaf != null && leaf.getData() != null) {
+           return findLeft(leaf);
+       }
+       return null;
    }
 
    public Segment findRightAdjacentSegment(Segment segment){
-        return findRight(findLeave(segment));
+       TTree leaf = findLeave(segment);
+       if (leaf != null && leaf.getData() != null) {
+           return findRight(leaf);
+       }
+       return null;
    }
 
     private Segment findRight(TTree current) {
@@ -283,38 +291,68 @@ public class TTree extends AVLTree{
        }
    }
 
-    public TTree findLeave(Segment segment){
-       Segment currentSegment = getData();
-       if(currentSegment.equals(segment) && isLeaf()){
-           return this;
-       }
+    public TTree findLeave(Segment segment) {
+        // Vérification initiale pour s'assurer que le segment donné n'est pas null
+        if (segment == null) {
+            return null; // Retourne null si le segment donné est null
+        }
 
-       if(currentSegment.isLeftOf(segment)){
-           if(currentSegment.equals(segment)){
-               TTree leftTree = getLeftTree();
-               leftTree.setParent(this);
-               if(leftTree.isLeaf()){
-                   return leftTree;
-               }else {
-                   return getMaxOfTreeWithParent(leftTree);
-               }
-           }else {
-               TTree rightTree = getRightTree();
-               if(rightTree.getData().isLeftOf(segment)){
-                   rightTree.setParent(this);
-                   return rightTree.findLeave(segment);
-               }else {
-                   TTree leftTree = getLeftTree();
-                   leftTree.setParent(this);
-                   return leftTree.findLeave(segment);
-               }
-           }
-       }else {
-           TTree leftTree = getLeftTree();
-           leftTree.setParent(this);
-           return leftTree.findLeave(segment);
-       }
+        Segment currentSegment = getData();
+        if (currentSegment == null) {
+            return null; // Retourne null si les données du nœud actuel sont null
+        }
+
+        if (currentSegment.equals(segment) && isLeaf()) {
+            return this;
+        }
+
+        if (currentSegment.isLeftOf(segment)) {
+            if (currentSegment.equals(segment)) {
+                TTree leftTree = getLeftTree();
+                if (leftTree == null) {
+                    leftTree = new TTree(); // Crée un nouvel enfant gauche si non initialisé
+                    setLeftTree(leftTree); // Définit le parent de l'enfant
+                }
+                leftTree.setParent(this);
+                if (leftTree.isLeaf()) {
+                    return leftTree;
+                } else {
+                    return getMaxOfTreeWithParent(leftTree);
+                }
+            } else {
+                TTree rightTree = getRightTree();
+                if (rightTree == null) {
+                    rightTree = new TTree(); // Crée un nouvel enfant droit si non initialisé
+                    setRightTree(rightTree); // Définit le parent de l'enfant
+                }
+                rightTree.setParent(this);
+                if (rightTree.getData() == null) {
+                    return null; // Retourne null si les données du nœud enfant sont null
+                }
+                if (rightTree.getData().isLeftOf(segment)) {
+                    return rightTree.findLeave(segment);
+                } else {
+                    TTree leftTree = getLeftTree();
+                    if (leftTree == null) {
+                        leftTree = new TTree(); // Crée un nouvel enfant gauche si non initialisé
+                        setLeftTree(leftTree); // Définit le parent de l'enfant
+                    }
+                    leftTree.setParent(this);
+                    return leftTree.findLeave(segment);
+                }
+            }
+        } else {
+            TTree leftTree = getLeftTree();
+            if (leftTree == null) {
+                leftTree = new TTree(); // Crée un nouvel enfant gauche si non initialisé
+                setLeftTree(leftTree); // Définit le parent de l'enfant
+            }
+            leftTree.setParent(this);
+            return leftTree.findLeave(segment);
+        }
     }
+
+
 
     private TTree getMaxOfTreeWithParent(TTree t){
         if(t.getRightTree().isEmpty()){

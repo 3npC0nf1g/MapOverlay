@@ -106,9 +106,12 @@ public abstract class AVLTree {
         return this.data == null && this.leftTree == null && this.rightTree == null;
     }
 
-    protected boolean isLeaf(){
-        return getLeftTree().isEmpty() && getRightTree().isEmpty();
+    protected boolean isLeaf() {
+        AVLTree left = getLeftTree();
+        AVLTree right = getRightTree();
+        return (left != null && left.isEmpty()) && (right != null && right.isEmpty());
     }
+
 
     // Override méthod
     public abstract void insert(Data d);

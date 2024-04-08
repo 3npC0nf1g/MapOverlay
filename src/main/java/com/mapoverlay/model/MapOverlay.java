@@ -34,7 +34,9 @@ public class MapOverlay {
         if (point instanceof StartPoint) {
             Up.addAll(((StartPoint) point).getSegments());
             for (Segment segment : Up) { // O(n)
-                t.insert(segment);
+                if (segment != null){
+                    t.insert(segment);
+                }
             }
         }
 
@@ -61,6 +63,8 @@ public class MapOverlay {
                 UClist.set(i,newSegment);
                 t.insert(newSegment);
             }
+
+
         }
         if (UC.isEmpty()) {
             // sl, sr voisin de gauche et droite de p

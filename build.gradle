@@ -55,3 +55,8 @@ jlink {
 jlinkZip {
   group = 'distribution'
 }
+
+application {
+  mainModule = 'com.mapoverlay'
+  mainClass = 'com.mapoverlay.ApplicationController'
+}
