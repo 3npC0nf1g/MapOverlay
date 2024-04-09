@@ -54,6 +54,42 @@ public class TTree extends AVLTree{
 
     }
 
+
+
+
+
+
+
+
+
+    public void printTree() {
+        printTreeHelper(this, 0, "ROOT");
+    }
+
+    private void printTreeHelper(TTree node, int depth, String prefix) {
+        if (node == null) {
+            return;
+        }
+
+        // Imprimer le nœud actuel avec une indentation en fonction de la profondeur
+        String indentation = "";
+        for (int i = 0; i < depth; i++) {
+            indentation += "    "; // Quatre espaces pour chaque niveau de profondeur
+        }
+        System.out.println(indentation + prefix + " " + node.getData());
+
+        // Appeler récursivement la méthode pour imprimer les sous-arbres gauche et droit
+        printTreeHelper(node.getLeftTree(), depth + 1, "L:");
+        printTreeHelper(node.getRightTree(), depth + 1, "R:");
+    }
+
+
+
+
+
+
+
+
     private void insertSegment(Data ls,Data rs){
         getLeftTree().insertEmpty(ls);
         getRightTree().insertEmpty(rs);
@@ -228,26 +264,39 @@ public class TTree extends AVLTree{
         }
     }
 
-    public Segment findRightNeighbor(Point point) {
+   public Segment findRightNeighbor(Point point) {
         Segment currentSegment = getData();
         Point currentPoint = currentSegment.getSPoint();
 
-        if(isLeaf()){
-            if(currentPoint.isLeftOf(point)){
-                return null;
-            }else{
+        if (isLeaf()) {
+            if (currentPoint.isLeftOf(point)) {
+                // Recherche du voisin droit dans le sous-arbre droit
+                if (getRightTree() != null) {
+                    return getRightTree().findRightMost();
+                }
+                return null; // Aucun voisin droit trouvé
+            } else {
                 return getData();
             }
-        }else {
-            if(currentPoint.isLeftOf(point)){
+        } else {
+            if (currentPoint.isLeftOf(point)) {
                 return getRightTree().findRightNeighbor(point);
-            }else {
-                return getLeftTree().findRightNeighbor(point);
+            } else {
+                 return getLeftTree().findRightNeighbor(point);
             }
         }
     }
 
-   public Segment findLeftAdjacentSegment(Segment segment){
+    private Segment findRightMost() {
+        if (getRightTree() == null) {
+            return getData();
+        }
+        return getRightTree().findRightMost();
+    }
+
+
+
+    public Segment findLeftAdjacentSegment(Segment segment){
        TTree leaf = findLeave(segment);
        if (leaf != null && leaf.getData() != null) {
            return findLeft(leaf);

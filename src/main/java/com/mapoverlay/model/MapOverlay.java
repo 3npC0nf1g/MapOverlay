@@ -38,6 +38,8 @@ public class MapOverlay {
                     t.insert(segment);
                 }
             }
+
+            t.printTree();
         }
 
         Set<Segment> Lp = t.getSegmentsWithLower(point); // O(n)
@@ -68,22 +70,40 @@ public class MapOverlay {
         }
         if (UC.isEmpty()) {
             // sl, sr voisin de gauche et droite de p
+            System.out.println("UC vide : le point est " + point.toString());
+
+
             Segment sl = t.findLeftNeighbor(point);
+            System.out.println("seg voisin gauche " + sl.toString());
+
             Segment sr = t.findRightNeighbor(point);
+                System.out.println("seg voisin droit " + sr.toString());
+
+
 
             // Trouver un nouvel événement
             FindNewEvent(sl, sr, point);
         } else {
+            System.out.println("UC non vide : le point est " + point.toString());
+
+
             // sPrime le segment le plus à gauche de U(p)uC(p)
             // sl segment à gauche de sPrime
             Segment sPrime  = UClist.get(UClist.size()-1);
+            System.out.println("sPrime :seg le plus gauche " + sPrime.toString());
+
             Segment sl =     t.findLeftAdjacentSegment(sPrime);
+
+
             FindNewEvent(sl,sPrime,point);
 
             // sSecond le segment le plus à droite de U(p)uC(p)
             // sr segment a droite de sSecond
             Segment sSecond = UClist.get(0);
-            Segment sr =      t.findRightAdjacentSegment(sSecond);;
+            System.out.println("sSecond: seg le plus  droite " + sSecond.toString());
+
+            Segment sr =      t.findRightAdjacentSegment(sSecond);
+
             FindNewEvent(sSecond,sr,point);
         }
 
