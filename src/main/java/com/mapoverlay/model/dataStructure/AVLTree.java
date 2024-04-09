@@ -56,7 +56,7 @@ public abstract class AVLTree {
         computeHeight();
     }
 
-    private void RotateLeft() {
+    protected void RotateLeft() {
         Data d = getData();
         AVLTree t = getRightTree();
 
@@ -71,7 +71,7 @@ public abstract class AVLTree {
         t.computeHeight();
     }
 
-    private void RotateRight() {
+    protected void RotateRight() {
         Data d = getData();
         AVLTree t = getLeftTree();
 
@@ -85,6 +85,8 @@ public abstract class AVLTree {
 
         t.computeHeight();
     }
+
+
 
     private int getBalance(){
         if(isEmpty())

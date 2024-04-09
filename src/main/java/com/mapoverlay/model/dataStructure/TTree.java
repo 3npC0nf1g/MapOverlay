@@ -54,9 +54,57 @@ public class TTree extends AVLTree{
 
     }
 
+    @Override
+    protected void RotateLeft() {
+        Data d = getData();
+        TTree t = getRightTree();
+
+        setData(t.getData());
+        t.setData(d);
+
+        TTree tRight = t.getRightTree();
+        tRight.setParent(this);
+        setRightTree(tRight);
+
+        t.setRightTree(t.getLeftTree());
+
+        TTree left = getLeftTree();
+        left.setParent(t);
+        t.setLeftTree(left);
+
+        setLeftTree(t);
+
+        t.computeHeight();
+    }
+
+    @Override
+    protected void RotateRight() {
+        Data d = getData();
+        TTree t = getLeftTree();
+
+        setData(t.getData());
+        t.setData(d);
+
+        TTree tLeft = t.getLeftTree();
+        tLeft.setParent(this);
+        setLeftTree(tLeft);
+
+        t.setLeftTree(t.getRightTree());
+
+        TTree right = getRightTree();
+        right.setParent(t);
+        t.setRightTree(right);
+
+        setRightTree(t);
+
+        t.computeHeight();
+    }
+
     private void insertSegment(Data ls,Data rs){
         getLeftTree().insertEmpty(ls);
+        getLeftTree().setParent(this);
         getRightTree().insertEmpty(rs);
+        getRightTree().setParent(this);
     }
 
     // Mettre à jour la node intern avec le max du sous-arbre gauche
@@ -128,6 +176,14 @@ public class TTree extends AVLTree{
         equilibrateAVL();
     }
 
+    private void setParent(TTree tTree) {
+        parent = tTree;
+    }
+
+    private TTree getParent(){
+        return parent;
+    }
+
     private void OverwriteTTree(Data data,TTree leftTree,TTree rightTree){
         OverwriteTTree(data,leftTree,rightTree,true);
     }
@@ -140,6 +196,12 @@ public class TTree extends AVLTree{
             this.setRightTree(rightTree);
             this.setLeftTree(leftTree);
         }
+        //if(leftTree != null && !leftTree.isEmpty()){
+        //    leftTree.setParent(this);
+        //}
+        //if(rightTree != null && !rightTree.isEmpty()){
+        //    rightTree.setParent(this);
+        //}
         this.computeHeight();
     }
 
@@ -168,7 +230,6 @@ public class TTree extends AVLTree{
         searchSegmentsWithLower(tree.getLeftTree(), point, result);
         searchSegmentsWithLower(tree.getRightTree(), point, result);
     }
-
     // Logique pour C(p)
     public Set<Segment> getSegmentsContains(Point point) {
         Set<Segment> result = new LinkedHashSet<>();
@@ -185,22 +246,13 @@ public class TTree extends AVLTree{
 
         if(isLeaf()){
             if(segment.contains(point)){
-                if(!segment.getSPoint().equals(point) && !segment.getEPoint().equals(point)){
+                if(!segment.getOriginalSPoint().equals(point) && !segment.getEPoint().equals(point)){
                     result.add(segment);
                 }
             }
         }else {
-            if(segment.getSPoint().isLeftOf(point)){
-                if(segment.contains(point)){
-                    getLeftTree().searchSegmentsContains(point,result);
-                    getRightTree().searchSegmentsContains(point,result);
-                }else {
-                    getRightTree().searchSegmentsContains(point,result);
-                }
-            }else {
-
-                getLeftTree().searchSegmentsContains(point,result);
-            }
+            getLeftTree().searchSegmentsContains(point,result);
+            getRightTree().searchSegmentsContains(point,result);
         }
     }
 
@@ -257,7 +309,6 @@ public class TTree extends AVLTree{
 
     private Segment findRight(TTree current) {
         TTree parent = current.parent;
-        current.parent = null;
         if(parent != null){
             if(parent.rightTree.equals(current)){
                 return findRight(parent);
@@ -271,7 +322,6 @@ public class TTree extends AVLTree{
 
     public Segment findLeft(TTree current){
        TTree parent = current.parent;
-       current.parent = null;
        if(parent != null){
            if(parent.leftTree.equals(current)){
                return findLeft(parent);
@@ -285,48 +335,77 @@ public class TTree extends AVLTree{
 
     public TTree findLeave(Segment segment){
        Segment currentSegment = getData();
-       if(currentSegment.equals(segment) && isLeaf()){
-           return this;
+       if(isLeaf()){
+           if (currentSegment.equals(segment)){
+               return this;
+           }else {
+               return null;
+           }
        }
+
+        TTree rightTree = getRightTree();
+        TTree leftTree = getLeftTree();
 
        if(currentSegment.isLeftOf(segment)){
            if(currentSegment.equals(segment)){
-               TTree leftTree = getLeftTree();
-               leftTree.setParent(this);
-               if(leftTree.isLeaf()){
-                   return leftTree;
-               }else {
+               if(rightTree.getData().isLeftOf(segment)){
+                   return leftTree.findLeave(segment);
+               }else{
                    return getMaxOfTreeWithParent(leftTree);
                }
-           }else {
-               TTree rightTree = getRightTree();
-               if(rightTree.getData().isLeftOf(segment)){
-                   rightTree.setParent(this);
-                   return rightTree.findLeave(segment);
+           }else{
+               TTree leave = rightTree.findLeave(segment);
+               if(leave != null){
+                   return leave;
                }else {
-                   TTree leftTree = getLeftTree();
-                   leftTree.setParent(this);
                    return leftTree.findLeave(segment);
                }
            }
-       }else {
-           TTree leftTree = getLeftTree();
-           leftTree.setParent(this);
+       }else{
            return leftTree.findLeave(segment);
        }
+
+      //if(currentSegment.isLeftOf(segment)){
+      //    if(currentSegment.equals(segment)){
+      //        TTree leftTree = getLeftTree();
+      //        if(leftTree.isLeaf()){
+      //            return leftTree;
+      //        }else {
+      //
+      //        }
+      //    }else {
+      //        TTree rightTree = getRightTree();
+      //        if(rightTree.getData().isLeftOf(segment)){
+      //            return rightTree.findLeave(segment);
+      //        }else {
+      //            TTree leftTree = getLeftTree();
+      //            return leftTree.findLeave(segment);
+      //        }
+      //    }
+      //}else {
+      //    TTree leftTree = getLeftTree();
+      //    return leftTree.findLeave(segment);
+      //}
     }
 
     private TTree getMaxOfTreeWithParent(TTree t){
         if(t.getRightTree().isEmpty()){
             return t;
         }else{
-            TTree right = t.getRightTree();
-            right.parent = this;
-            return getMaxOfTreeWithParent(right);
+            return getMaxOfTreeWithParent(t.getRightTree());
         }
     }
 
-    private void setParent(TTree tTree) {
-        parent = tTree;
+    @Override
+    public String toString() {
+        if (isEmpty()) {
+            return "()";
+        }else {
+            if(this.isLeaf()){
+                return "("+this.getData().toString()+")";
+            }else{
+                return this.getLeftTree().toString()+ " | " + this.getRightTree().toString();
+            }
+        }
     }
 }

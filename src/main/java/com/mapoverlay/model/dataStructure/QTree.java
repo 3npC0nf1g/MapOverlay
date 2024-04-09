@@ -14,7 +14,7 @@ public class QTree extends AVLTree{
     @Override
     protected void insertEmpty(Data d) {
         super.insertEmpty(d);
-        System.out.println(d.toString());
+        System.out.println("NEW POINT :" + d.toString());
         setLeftTree(new QTree());
         setRightTree(new QTree());
     }
@@ -45,7 +45,6 @@ public class QTree extends AVLTree{
             }
         }
         equilibrateAVL();
-
     }
 
     public Point getNextPoint(){
@@ -79,5 +78,21 @@ public class QTree extends AVLTree{
         return (Point) this.data;
     }
 
+   public boolean contains(Point point) {
+        if(this.data.equals(point)){
+            return true;
+        }
 
+        if(this.getLeftTree().getData() != null && this.getRightTree().getData() != null){
+            return this.getLeftTree().contains(point) || this.getRightTree().contains(point);
+        }
+
+        if(this.getLeftTree().getData() != null){
+            return this.getLeftTree().contains(point) ;
+        }else if(this.getRightTree().getData() != null) {
+            return this.getRightTree().contains(point);
+        }else {
+            return false;
+        }
+   }
 }

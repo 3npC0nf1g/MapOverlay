@@ -28,6 +28,7 @@ public class MapOverlay {
     }
 
     public Point HandleEventPoint(Point point) {
+        System.out.println("CURRENT POINT :" + point.toString());
         Point nPoint = point;
 
         Set<Segment> Up = new LinkedHashSet<>();
@@ -57,11 +58,12 @@ public class MapOverlay {
             t.delete(LC);
 
             for(int i = 0;i < UC.size();i++){
-                Segment newSegment = new Segment(point,UClist.get(i).getEPoint());
+                Segment newSegment = new Segment(nPoint,UClist.get(i).getEPoint(),UClist.get(i).getOriginalSPoint());
                 UClist.set(i,newSegment);
                 t.insert(newSegment);
             }
         }
+
         if (UC.isEmpty()) {
             // sl, sr voisin de gauche et droite de p
             Segment sl = t.findLeftNeighbor(point);
@@ -95,11 +97,14 @@ public class MapOverlay {
         // Vérifier si les segments sont non nuls
         if (sl != null && sr != null) {
             // Calculer le point d'intersection
+
             Point intersectionPoint = sl.ComputeIntesectPoint(sr);
             // Vérifier si le point est en dessous de la sweepline avec le dernier point sélectionné
             if (intersectionPoint != null && currentPoint.isHigherThan(intersectionPoint)) {
                 // Insérer le point dans la file d'attente des événements
-                q.insert(intersectionPoint);
+                if(!q.contains(intersectionPoint)){
+                    q.insert(intersectionPoint);
+                }
             }
         }
     }

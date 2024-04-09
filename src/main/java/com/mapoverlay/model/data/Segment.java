@@ -2,23 +2,37 @@ package com.mapoverlay.model.data;
 import static java.lang.Math.sqrt;
 
 public class Segment extends Data {
-    private final StartPoint sPoint;
+    private final Point originalSPoint;
+    private final Point sPoint;
     private final Point ePoint;
+
+    public Segment(Point p1,Point p2,Point originalSPoint) {
+        if(p1 instanceof InterserctionPoint){
+            this.sPoint = p1;
+            this.ePoint = p2;
+            this.originalSPoint = originalSPoint;
+        }else {
+            if(p1.isHigherThan(p2)){
+                this.sPoint = new StartPoint(p1.getX(),p1.getY());
+                this.ePoint = p2;
+            }else{
+                this.sPoint = new StartPoint(p2.getX(),p2.getY());
+                this.ePoint = p1;
+            }
+            this.originalSPoint = sPoint;
+            ((StartPoint)this.sPoint).addSegment(this);
+        }
+    }
 
     // Constructor
     public Segment(Point p1,Point p2) {
-        if(p1.isHigherThan(p2)){
-            this.sPoint = new StartPoint(p1.getX(),p1.getY());
-            this.ePoint = p2;
-        }else{
-            this.sPoint = new StartPoint(p2.getX(),p2.getY());
-            this.ePoint = p1;
-        }
-        this.sPoint.addSegment(this);
+        this(p1,p2,null);
     }
 
+    public Point getOriginalSPoint(){ return originalSPoint; }
+
     // getter
-    public StartPoint getSPoint() {
+    public Point getSPoint() {
         return sPoint;
     }
 
@@ -36,13 +50,14 @@ public class Segment extends Data {
         return ((Segment) object).getSPoint().equals(this.sPoint) && ((Segment) object).getEPoint().equals(this.ePoint);
     }
 
+
     public boolean contains(Point point){
-        double ab = distance(sPoint.getX(), sPoint.getY(),ePoint.getX(), ePoint.getY());
-        double ac = distance(sPoint.getX(), sPoint.getY(), point.getX(), point.getY());
+        double ab = distance(originalSPoint.getX(), originalSPoint.getY(),ePoint.getX(), ePoint.getY());
+        double ac = distance(originalSPoint.getX(), originalSPoint.getY(), point.getX(), point.getY());
         double cb = distance(ePoint.getX(), ePoint.getY(), point.getX(), point.getY());
         double ad = ac + cb;
 
-        return Math.abs(ab - ad) < 0.0001;
+        return Math.abs(ab - ad) < 0.001;
     }
 
     public static double distance(double x1, double y1, double x2, double y2) {
@@ -61,8 +76,8 @@ public class Segment extends Data {
         double numY = this.getA() * s.getC() - this.getC() * s.getA();
 
         if(den != 0){ // Normalement pas possible car on appelle la fonction car on sait qu'il y a une intersection mais on sait jamais :x
-            double X = numX / den;
-            double Y = numY / den;
+            double X = (double) Math.round((numX / den) * 100) /100;
+            double Y = (double) Math.round((numY / den) * 100) /100;
 
             Point p = new Point(X,Y);
 
@@ -78,13 +93,13 @@ public class Segment extends Data {
     }
 
     private double getA(){
-        return sPoint.getY() - ePoint.getY();
+        return originalSPoint.getY() - ePoint.getY();
     }
     private double getB(){
-        return ePoint.getX() - sPoint.getX();
+        return ePoint.getX() - originalSPoint.getX();
     }
     private double getC(){
-        return -((sPoint.getX() * ePoint.getY())-(ePoint.getX() * sPoint.getY()));
+        return -((originalSPoint.getX() * ePoint.getY())-(ePoint.getX() * originalSPoint.getY()));
     }
 
     @Override
