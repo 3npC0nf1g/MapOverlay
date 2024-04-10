@@ -50,9 +50,18 @@ public class TTree extends AVLTree{
             Segment currentSegment = this.getData();
             if(isLeaf()){
                 if(insertedSegment.isLeftOf(currentSegment,currentY)){
-                    insertSegment(insertedSegment,currentSegment);
+                    if(!insertedSegment.equals(currentSegment)){
+                        insertSegment(insertedSegment,currentSegment);
+                    }else {
+                        return;
+                    }
                 }else{
-                    insertSegment(currentSegment,insertedSegment);
+                    if(currentSegment.getEPoint().isLeftOf(insertedSegment.getEPoint())){
+                        insertSegment(currentSegment,insertedSegment);
+                    }else{
+                        insertSegment(insertedSegment,currentSegment);
+                    }
+
                 }
             }else{
                 TTree subtree = insertedSegment.isLeftOf(currentSegment,currentY) ? getLeftTree() : getRightTree();
@@ -175,8 +184,10 @@ public class TTree extends AVLTree{
             }
         }
         equilibrateAVL();
-        if(!isLeaf()){
-            setData(getMaxOfTree(getLeftTree()));
+        if(!isEmpty()){
+            if(!isLeaf()){
+                setData(getMaxOfTree(getLeftTree()));
+            }
         }
 
     }
