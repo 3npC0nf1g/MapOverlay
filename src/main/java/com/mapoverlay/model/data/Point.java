@@ -23,7 +23,7 @@ public class Point extends Data {
     }
 
     public boolean isLeftOf(Point p){
-        return this.getX() <= p.getX();
+        return this.getX() - 0.01 <= p.getX();
     }
 
     @Override

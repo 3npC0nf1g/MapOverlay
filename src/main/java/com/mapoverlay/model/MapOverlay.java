@@ -28,19 +28,20 @@ public class MapOverlay {
     }
 
     public Point HandleEventPoint(Point point) {
-        System.out.println("CURRENT POINT :" + point.toString());
-        Point nPoint = point;
+
+        t.setCurrentY(point.getY());
+        InterserctionPoint iPoint = null;
 
         Set<Segment> Up = new LinkedHashSet<>();
-        if (point instanceof StartPoint) {
-            Up.addAll(((StartPoint) point).getSegments());
-            for (Segment segment : Up) { // O(n)
-                t.insert(segment);
-            }
+
+        if(point instanceof StartPoint){
+            List<Segment> insertSegments = ((StartPoint) point).getSegments();
+            insert(insertSegments);
+            Up.addAll(insertSegments);
         }
 
-        Set<Segment> Lp = t.getSegmentsWithLower(point); // O(n)
-        Set<Segment> Cp = t.getSegmentsContains(point); // O(n)
+        Set<Segment> Lp = new LinkedHashSet<>(t.getSegmentsWithLower(point));
+        Set<Segment> Cp = new LinkedHashSet<>(t.getSegmentsContains(point));
 
         Set<Segment> ULC = new LinkedHashSet<>(Lp);
         ULC.addAll(Up);
@@ -51,17 +52,13 @@ public class MapOverlay {
 
         Set<Segment> UC = new LinkedHashSet<>(Up);
         UC.addAll(Cp);
+
         List<Segment> UClist = new ArrayList<>(UC);
 
-        if (ULC.size() > 1) {
-            nPoint = new InterserctionPoint(point);
-            t.delete(LC);
-
-            for(int i = 0;i < UC.size();i++){
-                Segment newSegment = new Segment(nPoint,UClist.get(i).getEPoint(),UClist.get(i).getOriginalSPoint());
-                UClist.set(i,newSegment);
-                t.insert(newSegment);
-            }
+        if(ULC.size() > 1){
+            iPoint = new InterserctionPoint(point);
+            delete(LC);
+            insert(UClist);
         }
 
         if (UC.isEmpty()) {
@@ -81,7 +78,7 @@ public class MapOverlay {
             // sSecond le segment le plus à droite de U(p)uC(p)
             // sr segment a droite de sSecond
             Segment sSecond = UClist.get(0);
-            Segment sr =      t.findRightAdjacentSegment(sSecond);;
+            Segment sr =      t.findRightAdjacentSegment(sSecond);
             FindNewEvent(sSecond,sr,point);
         }
 
@@ -89,7 +86,19 @@ public class MapOverlay {
             t.delete(s);
         }
 
-        return nPoint;
+        return iPoint != null ? iPoint : point;
+    }
+
+    public void delete(Set<Segment> UC) {
+        for (Segment segment : UC) {
+            t.delete(segment);
+        }
+    }
+
+    public void insert(List<Segment> insertSegments){
+        for(Segment s : insertSegments){
+            t.insert(s);
+        }
     }
 
 

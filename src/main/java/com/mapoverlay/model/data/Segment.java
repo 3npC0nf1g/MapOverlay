@@ -2,34 +2,20 @@ package com.mapoverlay.model.data;
 import static java.lang.Math.sqrt;
 
 public class Segment extends Data {
-    private final Point originalSPoint;
     private final Point sPoint;
     private final Point ePoint;
 
-    public Segment(Point p1,Point p2,Point originalSPoint) {
-        if(p1 instanceof InterserctionPoint){
-            this.sPoint = p1;
-            this.ePoint = p2;
-            this.originalSPoint = originalSPoint;
-        }else {
-            if(p1.isHigherThan(p2)){
-                this.sPoint = new StartPoint(p1.getX(),p1.getY());
-                this.ePoint = p2;
-            }else{
-                this.sPoint = new StartPoint(p2.getX(),p2.getY());
-                this.ePoint = p1;
-            }
-            this.originalSPoint = sPoint;
-            ((StartPoint)this.sPoint).addSegment(this);
-        }
-    }
-
     // Constructor
     public Segment(Point p1,Point p2) {
-        this(p1,p2,null);
+        if(p1.isHigherThan(p2)){
+            this.sPoint = new StartPoint(p1.getX(),p1.getY());
+            this.ePoint = p2;
+        }else{
+            this.sPoint = new StartPoint(p2.getX(),p2.getY());
+            this.ePoint = p1;
+        }
+        ((StartPoint)this.sPoint).addSegment(this);
     }
-
-    public Point getOriginalSPoint(){ return originalSPoint; }
 
     // getter
     public Point getSPoint() {
@@ -38,6 +24,18 @@ public class Segment extends Data {
 
     public Point getEPoint() {
         return ePoint;
+    }
+
+    public Point getIntersectSweep(double currentY){
+        Double x1 = sPoint.getX();
+        Double y1 = sPoint.getY();
+        Double x2 = ePoint.getX();
+        Double y2 = ePoint.getY();
+        if(currentY >= y2 && currentY <= y1){
+            return new Point(((currentY - y1) / (y2 - y1)) * (x2 - x1) + x1, currentY);
+        }else {
+            return null;
+        }
     }
 
     @Override
@@ -52,8 +50,8 @@ public class Segment extends Data {
 
 
     public boolean contains(Point point){
-        double ab = distance(originalSPoint.getX(), originalSPoint.getY(),ePoint.getX(), ePoint.getY());
-        double ac = distance(originalSPoint.getX(), originalSPoint.getY(), point.getX(), point.getY());
+        double ab = distance(sPoint.getX(), sPoint.getY(),ePoint.getX(), ePoint.getY());
+        double ac = distance(sPoint.getX(), sPoint.getY(), point.getX(), point.getY());
         double cb = distance(ePoint.getX(), ePoint.getY(), point.getX(), point.getY());
         double ad = ac + cb;
 
@@ -65,8 +63,8 @@ public class Segment extends Data {
     }
 
 
-    public boolean isLeftOf(Segment segment){
-        return this.sPoint.isLeftOf(segment.sPoint);
+    public boolean isLeftOf(Segment segment,double currentY){
+        return this.getIntersectSweep(currentY).isLeftOf(segment.getIntersectSweep(currentY));
     }
 
     // USE FOR CALCULATE INTERSECTION
@@ -93,13 +91,13 @@ public class Segment extends Data {
     }
 
     private double getA(){
-        return originalSPoint.getY() - ePoint.getY();
+        return sPoint.getY() - ePoint.getY();
     }
     private double getB(){
-        return ePoint.getX() - originalSPoint.getX();
+        return ePoint.getX() - sPoint.getX();
     }
     private double getC(){
-        return -((originalSPoint.getX() * ePoint.getY())-(ePoint.getX() * originalSPoint.getY()));
+        return -((sPoint.getX() * ePoint.getY())-(ePoint.getX() * sPoint.getY()));
     }
 
     @Override
