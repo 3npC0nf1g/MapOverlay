@@ -1,14 +1,11 @@
 package com.mapoverlay.controller;
 
-import com.mapoverlay.model.dataStructure.AVLTree;
-import com.mapoverlay.model.dataStructure.QTree;
+import com.mapoverlay.model.datastructure.AVLTree;
 import com.mapoverlay.view.TreeViewController;
 import com.mapoverlay.view.graph.GraphicBinaryTree;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 

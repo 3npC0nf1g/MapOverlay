@@ -1,4 +1,4 @@
-package com.mapoverlay.model.dataStructure;
+package com.mapoverlay.model.datastructure;
 
 import com.mapoverlay.model.data.*;
 import com.mapoverlay.model.data.point.Point;

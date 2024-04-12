@@ -4,8 +4,8 @@ import com.mapoverlay.model.data.*;
 import com.mapoverlay.model.data.point.InterserctionPoint;
 import com.mapoverlay.model.data.point.Point;
 import com.mapoverlay.model.data.point.StartPoint;
-import com.mapoverlay.model.dataStructure.QTree;
-import com.mapoverlay.model.dataStructure.TTree;
+import com.mapoverlay.model.datastructure.QTree;
+import com.mapoverlay.model.datastructure.TTree;
 
 import java.util.*;
 

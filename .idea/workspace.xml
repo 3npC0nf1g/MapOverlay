@@ -4,35 +4,52 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b5c0d7c9-3def-474c-b003-f88749cdc596" name="Changes" comment="MapOverlay suppression et inversion">
+    <list default="true" id="99203a8e-6b9f-4904-b1d1-ee0ef6b16feb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/overlay/model/dataStructure/AVLTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/ApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/ApplicationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/controller/CanvasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/controller/CanvasController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/controller/MapOverlayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/controller/MapOverlayController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/MapOverlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/MapOverlay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/view/CanvasViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/view/CanvasViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/view/MapOverlayViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/view/MapOverlayViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/overlay/AVLTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/overlay/MapOverlayTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/overlay/model/dataStructure/MapOverlayTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/overlay/QTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/overlay/model/dataStructure/QTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/overlay/TTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/overlay/model/dataStructure/TTreeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="odan-2" />
+        <entry key="$PROJECT_DIR$" value="InterfaceUpdate" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;3npC0nf1g&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/3npC0nf1g/MapOverlay.git&quot;,
+    &quot;accountId&quot;: &quot;d04ff92f-e6b5-4b6a-9a01-7959744a7bf4&quot;
+  }
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 3
+  &quot;associatedIndex&quot;: 6
 }</component>
-  <component name="ProjectId" id="2ebkUMnqfGpydDvw3sftBjdkSTZ" />
+  <component name="ProjectId" id="2euoNJNav14fAw5Cm4NJZVORbTZ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -40,123 +57,126 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Gradle.MapOverlay [:ApplicationController.main()].executor": "Run",
+    "Gradle.AVLTreeTest.testInsert.executor": "Run",
+    "Gradle.mapOverlay [:ApplicationController.main()].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "steve",
-    "kotlin-language-version-configured": "true",
+    "git-widget-placeholder": "BugZone",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager">
-    <configuration name="ApplicationController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.mapoverlay.ApplicationController" />
-      <module name="MapOverlay.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.mapoverlay.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+}]]></component>
+  <component name="RunManager" selected="Gradle.AVLTreeTest.testInsert (2)">
+    <configuration name="AVLTreeTest.testInsert (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.overlay.model.datastructure.AVLTreeTest.testInsert&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
     </configuration>
+    <configuration name="AVLTreeTest.testInsert (2)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.mapoverlay.model.datastructure.AVLTreeTest.testInsert&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="AVLTreeTest.testInsert" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.overlay.model.dataStructure.AVLTreeTest.testInsert&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.AVLTreeTest.testInsert (2)" />
+        <item itemvalue="Gradle.AVLTreeTest.testInsert (1)" />
+        <item itemvalue="Gradle.AVLTreeTest.testInsert" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.2-temurin-21.0.2-4caba194b151-7da56cdf" />
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
       </set>
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task id="LOCAL-00001" summary="g">
-      <option name="closed" value="true" />
-      <created>1712134240679</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1712134240679</updated>
-    </task>
-    <task id="LOCAL-00002" summary="steve">
-      <option name="closed" value="true" />
-      <created>1712134320703</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1712134320703</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Lp Cp essaie">
-      <option name="closed" value="true" />
-      <created>1712144879698</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1712144879698</updated>
-    </task>
-    <task id="LOCAL-00004" summary="delete">
-      <option name="closed" value="true" />
-      <created>1712164842350</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1712164842350</updated>
-    </task>
-    <task id="LOCAL-00005" summary="MapOverlay">
-      <option name="closed" value="true" />
-      <created>1712178900877</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1712178900877</updated>
-    </task>
-    <task id="LOCAL-00006" summary="MapOverlay--">
-      <option name="closed" value="true" />
-      <created>1712179732566</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1712179732566</updated>
-    </task>
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b5c0d7c9-3def-474c-b003-f88749cdc596" name="Changes" comment="MapOverlay--" />
-      <created>1712180680920</created>
+      <changelist id="99203a8e-6b9f-4904-b1d1-ee0ef6b16feb" name="Changes" comment="" />
+      <created>1712763784076</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1712180680920</updated>
-      <workItem from="1712180682509" duration="1051000" />
-      <workItem from="1712218339533" duration="4050000" />
+      <updated>1712763784076</updated>
+      <workItem from="1712763785355" duration="7819000" />
+      <workItem from="1712822887581" duration="98000" />
+      <workItem from="1712838395813" duration="859000" />
+      <workItem from="1712856129690" duration="40000" />
+      <workItem from="1712856174503" duration="9078000" />
+      <workItem from="1712925894094" duration="6734000" />
     </task>
-    <task id="LOCAL-00007" summary="MapOverlay suppression et inversion">
-      <option name="closed" value="true" />
-      <created>1712181733830</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1712181733831</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="g" />
-    <MESSAGE value="steve" />
-    <MESSAGE value="Lp Cp essaie" />
-    <MESSAGE value="hey" />
-    <MESSAGE value="Cooking HandleEvenPonit" />
-    <MESSAGE value="delete" />
-    <MESSAGE value="MapOverlay" />
-    <MESSAGE value="MapOverlay--" />
-    <MESSAGE value="MapOverlay suppression et inversion" />
-    <option name="LAST_COMMIT_MESSAGE" value="MapOverlay suppression et inversion" />
   </component>
 </project>

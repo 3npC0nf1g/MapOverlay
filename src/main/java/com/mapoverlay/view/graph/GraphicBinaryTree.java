@@ -1,7 +1,6 @@
 package com.mapoverlay.view.graph;
 
-import com.mapoverlay.model.dataStructure.AVLTree;
-import com.mapoverlay.model.dataStructure.QTree;
+import com.mapoverlay.model.datastructure.AVLTree;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
