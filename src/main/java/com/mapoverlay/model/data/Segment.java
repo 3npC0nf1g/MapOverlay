@@ -3,11 +3,17 @@ import com.mapoverlay.model.data.point.Point;
 import com.mapoverlay.model.data.point.StartPoint;
 
 public class Segment extends Data {
+    private final int mapId;
     private final Point sPoint;
     private final Point ePoint;
 
     // Constructor
-    public Segment(Point p1,Point p2) {
+    public Segment(Point p1,Point p2){
+        this(p1,p2,-1);
+    }
+
+    public Segment(Point p1,Point p2,int id) {
+        mapId = id;
         if(p1.isHigherThan(p2)){
             this.sPoint = new StartPoint(p1.getX(),p1.getY());
             this.ePoint = p2;
@@ -104,5 +110,9 @@ public class Segment extends Data {
     @Override
     public String toString() {
         return sPoint.getX() + " " + sPoint.getY() + " " + ePoint.getX() + " " + ePoint.getY();
+    }
+
+    public int getMapId() {
+        return mapId;
     }
 }

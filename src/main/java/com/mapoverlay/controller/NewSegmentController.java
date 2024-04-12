@@ -1,5 +1,6 @@
 package com.mapoverlay.controller;
 
+import com.mapoverlay.model.data.Map;
 import com.mapoverlay.model.data.point.Point;
 import com.mapoverlay.model.data.Segment;
 import com.mapoverlay.view.NewSegmentViewController;
@@ -11,13 +12,13 @@ import java.io.IOException;
 
 public class NewSegmentController {
     Stage stage;
-    public void show() throws IOException {
+    public void show(Map map) throws IOException {
         stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(NewSegmentViewController.class.getResource("new-segment-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         NewSegmentViewController NSVC = fxmlLoader.getController();
         NSVC.setListener((x1, y1, x2, y2) -> {
-            listener.addSegment(new Segment(new Point(x1,y1),new Point(x2,y2)));
+            listener.addSegment(new Segment(new Point(x1,y1),new Point(x2,y2), map.getId()));
             stage.close();
         });
         stage.setTitle("Ajouter un segment");

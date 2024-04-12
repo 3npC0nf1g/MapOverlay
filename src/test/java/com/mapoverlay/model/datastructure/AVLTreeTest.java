@@ -1,6 +1,7 @@
 package com.mapoverlay.model.datastructure;
 
 import com.mapoverlay.model.data.Data;
+import com.mapoverlay.model.data.point.Point;
 import com.mapoverlay.model.datastructure.AVLTree;
 import org.junit.jupiter.api.Test;
 
@@ -9,28 +10,23 @@ import static org.junit.jupiter.api.Assertions.*;
 public class AVLTreeTest {
 
     @Test
-    void testInsert() {
-        AVLTree tree = new AVLTree() {
-            @Override
-            public void insert(Data d) {
-                setData(d);
-            }
+    void testAVL() {
+        QTree qTree = new QTree();
+        TTree tTree = new TTree();
 
-            @Override
-            public AVLTree getLeftTree() {
-                return null;
-            }
+        for (int i = 1; i <= 10;i++){
+            qTree.insert(new Point(i,i));
+        }
 
-            @Override
-            public AVLTree getRightTree() {
-                return null;
-            }
+        assertTrue(testBalance(qTree));
+        QTree LeftTree = qTree.getLeftTree();
+        assertTrue(testBalance(LeftTree));
+        QTree RightTree = qTree.getRightTree();
+        assertTrue(testBalance(RightTree));
+    }
 
-            @Override
-            public Data getData() {
-                return data;
-            }
-        };
-        assertTrue(tree.isEmpty());
+    private boolean testBalance(AVLTree tree){
+        int balance = tree.getRightTree().getHeight() - tree.getLeftTree().getHeight();
+        return balance <= 1 && balance >= -1;
     }
 }

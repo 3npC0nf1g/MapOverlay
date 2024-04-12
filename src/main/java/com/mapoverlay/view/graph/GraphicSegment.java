@@ -1,6 +1,7 @@
 package com.mapoverlay.view.graph;
 
 import com.mapoverlay.model.data.Map;
+import com.mapoverlay.model.data.point.InterserctionPoint;
 import com.mapoverlay.model.data.point.Point;
 import com.mapoverlay.model.data.Segment;
 import javafx.scene.canvas.GraphicsContext;
@@ -14,6 +15,7 @@ public class GraphicSegment extends CanvasBasic{
     private boolean haveSweepLine = false;
 
     private List<Map> maps;
+    private List<InterserctionPoint> interserctionPoints;
 
     private double sweepLineY = 0;
     private double sweepLineX = 0;
@@ -23,6 +25,7 @@ public class GraphicSegment extends CanvasBasic{
     public GraphicSegment(int width, int height) {
         super(width, height);
         maps = new ArrayList<>();
+        interserctionPoints = new ArrayList<>();
         update();
     }
 
@@ -30,6 +33,11 @@ public class GraphicSegment extends CanvasBasic{
         this.haveSweepLine = true;
         this.sweepLineX = x;
         this.sweepLineY = y;
+        update();
+    }
+
+    public void setInterserctionPoints(List<InterserctionPoint> points){
+        this.interserctionPoints = points;
         update();
     }
 
@@ -55,6 +63,11 @@ public class GraphicSegment extends CanvasBasic{
                 drawLine(gc,m.getColor(),s);
             }
         }
+
+        for (InterserctionPoint p : interserctionPoints){
+            drawPoint(p);
+        }
+
     }
 
     public void drawLine(GraphicsContext gc,Color color,Segment s){
@@ -68,6 +81,13 @@ public class GraphicSegment extends CanvasBasic{
 
         gc.setStroke(color);
         gc.strokeLine(startX, startY, endX, endY);
+    }
+
+    public void drawPoint(InterserctionPoint point){
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+
+        drawLine(gc,Color.RED,new Segment(new Point(point.getX()-3,point.getY()-3),new Point(point.getX()+3,point.getY()+3)));
+        drawLine(gc,Color.RED,new Segment(new Point(point.getX()-3,point.getY()+3),new Point(point.getX()+3,point.getY()-3)));
     }
 
     public void setMapList(List<Map> maps) {

@@ -10,6 +10,7 @@ import com.mapoverlay.model.datastructure.TTree;
 import java.util.*;
 
 public class MapOverlay {
+    boolean selfIntersection = false;
     QTree q = new QTree();
     TTree t = new TTree();
 
@@ -48,7 +49,20 @@ public class MapOverlay {
         UC.addAll(Cp);
 
         if(ULC.size() > 1){
-            iPoint = new InterserctionPoint(point);
+
+            if(selfIntersection){
+                iPoint = new InterserctionPoint(point);
+            }else{
+                List<Segment> ULCList = new ArrayList<>(ULC);
+
+                for (Segment s1 : ULCList){
+                    for (Segment s2 : ULCList){
+                        if(s1.getMapId() != s2.getMapId()){
+                            iPoint = new InterserctionPoint(point);
+                        }
+                    }
+                }
+            }
             delete(LC);
             insert(UC);
         }else{
@@ -128,5 +142,9 @@ public class MapOverlay {
 
     public TTree getTTree() {
         return this.t;
+    }
+
+    public void changeSelfInter() {
+        selfIntersection = !selfIntersection;
     }
 }

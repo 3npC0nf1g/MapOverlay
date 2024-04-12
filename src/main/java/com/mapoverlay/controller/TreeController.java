@@ -51,9 +51,6 @@ public class TreeController {
         graphicTree.update();
     }
 
-
-
-
     private Listener listener;
 
     public void setListener(Listener listener) {

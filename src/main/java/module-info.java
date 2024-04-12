@@ -6,6 +6,8 @@ module com.mapoverlay.mapoverlay {
 
     exports com.mapoverlay.controller;
     exports com.mapoverlay.model;
+    exports com.mapoverlay.model.datastructure;
+    exports com.mapoverlay.model.data;
     exports com.mapoverlay.view;
     opens com.mapoverlay.view to javafx.fxml;
     exports com.mapoverlay;

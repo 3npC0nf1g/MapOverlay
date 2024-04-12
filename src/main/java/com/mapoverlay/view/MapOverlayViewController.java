@@ -71,8 +71,15 @@ public class MapOverlayViewController {
         listener.resetQ();
     }
 
+    @FXML
+    void showResult(ActionEvent event) {
+        listener.showRésult();
+    }
 
-
+    @FXML
+    void chooseSelfIntersection(ActionEvent event) {
+        listener.changeSelfInter();
+    }
 
     // Listener implementation
     private Listener listener;
@@ -95,6 +102,8 @@ public class MapOverlayViewController {
         void ShowT();
         void resetQ();
         void autoStep();
+        void changeSelfInter();
+        void showRésult();
     }
 
 }

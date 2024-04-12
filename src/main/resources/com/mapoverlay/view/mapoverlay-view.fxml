@@ -28,8 +28,10 @@
       </ColorPicker>
       <Label layoutX="22.0" layoutY="684.0" text="Sweep Line Color : " />
       <CheckBox layoutX="854.0" layoutY="684.0" mnemonicParsing="false" onAction="#AutoStep" text="Auto" />
-      <Button layoutX="383.0" layoutY="680.0" mnemonicParsing="false" onAction="#ShowT" text="Afficher T" />
-      <Button layoutX="476.0" layoutY="680.0" mnemonicParsing="false" onAction="#ShowQ" prefHeight="25.0" prefWidth="70.0" text="Afficher Q" />
+      <Button layoutX="285.0" layoutY="680.0" mnemonicParsing="false" onAction="#ShowT" text="Afficher T" />
+      <Button layoutX="360.0" layoutY="680.0" mnemonicParsing="false" onAction="#ShowQ" prefHeight="25.0" prefWidth="70.0" text="Afficher Q" />
       <Button id="startMapOverlay" layoutX="697.0" layoutY="680.0" mnemonicParsing="false" onAction="#resetQ" prefHeight="25.0" prefWidth="70.0" text="reset" />
+      <CheckBox layoutX="447.0" layoutY="684.0" mnemonicParsing="false" onAction="#chooseSelfIntersection" text="SelfIntersection" />
+      <Button layoutX="573.0" layoutY="680.0" mnemonicParsing="false" onAction="#showResult" prefHeight="25.0" prefWidth="101.0" text="résultat" />
    </children>
 </AnchorPane>

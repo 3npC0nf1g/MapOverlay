@@ -58,7 +58,7 @@ public class MapItemController {
             public void addSegment() {
                 try {
                     NewSegmentController NSC = new NewSegmentController();
-                    NSC.show();
+                    NSC.show(map);
                     NSC.setListener((segment) -> {
                         map.addSegment(segment);
                         update();

@@ -5,13 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99203a8e-6b9f-4904-b1d1-ee0ef6b16feb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/overlay/model/dataStructure/AVLTreeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/controller/ResultController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/view/ResultGraphViewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/mapoverlay/view/result-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/overlay/AVLTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/overlay/MapOverlayTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/overlay/model/dataStructure/MapOverlayTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/overlay/QTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/overlay/model/dataStructure/QTreeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/overlay/TTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/overlay/model/dataStructure/TTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/TestApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/TestApplicationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/controller/MapItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/controller/MapItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/controller/MapOverlayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/controller/MapOverlayController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/controller/NewSegmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/controller/NewSegmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/controller/TreeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/controller/TreeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/MapOverlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/MapOverlay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/data/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/data/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/data/Segment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/data/Segment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/datastructure/AVLTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/datastructure/AVLTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/view/MapOverlayViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/view/MapOverlayViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/view/graph/GraphicSegment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/view/graph/GraphicSegment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/mapoverlay/view/mapoverlay-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/mapoverlay/view/mapoverlay-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mapoverlay/model/datastructure/AVLTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/mapoverlay/model/datastructure/AVLTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mapoverlay/model/datastructure/QTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/mapoverlay/model/datastructure/QTreeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +34,13 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -57,12 +76,20 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Gradle.AVLTreeTest.executor": "Run",
+    "Gradle.AVLTreeTest.testAVL.executor": "Run",
+    "Gradle.AVLTreeTest.testInsert (2).executor": "Run",
     "Gradle.AVLTreeTest.testInsert.executor": "Run",
+    "Gradle.MapOverlay [:TestApplicationController.main()].executor": "Run",
+    "Gradle.QTreeTest.testGetNextPoint.executor": "Run",
+    "Gradle.QTreeTest.testInsert.executor": "Run",
     "Gradle.mapOverlay [:ApplicationController.main()].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "BugZone",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/odanl/Documents/GitHub/MapOverlay",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -70,8 +97,29 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Gradle.AVLTreeTest.testInsert (2)">
-    <configuration name="AVLTreeTest.testInsert (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\odanl\Documents\GitHub\MapOverlay\src\main\java\cartes" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.mapoverlay.view" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.TestApplicationController">
+    <configuration name="TestApplicationController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.mapoverlay.TestApplicationController" />
+      <module name="MapOverlay.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mapoverlay.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AVLTreeTest.testAVL" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -84,7 +132,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.overlay.model.datastructure.AVLTreeTest.testInsert&quot;" />
+            <option value="&quot;com.mapoverlay.model.datastructure.AVLTreeTest.testAVL&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -119,7 +167,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="AVLTreeTest.testInsert" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="QTreeTest.testGetNextPoint" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -132,7 +180,31 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.overlay.model.dataStructure.AVLTreeTest.testInsert&quot;" />
+            <option value="&quot;com.mapoverlay.model.datastructure.QTreeTest.testGetNextPoint&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="QTreeTest.testInsert" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.mapoverlay.model.datastructure.QTreeTest.testInsert&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -145,19 +217,13 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.AVLTreeTest.testAVL" />
+        <item itemvalue="Gradle.QTreeTest.testGetNextPoint" />
+        <item itemvalue="Gradle.QTreeTest.testInsert" />
         <item itemvalue="Gradle.AVLTreeTest.testInsert (2)" />
-        <item itemvalue="Gradle.AVLTreeTest.testInsert (1)" />
-        <item itemvalue="Gradle.AVLTreeTest.testInsert" />
+        <item itemvalue="Application.TestApplicationController" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -178,5 +244,20 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/mapoverlay/model/data/Segment.java</url>
+          <line>77</line>
+          <properties class="com.mapoverlay.model.data.Segment" method="ComputeIntesectPoint">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

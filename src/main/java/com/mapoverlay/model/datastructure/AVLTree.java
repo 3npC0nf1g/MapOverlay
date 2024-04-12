@@ -104,7 +104,7 @@ public abstract class AVLTree {
 
     // Status méthode
     public boolean isEmpty(){
-        return this.data == null && this.leftTree == null && this.rightTree == null;
+        return this.data == null;
     }
 
     protected boolean isLeaf(){

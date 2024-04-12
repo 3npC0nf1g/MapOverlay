@@ -1,6 +1,7 @@
 package com.mapoverlay.controller;
 
 import com.mapoverlay.model.data.Map;
+import com.mapoverlay.model.data.point.InterserctionPoint;
 import com.mapoverlay.model.data.point.Point;
 import com.mapoverlay.model.data.Segment;
 import com.mapoverlay.model.datastructure.QTree;
@@ -62,7 +63,7 @@ public class MapOverlayController {
                                 double y1 = Double.parseDouble(coords[1]);
                                 double x2 = Double.parseDouble(coords[2]);
                                 double y2 = Double.parseDouble(coords[3]);
-                                Segment s = new Segment(new Point(x1,y1),new Point(x2,y2));
+                                Segment s = new Segment(new Point(x1,y1),new Point(x2,y2), map.getId());
                                 map.addSegment(s);
                             }
                         }
@@ -124,6 +125,27 @@ public class MapOverlayController {
             public void autoStep() {
                 autoStep = !autoStep;
             }
+
+            @Override
+            public void changeSelfInter() {
+                updateView();
+                CC.clearSweep();
+                listener.changeSelfInter();
+            }
+
+            @Override
+            public void showRésult() {
+                List<InterserctionPoint> interserctionPoints = new ArrayList<>();
+                Point p = listener.computeMapOverlayStep();
+                while (p != null){
+                    if(p instanceof InterserctionPoint){
+                        interserctionPoints.add((InterserctionPoint) p);
+                    }
+                    p = listener.computeMapOverlayStep();
+                }
+                new ResultController(interserctionPoints);
+                resetQ();
+            }
         });
         CreateCanvas();
         stage.setTitle("MapOverlay project of Odan and Steve");
@@ -149,8 +171,6 @@ public class MapOverlayController {
                             updateShowTree();
                         }
                     });
-                }else {
-
                 }
 
             }
@@ -238,6 +258,8 @@ public class MapOverlayController {
         QTree getQTree();
 
         TTree getTTree();
+
+        void changeSelfInter();
     }
 
 }
