@@ -11,6 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -50,7 +51,7 @@ public class MapItemController {
             @Override
             public void updateColor(Color c) {
                 map.setColor(c);
-                update();
+                listener.updateColor();
             }
 
             @Override
@@ -129,5 +130,6 @@ public class MapItemController {
     public interface Listener {
        void deleteMap(Map map);
        void update();
+        void updateColor();
     }
 }

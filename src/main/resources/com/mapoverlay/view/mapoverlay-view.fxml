@@ -1,23 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mapoverlay.view.MapOverlayViewController">
    <children>
-      <Button id="import" layoutX="1100.0" layoutY="671.0" mnemonicParsing="false" onAction="#importGraph" prefHeight="42.0" prefWidth="166.0" text="importer une map" />
+      <Button id="import" layoutX="1154.0" layoutY="680.0" mnemonicParsing="false" onAction="#importGraph" prefHeight="25.0" prefWidth="119.0" text="importer une map" />
       <ScrollPane hbarPolicy="NEVER" layoutX="922.0" layoutY="14.0" prefHeight="650.0" prefWidth="351.0" vbarPolicy="ALWAYS">
          <content>
             <VBox fx:id="MapList" prefHeight="646.0" prefWidth="334.0" />
          </content>
       </ScrollPane>
-      <Button id="addSegment" layoutX="922.0" layoutY="671.0" mnemonicParsing="false" onAction="#addMap" prefHeight="42.0" prefWidth="166.0" text="Ajouter une map" />
-      <Button id="startMapOverlay" layoutX="793.0" layoutY="671.0" mnemonicParsing="false" onAction="#launchMapOverlay" prefHeight="42.0" prefWidth="121.0" text="Lancer" />
+      <Button id="addSegment" layoutX="1027.0" layoutY="680.0" mnemonicParsing="false" onAction="#addMap" prefHeight="25.0" prefWidth="119.0" text="Ajouter une map" />
+      <Button id="startMapOverlay" fx:id="launch" layoutX="775.0" layoutY="680.0" mnemonicParsing="false" onAction="#launchMapOverlay" prefHeight="25.0" prefWidth="70.0" text="Avancer" />
       <AnchorPane fx:id="canvasContainer" layoutX="14.0" layoutY="14.0" prefHeight="650.0" prefWidth="900.0" style="-fx-border-color: LIGHTGRAY; -fx-background-color: GAINSBORO;" />
-      <Button id="import" layoutX="640.0" layoutY="671.0" mnemonicParsing="false" onAction="#clearGraph" prefHeight="42.0" prefWidth="142.0" text="clear" />
-      <Button id="startMapOverlay" layoutX="147.0" layoutY="671.0" mnemonicParsing="false" onAction="#launchMapOverlayStep" prefHeight="42.0" prefWidth="121.0" text="pas à pas" />
-      <Button id="startMapOverlay" layoutX="14.0" layoutY="671.0" mnemonicParsing="false" onAction="#InitQ" prefHeight="42.0" prefWidth="121.0" text="Init Q" />
+      <Button id="import" layoutX="922.0" layoutY="680.0" mnemonicParsing="false" onAction="#clearGraph" prefHeight="25.0" prefWidth="94.0" text="Effacer tout" />
+      <ColorPicker fx:id="colorSweep" layoutX="123.0" layoutY="680.0" onAction="#SweepColor">
+         <value>
+            <Color />
+         </value>
+      </ColorPicker>
+      <Label layoutX="22.0" layoutY="684.0" text="Sweep Line Color : " />
+      <CheckBox layoutX="854.0" layoutY="684.0" mnemonicParsing="false" onAction="#AutoStep" text="Auto" />
+      <Button layoutX="383.0" layoutY="680.0" mnemonicParsing="false" onAction="#ShowT" text="Afficher T" />
+      <Button layoutX="476.0" layoutY="680.0" mnemonicParsing="false" onAction="#ShowQ" prefHeight="25.0" prefWidth="70.0" text="Afficher Q" />
+      <Button id="startMapOverlay" layoutX="697.0" layoutY="680.0" mnemonicParsing="false" onAction="#resetQ" prefHeight="25.0" prefWidth="70.0" text="reset" />
    </children>
 </AnchorPane>

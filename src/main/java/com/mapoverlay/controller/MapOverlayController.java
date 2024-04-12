@@ -1,16 +1,20 @@
 package com.mapoverlay.controller;
 
-import com.mapoverlay.model.data.InterserctionPoint;
 import com.mapoverlay.model.data.Map;
-import com.mapoverlay.model.data.Point;
+import com.mapoverlay.model.data.point.Point;
 import com.mapoverlay.model.data.Segment;
+import com.mapoverlay.model.dataStructure.QTree;
+import com.mapoverlay.model.dataStructure.TTree;
 import com.mapoverlay.view.MapOverlayViewController;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -24,6 +28,12 @@ public class MapOverlayController {
     private CanvasController CC;
 
     private List<Map> maps = new ArrayList<>();
+
+    private TreeController showQTreeController;
+
+    private TreeController showTTreeController;
+
+    private boolean autoStep = false;
 
     public void show() throws IOException {
         stage = new Stage();
@@ -76,38 +86,97 @@ public class MapOverlayController {
             @Override
             public void clearGraph() {
                 maps.clear();
-                updateView();
+                CC.clear();
+                updateListView();
             }
 
             @Override
             public void launchMapOverlay() {
-                List<Segment> segments = new ArrayList<>();
-                for(Map m : maps){
-                    segments.addAll(m.getSegments());
-                }
-                List<Point> intersectionPoint = listener.computeMapOverlay(segments);
-                CC.addPoint(intersectionPoint.stream().filter(x -> x instanceof InterserctionPoint).toList());
-            }
-
-            @Override
-            public void launchMapOverlayStep() {
                 Point p = listener.computeMapOverlayStep();
-                CC.MakeSweepLine(p.getX(),p.getY());
+                if(p != null){
+                    CC.MakeSweepLine(p.getX(),p.getY());
+                    updateShowTree();
+                }
             }
 
             @Override
-            public void InitQ() {
-                List<Segment> segments = new ArrayList<>();
-                for(Map m : maps){
-                    segments.addAll(m.getSegments());
-                }
-                listener.InitQ(segments);
+            public void setSweepColor(Color value) {
+                CC.setSweepColor(value);
+            }
+
+            @Override
+            public void showQ() {
+                showQTreeController = new TreeController(listener.getQTree());
+                showQTreeController.setListener(() -> showQTreeController = null);
+            }
+
+            @Override
+            public void ShowT() {
+                showTTreeController = new TreeController(listener.getTTree());
+                showTTreeController.setListener(() -> showTTreeController = null);
+            }
+
+            @Override
+            public void resetQ() {
+                CC.clearSweep();
+                InitQ();
+            }
+
+            @Override
+            public void autoStep() {
+                autoStep = !autoStep;
             }
         });
         CreateCanvas();
         stage.setTitle("MapOverlay project of Odan and Steve");
         stage.setScene(scene);
         stage.show();
+        StartDaemon();
+    }
+
+    private void StartDaemon() {
+        Thread thread = new Thread(() -> {
+            while (true){
+                try{
+                    Thread.sleep(2000);
+                }catch (InterruptedException e){
+                    e.printStackTrace();
+                }
+
+                if(autoStep){
+                    Platform.runLater(() ->{
+                        Point p = listener.computeMapOverlayStep();
+                        if(p != null){
+                            CC.MakeSweepLine(p.getX(),p.getY());
+                            updateShowTree();
+                        }
+                    });
+                }else {
+
+                }
+
+            }
+
+        });
+        thread.setDaemon(true);
+        thread.start();
+    }
+
+    private void updateShowTree(){
+        if(showQTreeController != null){
+            showQTreeController.setNewTree(listener.getQTree());
+        }
+        if(showTTreeController != null){
+            showTTreeController.setNewTree(listener.getTTree());
+        }
+    }
+
+    public void InitQ() {
+        List<Segment> segments = new ArrayList<>();
+        for(Map m : maps){
+            segments.addAll(m.getSegments());
+        }
+        listener.InitQ(segments);
     }
 
     private void CreateCanvas(){
@@ -116,8 +185,10 @@ public class MapOverlayController {
     }
 
     public void updateView(){
+        InitQ();
         updateListView();
         updateCanvas();
+        updateShowTree();
     }
 
     private void updateCanvas(){
@@ -141,6 +212,11 @@ public class MapOverlayController {
                     public void update() {
                         updateView();
                     }
+
+                    @Override
+                    public void updateColor() {
+                        updateCanvas();
+                    }
                 });
                 list.getChildren().add(MIC.getPane());
             } catch (IOException e) {
@@ -157,11 +233,13 @@ public class MapOverlayController {
     }
 
     public interface listener {
-        List<Point> computeMapOverlay(List<Segment> segments);
-
         void InitQ(List<Segment> segments);
 
         Point computeMapOverlayStep();
+
+        QTree getQTree();
+
+        TTree getTTree();
     }
 
 }

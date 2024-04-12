@@ -1,6 +1,9 @@
 package com.mapoverlay.model;
 
 import com.mapoverlay.model.data.*;
+import com.mapoverlay.model.data.point.InterserctionPoint;
+import com.mapoverlay.model.data.point.Point;
+import com.mapoverlay.model.data.point.StartPoint;
 import com.mapoverlay.model.dataStructure.QTree;
 import com.mapoverlay.model.dataStructure.TTree;
 
@@ -10,21 +13,13 @@ public class MapOverlay {
     QTree q = new QTree();
     TTree t = new TTree();
 
-    public List<Point> FindInterSections(List<Segment> segmentList) {
-        List<Point> intersections = new ArrayList<>();
-        InitQ(segmentList);
-
-        while (!q.isEmpty()) {
-            Point intersection = HandleEventPoint(q.getNextPoint());
-            if(intersection != null){
-                intersections.add(intersection);
-            }
-        }
-        return intersections;
-    }
-
     public Point FindInterSectionsStep(){
-        return HandleEventPoint(q.getNextPoint());
+        Point p = q.getNextPoint();
+        if(p != null){
+            return HandleEventPoint(p);
+        }else {
+            return null;
+        }
     }
 
     public Point HandleEventPoint(Point point) {
@@ -36,7 +31,6 @@ public class MapOverlay {
 
         if(point instanceof StartPoint){
             List<Segment> insertSegments = ((StartPoint) point).getSegments();
-            insert(insertSegments);
             Up.addAll(insertSegments);
         }
 
@@ -53,12 +47,12 @@ public class MapOverlay {
         Set<Segment> UC = new LinkedHashSet<>(Up);
         UC.addAll(Cp);
 
-        List<Segment> UClist = new ArrayList<>(UC);
-
         if(ULC.size() > 1){
             iPoint = new InterserctionPoint(point);
             delete(LC);
-            insert(UClist);
+            insert(UC);
+        }else{
+            insert(Up);
         }
 
         if (UC.isEmpty()) {
@@ -69,6 +63,7 @@ public class MapOverlay {
             // Trouver un nouvel événement
             FindNewEvent(sl, sr, point);
         } else {
+            List<Segment> UClist = new ArrayList<>(UC);
             // sPrime le segment le plus à gauche de U(p)uC(p)
             // sl segment à gauche de sPrime
             Segment sPrime  = UClist.get(UClist.size()-1);
@@ -95,7 +90,7 @@ public class MapOverlay {
         }
     }
 
-    public void insert(List<Segment> insertSegments){
+    public void insert(Set<Segment> insertSegments){
         for(Segment s : insertSegments){
             t.insert(s);
         }
@@ -125,5 +120,13 @@ public class MapOverlay {
             q.insert(s.getSPoint());
             q.insert(s.getEPoint());
         }
+    }
+
+    public QTree getQTree() {
+        return this.q;
+    }
+
+    public TTree getTTree() {
+        return this.t;
     }
 }

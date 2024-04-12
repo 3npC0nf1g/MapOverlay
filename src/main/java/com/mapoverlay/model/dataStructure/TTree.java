@@ -1,9 +1,9 @@
 package com.mapoverlay.model.dataStructure;
 
 import com.mapoverlay.model.data.*;
+import com.mapoverlay.model.data.point.Point;
 
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
 public class TTree extends AVLTree{
@@ -50,17 +50,16 @@ public class TTree extends AVLTree{
             Segment currentSegment = this.getData();
             if(isLeaf()){
                 if(insertedSegment.isLeftOf(currentSegment,currentY)){
+
                     if(!insertedSegment.equals(currentSegment)){
                         insertSegment(insertedSegment,currentSegment);
                     }else {
                         return;
                     }
+
                 }else{
-                    if(currentSegment.getEPoint().isLeftOf(insertedSegment.getEPoint())){
-                        insertSegment(currentSegment,insertedSegment);
-                    }else{
-                        insertSegment(insertedSegment,currentSegment);
-                    }
+
+                    insertSegment(currentSegment,insertedSegment);
 
                 }
             }else{

@@ -2,13 +2,13 @@ package com.mapoverlay;
 
 import com.mapoverlay.controller.MapOverlayController;
 import com.mapoverlay.model.MapOverlay;
-import com.mapoverlay.model.data.InterserctionPoint;
-import com.mapoverlay.model.data.Point;
+import com.mapoverlay.model.data.point.Point;
 import com.mapoverlay.model.data.Segment;
+import com.mapoverlay.model.dataStructure.QTree;
+import com.mapoverlay.model.dataStructure.TTree;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ApplicationController extends Application implements MapOverlayController.listener {
@@ -27,11 +27,6 @@ public class ApplicationController extends Application implements MapOverlayCont
     }
 
     @Override
-    public List<Point> computeMapOverlay(List<Segment> segments) {
-        return MO.FindInterSections(segments);
-    }
-
-    @Override
     public void InitQ(List<Segment> segments) {
         MO.InitQ(segments);
     }
@@ -39,5 +34,15 @@ public class ApplicationController extends Application implements MapOverlayCont
     @Override
     public Point computeMapOverlayStep() {
         return MO.FindInterSectionsStep();
+    }
+
+    @Override
+    public QTree getQTree() {
+        return MO.getQTree();
+    }
+
+    @Override
+    public TTree getTTree() {
+        return MO.getTTree();
     }
 }

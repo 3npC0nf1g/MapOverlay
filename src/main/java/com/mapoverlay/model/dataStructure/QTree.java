@@ -1,9 +1,9 @@
 package com.mapoverlay.model.dataStructure;
 
 import com.mapoverlay.model.data.Data;
-import com.mapoverlay.model.data.Point;
+import com.mapoverlay.model.data.point.Point;
 import com.mapoverlay.model.data.Segment;
-import com.mapoverlay.model.data.StartPoint;
+import com.mapoverlay.model.data.point.StartPoint;
 
 public class QTree extends AVLTree{
 
@@ -49,6 +49,10 @@ public class QTree extends AVLTree{
 
     public Point getNextPoint(){
         Point minPoint;
+
+        if(isEmpty()){
+            return null;
+        }
 
         if(getLeftTree().isEmpty()){
             minPoint = getData();

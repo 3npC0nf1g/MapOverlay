@@ -1,4 +1,6 @@
-package com.mapoverlay.model.data;
+package com.mapoverlay.model.data.point;
+
+import com.mapoverlay.model.data.Data;
 
 public class Point extends Data {
     private final double x,y;

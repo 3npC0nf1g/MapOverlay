@@ -39,19 +39,18 @@ public abstract class AVLTree {
 
     // Principe AVL
     protected void equilibrateAVL(){
-        switch (getBalance()){
-            case 2:
-                if(getRightTree().getBalance() < 0){
-                    getRightTree().RotateRight();
-                }
-                RotateLeft();
-                break;
-            case -2:
-                if(getRightTree().getBalance() > 0){
-                    getRightTree().RotateLeft();
-                }
-                RotateRight();
-                break;
+        computeHeight();
+        int balance = getBalance();
+        if(balance >= 2){
+            if(getRightTree().getBalance() < 0){
+                getRightTree().RotateRight();
+            }
+            RotateLeft();
+        }else if(balance <= -2){
+            if(getRightTree().getBalance() > 0){
+                getRightTree().RotateLeft();
+            }
+            RotateRight();
         }
         computeHeight();
     }

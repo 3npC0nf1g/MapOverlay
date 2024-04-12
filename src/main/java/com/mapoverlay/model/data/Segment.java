@@ -1,5 +1,6 @@
 package com.mapoverlay.model.data;
-import static java.lang.Math.sqrt;
+import com.mapoverlay.model.data.point.Point;
+import com.mapoverlay.model.data.point.StartPoint;
 
 public class Segment extends Data {
     private final Point sPoint;
@@ -27,14 +28,14 @@ public class Segment extends Data {
     }
 
     public Point getIntersectSweep(double currentY){
-        Double x1 = sPoint.getX();
-        Double y1 = sPoint.getY();
-        Double x2 = ePoint.getX();
-        Double y2 = ePoint.getY();
+        double x1 = sPoint.getX();
+        double y1 = sPoint.getY();
+        double x2 = ePoint.getX();
+        double y2 = ePoint.getY();
         if(currentY >= y2 && currentY <= y1){
-            return new Point(((currentY - y1) / (y2 - y1)) * (x2 - x1) + x1, currentY);
+            return new Point(Math.round((((currentY - y1) / (y2 - y1)) * (x2 - x1) + x1)*100)/100, currentY);
         }else {
-            return null;
+            return new Point(0,0);
         }
     }
 

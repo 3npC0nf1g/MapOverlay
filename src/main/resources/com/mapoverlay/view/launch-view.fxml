@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mapoverlay.view.TreeViewController">
+   <children>
+      <AnchorPane fx:id="TreeContainer" prefHeight="720.0" prefWidth="1280.0" style="-fx-border-color: LIGHTGRAY; -fx-background-color: GAINSBORO;" />
+      <Button mnemonicParsing="false" onAction="#upSpacing" text="+" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+      <Button mnemonicParsing="false" onAction="#downSpacing" prefHeight="25.0" prefWidth="25.0" text="-" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="34.0" />
+   </children>
+</AnchorPane>

@@ -1,7 +1,4 @@
-package com.mapoverlay.model.data;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.mapoverlay.model.data.point;
 
 public class InterserctionPoint extends Point{
 

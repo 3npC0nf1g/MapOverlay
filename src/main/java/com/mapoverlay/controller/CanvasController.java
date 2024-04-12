@@ -1,40 +1,39 @@
 package com.mapoverlay.controller;
 
 import com.mapoverlay.model.data.Map;
-import com.mapoverlay.model.data.Point;
-import com.mapoverlay.view.CanvasViewController;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.canvas.Canvas;
+import com.mapoverlay.model.data.point.Point;
+import com.mapoverlay.view.graph.GraphicSegment;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CanvasController {
-    private CanvasViewController CVC;
+    private GraphicSegment graphicSegment;
     public CanvasController(AnchorPane container){
-        FXMLLoader fxmlLoader = new FXMLLoader(CanvasViewController.class.getResource("canvas-view.fxml"));
-        try{
-            Canvas canvas = fxmlLoader.load();
-            CVC = fxmlLoader.getController();
-            CVC.initialize();
-            container.getChildren().add(canvas);
-        }catch (Exception e){
-            // TODO gérer execption
-        }
-
+        graphicSegment = new GraphicSegment(900,650);
+        container.getChildren().add(graphicSegment);
     }
 
     public void setMap(List<Map> maps) {
-        CVC.setMapList(maps);
-    }
-
-    public void addPoint(List<Point> intersectionPoint) {
-        for (Point p : intersectionPoint){
-            CVC.addPoint(p);
-        }
+        graphicSegment.setMapList(maps);
     }
 
     public void MakeSweepLine(double x, double y) {
-        CVC.setSweepLine(x,y);
+        graphicSegment.setSweepLine(x,y);
+    }
+
+    public void clear() {
+        graphicSegment.setMapList(new ArrayList<>());
+        graphicSegment.clear();
+    }
+
+    public void setSweepColor(Color value) {
+        graphicSegment.setSweepLineColor(value);
+    }
+
+    public void clearSweep() {
+        graphicSegment.clearSweep();
     }
 }

@@ -9,4 +9,6 @@ module com.mapoverlay.mapoverlay {
     exports com.mapoverlay.view;
     opens com.mapoverlay.view to javafx.fxml;
     exports com.mapoverlay;
+    exports com.mapoverlay.view.graph;
+    opens com.mapoverlay.view.graph to javafx.fxml;
 }

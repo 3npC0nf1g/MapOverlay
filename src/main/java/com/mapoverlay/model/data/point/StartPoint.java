@@ -1,4 +1,6 @@
-package com.mapoverlay.model.data;
+package com.mapoverlay.model.data.point;
+
+import com.mapoverlay.model.data.Segment;
 
 import java.util.ArrayList;
 import java.util.List;
