@@ -313,6 +313,10 @@ public class TTree extends AVLTree{
    }
 
     private Segment findRight(TTree current) {
+        if(current == null){
+            return null;
+        }
+        
         TTree parent = current.parent;
         if(parent != null){
             if(parent.rightTree.equals(current)){
@@ -326,6 +330,10 @@ public class TTree extends AVLTree{
     }
 
     public Segment findLeft(TTree current){
+        if(current == null){
+            return null;
+        }
+
        TTree parent = current.parent;
        if(parent != null){
            if(parent.leftTree.equals(current)){
