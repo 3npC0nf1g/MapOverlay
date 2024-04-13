@@ -5,25 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99203a8e-6b9f-4904-b1d1-ee0ef6b16feb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/controller/ResultController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/view/ResultGraphViewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/mapoverlay/view/result-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/TestApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/TestApplicationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/controller/MapItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/controller/MapItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/controller/MapOverlayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/controller/MapOverlayController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/controller/NewSegmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/controller/NewSegmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/controller/TreeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/controller/TreeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/MapOverlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/MapOverlay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/data/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/data/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/data/Segment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/data/Segment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/datastructure/AVLTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/datastructure/AVLTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/view/MapOverlayViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/view/MapOverlayViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/view/graph/GraphicSegment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/view/graph/GraphicSegment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/mapoverlay/view/mapoverlay-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/mapoverlay/view/mapoverlay-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/mapoverlay/model/datastructure/AVLTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/mapoverlay/model/datastructure/AVLTreeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/mapoverlay/model/datastructure/QTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/mapoverlay/model/datastructure/QTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/data/point/InterserctionPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/data/point/InterserctionPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/data/point/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/data/point/Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/data/point/StartPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/data/point/StartPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/datastructure/QTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/datastructure/QTree.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,20 +231,5 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/mapoverlay/model/data/Segment.java</url>
-          <line>77</line>
-          <properties class="com.mapoverlay.model.data.Segment" method="ComputeIntesectPoint">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

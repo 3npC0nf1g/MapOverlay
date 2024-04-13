@@ -21,12 +21,15 @@ public class QTree extends AVLTree{
 
     @Override
     public void insert(Data d) {
-        Point p = (Point)d;
+        Point p = ((Point)d).clone();
         if(isEmpty()){
             insertEmpty(p);
         }else{
             Point currentPoint = this.getData();
             if(currentPoint.isHigherThan(p)){
+
+                this.getRightTree().insert(p);
+            }else {
                 if (currentPoint.equals(p)) {
                     if(p instanceof StartPoint){
                         if(currentPoint instanceof StartPoint){
@@ -38,10 +41,9 @@ public class QTree extends AVLTree{
                         }
                     }
                 }else{
-                    this.getRightTree().insert(p);
+                    this.getLeftTree().insert(p);
                 }
-            }else {
-                this.getLeftTree().insert(p);
+
             }
         }
         equilibrateAVL();
@@ -82,8 +84,15 @@ public class QTree extends AVLTree{
         return (Point) this.data;
     }
 
-   public boolean contains(Point point) {
-        if(this.data.equals(point)){
+   public Boolean contains(Point point) {
+        Point cPoint = (Point)this.data;
+        if(cPoint == null){
+            return false;
+        }
+
+        double x = Math.abs(cPoint.getX() - point.getX());
+        double y = Math.abs(cPoint.getY() - point.getY());
+        if( x < 0.15 && y < 0.15){
             return true;
         }
 

@@ -1,5 +1,6 @@
 package com.mapoverlay.model.data.point;
 
+import com.mapoverlay.model.data.Data;
 import com.mapoverlay.model.data.Segment;
 
 import java.util.ArrayList;
@@ -12,11 +13,26 @@ public class StartPoint extends Point{
         super(x, y);
     }
 
+    public StartPoint(Data d) {
+        super((Point)d);
+    }
+
     public List<Segment> getSegments() {
         return segments;
     }
 
     public void addSegment(Segment segment) {
-        segments.add(segment);
+        if(!segments.contains(segment)){
+            segments.add(segment);
+        }
+    }
+
+    @Override
+    public StartPoint clone(){
+        StartPoint sP = new StartPoint(this);
+        for(Segment s : this.getSegments()){
+            sP.addSegment(s);
+        }
+        return sP;
     }
 }

@@ -14,6 +14,10 @@ public class MapOverlay {
     QTree q = new QTree();
     TTree t = new TTree();
 
+    /**
+     * Permet de donné le prochain point à la detection d'un point d'intersection
+     * @return le point actuelle
+     */
     public Point FindInterSectionsStep(){
         Point p = q.getNextPoint();
         if(p != null){
@@ -23,6 +27,11 @@ public class MapOverlay {
         }
     }
 
+    /**
+     *
+     * @param point Point actuel de la sweepline
+     * @return retourne le poit actuel et l'intensie sous forme d'intersection point si c'est une intersection
+     */
     public Point HandleEventPoint(Point point) {
 
         t.setCurrentY(point.getY());
@@ -56,10 +65,16 @@ public class MapOverlay {
                 List<Segment> ULCList = new ArrayList<>(ULC);
 
                 for (Segment s1 : ULCList){
+                    boolean hasBreak = false;
                     for (Segment s2 : ULCList){
                         if(s1.getMapId() != s2.getMapId()){
                             iPoint = new InterserctionPoint(point);
+                            hasBreak = true;
+                            break;
                         }
+                    }
+                    if (hasBreak){
+                        break;
                     }
                 }
             }
@@ -116,9 +131,11 @@ public class MapOverlay {
         if (sl != null && sr != null) {
             // Calculer le point d'intersection
 
+            double epsilon = 0.15;
+            Point currentPointEpsilon = new Point(currentPoint.getX()-epsilon,currentPoint.getY()-epsilon);
             Point intersectionPoint = sl.ComputeIntesectPoint(sr);
             // Vérifier si le point est en dessous de la sweepline avec le dernier point sélectionné
-            if (intersectionPoint != null && currentPoint.isHigherThan(intersectionPoint)) {
+            if (intersectionPoint != null && currentPointEpsilon.isHigherThan(intersectionPoint)) {
                 // Insérer le point dans la file d'attente des événements
                 if(!q.contains(intersectionPoint)){
                     q.insert(intersectionPoint);
@@ -131,8 +148,10 @@ public class MapOverlay {
         q = new QTree();
         t = new TTree();
         for (Segment s : segments) {
-            q.insert(s.getSPoint());
-            q.insert(s.getEPoint());
+            Point sP = s.getSPoint();
+            Point eP = s.getEPoint();
+            q.insert(sP);
+            q.insert(eP);
         }
     }
 

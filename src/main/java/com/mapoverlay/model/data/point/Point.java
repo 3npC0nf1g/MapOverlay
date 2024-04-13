@@ -10,6 +10,10 @@ public class Point extends Data {
         this.y = y;
     }
 
+    public Point(Point d) {
+        this(d.getX(),d.getY());
+    }
+
     public double getX() {
         return x;
     }
@@ -28,6 +32,10 @@ public class Point extends Data {
         return this.getX() - 0.01 <= p.getX();
     }
 
+    public Point clone(){
+        return new Point(this);
+    }
+
     @Override
     public boolean equals(Object object){
         if(object == null)
@@ -37,7 +45,6 @@ public class Point extends Data {
 
         return this.x == ((Point) object).x && this.y == ((Point) object).y;
     }
-
 
     @Override
     public String toString() {
