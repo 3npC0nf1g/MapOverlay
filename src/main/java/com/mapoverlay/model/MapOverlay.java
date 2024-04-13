@@ -34,7 +34,7 @@ public class MapOverlay {
      */
     public Point HandleEventPoint(Point point) {
 
-        t.setCurrentY(point.getY());
+        t.setCurrentPoint(point);
         InterserctionPoint iPoint = null;
 
         Set<Segment> Up = new LinkedHashSet<>();
@@ -130,12 +130,9 @@ public class MapOverlay {
         // Vérifier si les segments sont non nuls
         if (sl != null && sr != null) {
             // Calculer le point d'intersection
-
-            double epsilon = 0.15;
-            Point currentPointEpsilon = new Point(currentPoint.getX()-epsilon,currentPoint.getY()-epsilon);
             Point intersectionPoint = sl.ComputeIntesectPoint(sr);
             // Vérifier si le point est en dessous de la sweepline avec le dernier point sélectionné
-            if (intersectionPoint != null && currentPointEpsilon.isHigherThan(intersectionPoint)) {
+            if (intersectionPoint != null && currentPoint.isHigherThan(intersectionPoint)) {
                 // Insérer le point dans la file d'attente des événements
                 if(!q.contains(intersectionPoint)){
                     q.insert(intersectionPoint);

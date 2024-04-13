@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99203a8e-6b9f-4904-b1d1-ee0ef6b16feb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/cartes/test1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/MapOverlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/MapOverlay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/data/point/InterserctionPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/data/point/InterserctionPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/data/point/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/data/point/Point.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/data/point/StartPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/data/point/StartPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/datastructure/QTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/datastructure/QTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/data/Segment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/data/Segment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/datastructure/TTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/datastructure/TTree.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,29 +60,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.AVLTreeTest.executor": "Run",
-    "Gradle.AVLTreeTest.testAVL.executor": "Run",
-    "Gradle.AVLTreeTest.testInsert (2).executor": "Run",
-    "Gradle.AVLTreeTest.testInsert.executor": "Run",
-    "Gradle.MapOverlay [:TestApplicationController.main()].executor": "Run",
-    "Gradle.QTreeTest.testGetNextPoint.executor": "Run",
-    "Gradle.QTreeTest.testInsert.executor": "Run",
-    "Gradle.mapOverlay [:ApplicationController.main()].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "BugZone",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/odanl/Documents/GitHub/MapOverlay",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.AVLTreeTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AVLTreeTest.testAVL.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AVLTreeTest.testInsert (2).executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AVLTreeTest.testInsert.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MapOverlay [:TestApplicationController.main()].executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.QTreeTest.testGetNextPoint.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.QTreeTest.testInsert.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.mapOverlay [:ApplicationController.main()].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;BugZone&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/odanl/Documents/GitHub/MapOverlay&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\odanl\Documents\GitHub\MapOverlay\src\main\java\cartes" />
@@ -231,5 +230,20 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/mapoverlay/model/MapOverlay.java</url>
+          <line>34</line>
+          <properties class="com.mapoverlay.model.MapOverlay" method="HandleEventPoint">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -70,8 +70,15 @@ public class Segment extends Data {
     }
 
 
-    public boolean isLeftOf(Segment segment,double currentY){
-        return this.getIntersectSweep(currentY).isLeftOf(segment.getIntersectSweep(currentY));
+    public boolean isLeftOf(Segment segment,Point point){
+        if(Math.abs(segment.sPoint.getY() - segment.ePoint.getY()) < 1 && this.contains(point) && Math.abs(this.sPoint.getY() - this.ePoint.getY()) < 1){
+            return this.ePoint.isLeftOf(segment.ePoint);
+        }else if(this.contains(point) && Math.abs(this.sPoint.getY() - this.ePoint.getY()) < 1){
+            return point.isLeftOf(segment.getIntersectSweep(point.getY()));
+        }else if(Math.abs(segment.sPoint.getY() - segment.ePoint.getY()) < 1){
+            return this.getIntersectSweep(point.getY()).isLeftOf(point);
+        }
+        return this.getIntersectSweep(point.getY()).isLeftOf(segment.getIntersectSweep(point.getY()));
     }
 
     // USE FOR CALCULATE INTERSECTION

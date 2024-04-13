@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class TTree extends AVLTree{
     private TTree parent = null;
-    private Double currentY;
+    private Point point;
 
     @Override
     protected void insertEmpty(Data d) {
@@ -17,8 +17,8 @@ public class TTree extends AVLTree{
         setRightTree(new TTree());
     }
 
-    public void setCurrentY(double y) {
-        currentY = y;
+    public void setCurrentPoint(Point point) {
+        this.point = point;
     }
 
     private void setParent(TTree tTree) {
@@ -49,7 +49,7 @@ public class TTree extends AVLTree{
         }else{
             Segment currentSegment = this.getData();
             if(isLeaf()){
-                if(insertedSegment.isLeftOf(currentSegment,currentY)){
+                if(insertedSegment.isLeftOf(currentSegment,point)){
 
                     if(!insertedSegment.equals(currentSegment)){
                         insertSegment(insertedSegment,currentSegment);
@@ -63,8 +63,8 @@ public class TTree extends AVLTree{
 
                 }
             }else{
-                TTree subtree = insertedSegment.isLeftOf(currentSegment,currentY) ? getLeftTree() : getRightTree();
-                subtree.setCurrentY(currentY);
+                TTree subtree = insertedSegment.isLeftOf(currentSegment,point) ? getLeftTree() : getRightTree();
+                subtree.setCurrentPoint(point);
                 subtree.insert(insertedSegment);
             }
             equilibrateAVL();
@@ -149,8 +149,8 @@ public class TTree extends AVLTree{
         }else{
             TTree leftTree = this.getLeftTree();
             TTree rightTree = this.getRightTree();
-            leftTree.setCurrentY(currentY);
-            rightTree.setCurrentY(currentY);
+            leftTree.setCurrentPoint(point);
+            rightTree.setCurrentPoint(point);
 
             if(leftTree.isLeaf() && rightTree.isLeaf()){
                 if(leftTree.getData().equals(segment)){
@@ -171,7 +171,7 @@ public class TTree extends AVLTree{
                     leftTree.delete(segment);
                 }
             }else {
-                if(currentSegment.isLeftOf(segment,currentY)){
+                if(currentSegment.isLeftOf(segment,point)){
                     if(currentSegment.equals(segment)){
                         leftTree.delete(segment);
                     }else {
@@ -202,6 +202,12 @@ public class TTree extends AVLTree{
         }else {
             this.setRightTree(rightTree);
             this.setLeftTree(leftTree);
+        }
+        if(leftTree != null){
+            leftTree.setParent(this);
+        }
+        if(rightTree != null){
+            rightTree.setParent(this);
         }
         this.computeHeight();
     }
@@ -247,9 +253,7 @@ public class TTree extends AVLTree{
 
         if(isLeaf()){
             if(segment.contains(point)){
-                if(!segment.getSPoint().equals(point) && !segment.getEPoint().equals(point)){
-                    result.add(segment);
-                }
+                result.add(segment);
             }
         }else {
             getLeftTree().searchSegmentsContains(point,result);
@@ -259,7 +263,7 @@ public class TTree extends AVLTree{
 
     public Segment findLeftNeighbor(Point point) {
         Segment currentSegment = getData();
-        Point currentPoint = currentSegment.getSPoint();
+        Point currentPoint = currentSegment.getIntersectSweep(point.getY());
 
         if(isLeaf()){
             return getData();
@@ -283,7 +287,7 @@ public class TTree extends AVLTree{
 
     public Segment findRightNeighbor(Point point) {
         Segment currentSegment = getData();
-        Point currentPoint = currentSegment.getSPoint();
+        Point currentPoint = currentSegment.getIntersectSweep(point.getY());
 
         if(isLeaf()){
             if(currentPoint.isLeftOf(point)){
@@ -347,9 +351,9 @@ public class TTree extends AVLTree{
         TTree rightTree = getRightTree();
         TTree leftTree = getLeftTree();
 
-       if(currentSegment.isLeftOf(segment,currentY)){
+       if(currentSegment.isLeftOf(segment,point)){
            if(currentSegment.equals(segment)){
-               if(rightTree.getData().isLeftOf(segment,currentY)){
+               if(rightTree.getData().isLeftOf(segment,point)){
                    return leftTree.findLeave(segment);
                }else{
                    return getMaxOfTreeWithParent(leftTree);
