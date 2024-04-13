@@ -3,8 +3,9 @@ import com.mapoverlay.model.data.point.Point;
 import com.mapoverlay.model.data.point.StartPoint;
 
 
+
 /**
- *
+ * Représente un segment
  */
 public class Segment extends Data {
     private final int mapId;

@@ -5,7 +5,7 @@ import javafx.scene.paint.Color;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 /**
- * Représente une carte composée de segments et associée à une couleur spécifique.
+ * Représente une carte
  */
 public class Map {
     private List<Segment> segments;

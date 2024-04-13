@@ -6,9 +6,11 @@ import com.mapoverlay.model.data.Segment;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Représente un point d'événement supérieur
+ */
 public class StartPoint extends Point{
-    private List<Segment> segments = new ArrayList<>();;
+    private List<Segment> segments = new ArrayList<>();
 
     /**
      * Crée un nouvel objet StartPoint avec les coordonnées spécifiées.

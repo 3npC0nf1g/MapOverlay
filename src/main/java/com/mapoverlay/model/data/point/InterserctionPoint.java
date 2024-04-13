@@ -2,8 +2,8 @@ package com.mapoverlay.model.data.point;
 
 
 /**
- * Cette classe permet la création d'un segment
- **/
+ * Représente un point d'intersection
+ */
 public class InterserctionPoint extends Point{
 
     /**

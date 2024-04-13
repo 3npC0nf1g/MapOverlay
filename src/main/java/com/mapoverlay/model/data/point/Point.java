@@ -4,7 +4,7 @@ import com.mapoverlay.model.data.Data;
 
 
 /**
- * Cette classe permet la création d'un point
+ * Représente un point
  */
 public class Point extends Data {
     private final double x,y;

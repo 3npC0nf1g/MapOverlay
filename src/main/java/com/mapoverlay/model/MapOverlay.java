@@ -11,7 +11,7 @@ import java.util.*;
 
 
 /**
- * Représente une superposition de carte utilisée pour détecter les intersections entre les segments et effectuer d'autres opérations spatiales.
+ * Représente notre algorithme de résolution du problème de superposition des cartes.
  */
 public class MapOverlay {
     boolean selfIntersection = false;
