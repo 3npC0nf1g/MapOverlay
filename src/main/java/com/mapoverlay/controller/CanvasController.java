@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 /**
  * Contrôleur responsable de la gestion de l'affichage des segments graphiques sur un canevas.
- * Il utilise un objet GraphicSegment pour représenter les segments graphiques et effectuer diverses opérations de dessin.
  */
 public class CanvasController {
     /**

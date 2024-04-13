@@ -10,12 +10,22 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 import java.util.List;
-
+/**
+ * Classe principale de l'application de test.
+ * Cette classe lance l'application MapOverlay en utilisant JavaFX.
+ */
 public class TestApplicationController extends Application {
 
     private final MapOverlayController MOC = new MapOverlayController();
     private final MapOverlay MO = new MapOverlay();
 
+    /**
+     * Méthode principale de l'application.
+     * Lance l'application MapOverlay en créant et en affichant la fenêtre principale.
+     *
+     * @param stage Le stage (fenêtre) de l'application.
+     * @throws Exception Si une erreur survient lors du lancement de l'application.
+     */
     @Override
     public void start(Stage stage) throws Exception {
         MOC.setListener(new MapOverlayController.listener() {
@@ -47,6 +57,10 @@ public class TestApplicationController extends Application {
         MOC.show();
     }
 
+    /**
+     * Méthode principale pour lancer l'application.
+     * @param args Les arguments de la ligne de commande.
+     */
     public static void main(String[] args){
         launch();
     }
