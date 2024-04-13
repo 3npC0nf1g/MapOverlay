@@ -2,7 +2,10 @@ package com.mapoverlay.view.graph;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.AnchorPane;
-
+/**
+ * Une classe abstraite pour représenter un canevas de base avec des fonctionnalités de zoom et de défilement.
+ * Cette classe étend AnchorPane et contient un objet Canvas pour le dessin.
+ */
 public abstract class CanvasBasic extends AnchorPane {
     Canvas canvas;
     double zoomFactor = 1.0;
@@ -10,7 +13,12 @@ public abstract class CanvasBasic extends AnchorPane {
     double x,y;
     double centerX,centerY;
     double currentCenterX,currentCenterY;
-
+    /**
+     * Constructeur de la classe CanvasBasic.
+     *
+     * @param width  La largeur du canevas.
+     * @param height La hauteur du canevas.
+     */
     public CanvasBasic(int width, int height){
         canvas = new Canvas(width,height);
         getChildren().add(canvas);
@@ -46,7 +54,9 @@ public abstract class CanvasBasic extends AnchorPane {
             offsetY = 0;
         });
     }
-
+    /**
+     * Méthode abstraite à implémenter pour mettre à jour le canevas après les changements de zoom et de défilement.
+     */
     public abstract void update();
 
 }

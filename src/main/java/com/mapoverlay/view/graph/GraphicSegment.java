@@ -10,6 +10,10 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Une classe représentant la vue graphique des segments et des points d'intersection.
+ * Elle hérite de CanvasBasic pour gérer le dessin, le zoom et le défilement.
+ */
 public class GraphicSegment extends CanvasBasic{
 
     private boolean haveSweepLine = false;
@@ -22,6 +26,12 @@ public class GraphicSegment extends CanvasBasic{
 
     private Color sweepLineColor = Color.BLACK;
 
+    /**
+     * Constructeur de la classe GraphicSegment.
+     *
+     * @param width  La largeur du canevas.
+     * @param height La hauteur du canevas.
+     */
     public GraphicSegment(int width, int height) {
         super(width, height);
         maps = new ArrayList<>();
@@ -29,6 +39,12 @@ public class GraphicSegment extends CanvasBasic{
         update();
     }
 
+    /**
+     * Définit la ligne de balayage avec les coordonnées spécifiées.
+     *
+     * @param x La coordonnée x de la ligne de balayage.
+     * @param y La coordonnée y de la ligne de balayage.
+     */
     public void setSweepLine(double x, double y) {
         this.haveSweepLine = true;
         this.sweepLineX = x;
@@ -36,11 +52,20 @@ public class GraphicSegment extends CanvasBasic{
         update();
     }
 
+
+    /**
+     * Définit les points d'intersection à afficher.
+     *
+     * @param points La liste des points d'intersection.
+     */
     public void setInterserctionPoints(List<InterserctionPoint> points){
         this.interserctionPoints = points;
         update();
     }
 
+    /**
+     * Met à jour l'affichage du canevas.
+     */
     @Override
     public void update(){
         GraphicsContext gc = canvas.getGraphicsContext2D();
@@ -70,6 +95,13 @@ public class GraphicSegment extends CanvasBasic{
 
     }
 
+    /**
+     * Dessine un segment avec la couleur spécifiée.
+     *
+     * @param gc    Le contexte graphique pour le dessin.
+     * @param color La couleur du segment.
+     * @param s     Le segment à dessiner.
+     */
     public void drawLine(GraphicsContext gc,Color color,Segment s){
         Point SPoint = s.getSPoint();
         Point EPoint = s.getEPoint();
@@ -83,6 +115,11 @@ public class GraphicSegment extends CanvasBasic{
         gc.strokeLine(startX, startY, endX, endY);
     }
 
+    /**
+     * Dessine un point d'intersection avec une croix rouge.
+     *
+     * @param point Le point d'intersection à dessiner.
+     */
     public void drawPoint(InterserctionPoint point){
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
@@ -90,11 +127,21 @@ public class GraphicSegment extends CanvasBasic{
         drawLine(gc,Color.RED,new Segment(new Point(point.getX()-3,point.getY()+3),new Point(point.getX()+3,point.getY()-3)));
     }
 
+    /**
+     * Définit la liste des cartes à afficher.
+     *
+     * @param maps La liste des cartes.
+     */
     public void setMapList(List<Map> maps) {
         this.maps = maps;
         update();
     }
 
+    /**
+     * Dessine les axes X et Y ainsi que leurs graduations.
+     *
+     * @param gc Le contexte graphique pour le dessin.
+     */
     public void drawAxes(GraphicsContext gc){
         int interval = setInterval();
 
@@ -128,6 +175,11 @@ public class GraphicSegment extends CanvasBasic{
         }
     }
 
+    /**
+     * Détermine l'intervalle à utiliser en fonction du facteur de zoom.
+     *
+     * @return L'intervalle pour les graduations.
+     */
     private int setInterval(){
         if(zoomFactor >= 2.25){
             return 10;
@@ -144,6 +196,9 @@ public class GraphicSegment extends CanvasBasic{
         }
     }
 
+    /**
+     * Efface le dessin de la ligne de balayage et met à jour l'affichage.
+     */
     public void clear() {
         this.haveSweepLine = false;
         this.sweepLineX = 0;
@@ -151,11 +206,19 @@ public class GraphicSegment extends CanvasBasic{
         update();
     }
 
+    /**
+     * Définit la couleur de la ligne de balayage.
+     *
+     * @param value La couleur de la ligne de balayage.
+     */
     public void setSweepLineColor(Color value) {
         sweepLineColor = value;
         update();
     }
 
+    /**
+     * Efface la ligne de balayage et met à jour l'affichage.
+     */
     public void clearSweep() {
         this.haveSweepLine = false;
         update();

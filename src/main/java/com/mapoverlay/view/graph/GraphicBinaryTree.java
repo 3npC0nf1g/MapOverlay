@@ -4,18 +4,30 @@ import com.mapoverlay.model.datastructure.AVLTree;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-
+/**
+ * Une classe représentant la vue graphique d'un arbre binaire AVL.
+ * Elle hérite de CanvasBasic pour gérer le dessin et les fonctionnalités de zoom et de défilement.
+ */
 public class GraphicBinaryTree extends CanvasBasic{
     private static final int RADIUSY = 20;
     private AVLTree tree = null;
     private double spacingX;
     private double treeX = 0,treeY = 0;
-
+    /**
+     * Constructeur de la classe GraphicBinaryTree.
+     *
+     * @param width     La largeur du canevas.
+     * @param height    La hauteur du canevas.
+     * @param tree      L'arbre AVL à représenter graphiquement.
+     * @param spacingX  L'espacement horizontal entre les nœuds de l'arbre.
+     */
     public GraphicBinaryTree(int width, int height, AVLTree tree,double spacingX) {
         super(width, height);
         setTree(tree,0,0,spacingX);
     }
-
+    /**
+     * Met à jour l'affichage du canevas après les changements de zoom et de défilement.
+     */
     @Override
     public void update() {
         GraphicsContext gc = canvas.getGraphicsContext2D();
@@ -26,7 +38,14 @@ public class GraphicBinaryTree extends CanvasBasic{
 
         drawTree(gc,tree,treeX,treeY,spacingX);
     }
-
+    /**
+     * Définit l'arbre AVL à représenter graphiquement avec l'espacement horizontal spécifié.
+     *
+     * @param tree      L'arbre AVL à représenter graphiquement.
+     * @param x         La coordonnée x du nœud racine de l'arbre.
+     * @param y         La coordonnée y du nœud racine de l'arbre.
+     * @param spacingX  L'espacement horizontal entre les nœuds de l'arbre.
+     */
     public void setTree(AVLTree tree, double x, double y,double spacingX){
         this.tree = tree;
         this.spacingX = (tree.getHeight()+1)*spacingX*10;
@@ -34,6 +53,15 @@ public class GraphicBinaryTree extends CanvasBasic{
         this.treeY = y;
         update();
     }
+    /**
+     * Dessine l'arbre binaire AVL de manière récursive à partir du nœud spécifié.
+     *
+     * @param gc        Le contexte graphique pour le dessin.
+     * @param tree      L'arbre AVL à dessiner.
+     * @param x         La coordonnée x du nœud actuel de l'arbre.
+     * @param y         La coordonnée y du nœud actuel de l'arbre.
+     * @param spacingX  L'espacement horizontal entre les nœuds de l'arbre.
+     */
     public void drawTree(GraphicsContext gc,AVLTree tree, double x, double y,double spacingX) {
         if (tree != null && tree.getData() != null) {
             String data = String.valueOf(tree.getData());
@@ -71,17 +99,25 @@ public class GraphicBinaryTree extends CanvasBasic{
             }
         }
     }
-
+    /**
+     * Définit un nouvel arbre AVL à représenter graphiquement.
+     *
+     * @param tree Le nouvel arbre AVL.
+     */
     public void setNewTree(AVLTree tree) {
         this.tree = tree;
         update();
     }
-
+    /**
+     * Augmente l'espacement horizontal entre les nœuds de l'arbre.
+     */
     public void upSpacing() {
         this.spacingX += 20;
         update();
     }
-
+    /**
+     * Diminue l'espacement horizontal entre les nœuds de l'arbre, avec une limite minimale de 30.
+     */
     public void downSpacing() {
         if(spacingX > 30){
             this.spacingX -= 20;
