@@ -12,8 +12,16 @@ import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 import java.util.List;
-
+/**
+ * Contrôleur pour afficher les résultats des calculs.
+ */
 public class ResultController {
+
+    /**
+     * Constructeur de ResultController.
+     *
+     * @param pointList La liste des points d'intersection à afficher.
+     */
     public ResultController(List<InterserctionPoint> pointList){
         try {
             Stage stage = new Stage();
@@ -30,8 +38,6 @@ public class ResultController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-
 
     }
 }

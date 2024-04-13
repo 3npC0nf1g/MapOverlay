@@ -9,14 +9,18 @@ import com.mapoverlay.model.datastructure.TTree;
 
 import java.util.*;
 
+
+/**
+ * Représente une superposition de carte utilisée pour détecter les intersections entre les segments et effectuer d'autres opérations spatiales.
+ */
 public class MapOverlay {
     boolean selfIntersection = false;
     QTree q = new QTree();
     TTree t = new TTree();
 
     /**
-     * Permet de donné le prochain point à la detection d'un point d'intersection
-     * @return le point actuelle
+     * Trouve le prochain point lors de la détection d'un point d'intersection.
+     * @return Le point actuel si trouvé, sinon null.
      */
     public Point FindInterSectionsStep(){
         Point p = q.getNextPoint();
@@ -28,9 +32,10 @@ public class MapOverlay {
     }
 
     /**
+     * Gère un point d'événement dans l'algorithme de sweepline.
      *
-     * @param point Point actuel de la sweepline
-     * @return retourne le poit actuel et l'intensie sous forme d'intersection point si c'est une intersection
+     * @param point Le point d'événement actuel de la sweepline.
+     * @return Retourne le point d'événement actuel et l'intensité sous forme de point d'intersection s'il s'agit d'une intersection.
      */
     public Point HandleEventPoint(Point point) {
 
@@ -85,11 +90,11 @@ public class MapOverlay {
         }
 
         if (UC.isEmpty()) {
-            // sl, sr voisin de gauche et droite de p
+
             Segment sl = t.findLeftNeighbor(point);
             Segment sr = t.findRightNeighbor(point);
 
-            // Trouver un nouvel événement
+
             FindNewEvent(sl, sr, point);
         } else {
             List<Segment> UClist = new ArrayList<>(UC);
@@ -127,13 +132,9 @@ public class MapOverlay {
 
 
     private void FindNewEvent(Segment sl, Segment sr, Point currentPoint) {
-        // Vérifier si les segments sont non nuls
         if (sl != null && sr != null) {
-            // Calculer le point d'intersection
             Point intersectionPoint = sl.ComputeIntesectPoint(sr);
-            // Vérifier si le point est en dessous de la sweepline avec le dernier point sélectionné
             if (intersectionPoint != null && currentPoint.isHigherThan(intersectionPoint)) {
-                // Insérer le point dans la file d'attente des événements
                 if(!q.contains(intersectionPoint)){
                     q.insert(intersectionPoint);
                 }
@@ -141,6 +142,12 @@ public class MapOverlay {
         }
     }
 
+    /**
+     * Initialise la structure de données QTree avec les points de début et de fin de segments donnés.
+     * Initialise également la structure de données TTree.
+     *
+     * @param segments Une liste de segments pour initialiser la structure de données QTree.
+     */
     public void InitQ(List<Segment> segments) {
         q = new QTree();
         t = new TTree();
@@ -151,15 +158,26 @@ public class MapOverlay {
             q.insert(eP);
         }
     }
-
+    /**
+     * Renvoie l'instance actuelle de la structure de données QTree.
+     * @return L'instance de la structure de données QTree.
+     */
     public QTree getQTree() {
         return this.q;
     }
 
+    /**
+     * Renvoie l'instance actuelle de la structure de données TTree.
+     * @return L'instance de la structure de données TTree.
+     */
     public TTree getTTree() {
         return this.t;
     }
 
+    /**
+     * Inverse l'état du drapeau selfIntersection.
+     * Si le drapeau est vrai, le système considérera les auto-intersections, sinon il les ignorera.
+     */
     public void changeSelfInter() {
         selfIntersection = !selfIntersection;
     }

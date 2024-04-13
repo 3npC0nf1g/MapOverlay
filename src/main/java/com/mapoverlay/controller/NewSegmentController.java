@@ -10,8 +10,19 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Une classe de contrôleur pour la création de nouveaux segments.
+ */
 public class NewSegmentController {
     Stage stage;
+
+    /**
+     * Affiche la fenêtre de création de segment.
+     *
+     * @param map La carte à laquelle le segment sera ajouté.
+     * @throws IOException Si une erreur survient lors du chargement du fichier FXML.
+     */
+
     public void show(Map map) throws IOException {
         stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(NewSegmentViewController.class.getResource("new-segment-view.fxml"));
@@ -26,14 +37,30 @@ public class NewSegmentController {
         stage.show();
     }
 
-    // Listener implementation
+
     private listener listener;
 
+
+    /**
+     * Définit le listener pour ce contrôleur.
+     *
+     * @param listener Le listener à définir.
+     */
     public void setListener(listener listener) {
         this.listener = listener;
     }
 
+
+    /**
+     * Une interface pour écouter les événements de création de nouveaux segments.
+     */
     public interface listener {
+
+        /**
+         * Méthode appelée lorsqu'un nouveau segment est ajouté.
+         *
+         * @param segment Le segment ajouté.
+         */
         void addSegment(Segment segment);
     }
 }

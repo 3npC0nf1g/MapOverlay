@@ -34,6 +34,13 @@ public class MapOverlayController {
 
     private boolean autoStep = false;
 
+    /**
+     * Affiche l'interface utilisateur de l'application MapOverlay.
+     * Cette méthode initialise la fenêtre principale, définit les contrôleurs et les listeners,
+     * puis affiche la fenêtre.
+     *
+     * @throws IOException Si une erreur d'entrée-sortie se produit lors du chargement du fichier FXML.
+     */
     public void show() throws IOException {
         stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(MapOverlayViewController.class.getResource("mapoverlay-view.fxml"));
@@ -154,6 +161,11 @@ public class MapOverlayController {
         StartDaemon();
     }
 
+    /**
+     * Lance un thread daemon pour exécuter périodiquement une action.
+     * Cette méthode crée un thread qui exécute une action toutes les 2 secondes,
+     * si le drapeau `autoStep` est activé.
+     */
     private void StartDaemon() {
         Thread thread = new Thread(() -> {
             while (true){
@@ -180,6 +192,12 @@ public class MapOverlayController {
         thread.start();
     }
 
+    /**
+     * Met à jour l'affichage des arbres Q et T dans les contrôleurs associés.
+     * Cette méthode vérifie si les contrôleurs d'affichage des arbres Q et T sont
+     * initialisés et, le cas échéant, met à jour les arbres affichés avec les
+     * nouvelles données obtenues du listener.
+     */
     private void updateShowTree(){
         if(showQTreeController != null){
             showQTreeController.setNewTree(listener.getQTree());
@@ -189,6 +207,11 @@ public class MapOverlayController {
         }
     }
 
+    /**
+     * Initialise la structure de données de l'arbre Q en utilisant une liste de segments
+     * obtenue à partir des cartes fournies. Cette méthode récupère tous les segments
+     * des cartes et les passe au listener pour initialiser l'arbre Q.
+     */
     public void InitQ() {
         List<Segment> segments = new ArrayList<>();
         for(Map m : maps){
@@ -197,11 +220,22 @@ public class MapOverlayController {
         listener.InitQ(segments);
     }
 
+    /**
+     * Crée un contrôleur de toile en utilisant le conteneur de toile de la vue MapOverlayViewController.
+     * Cette méthode initialise le contrôleur de toile et met à jour la toile.
+     */
     private void CreateCanvas(){
         CC = new CanvasController(MOVC.getCanvasContainer());
         updateCanvas();
     }
 
+    /**
+     * Met à jour la vue en effectuant les actions suivantes :
+     * 1. Initialise la structure de données QTree.
+     * 2. Met à jour la liste des segments affichée.
+     * 3. Met à jour la toile.
+     * 4. Met à jour l'affichage des arbres Q et T.
+     */
     public void updateView(){
         InitQ();
         updateListView();
@@ -209,10 +243,16 @@ public class MapOverlayController {
         updateShowTree();
     }
 
+    /**
+     * Met à jour la toile de l'application en affichant les segments actuels.
+     */
     private void updateCanvas(){
         CC.setMap(maps);
     }
 
+    /**
+     * Met à jour la vue de la liste des cartes dans l'interface utilisateur.
+     */
     private void updateListView(){
         VBox list = MOVC.getList();
         list.getChildren().clear();
@@ -246,19 +286,51 @@ public class MapOverlayController {
     // Listener implementation
     private listener listener;
 
+    /**
+     * Définit un écouteur pour cette classe.
+     *
+     * @param listener L'objet écoutant qui implémente l'interface Listener.
+     */
     public void setListener(listener listener) {
         this.listener = listener;
     }
 
+    /**
+     * Une interface décrivant les méthodes que les écouteurs doivent implémenter pour écouter les événements émis par une classe.
+     */
     public interface listener {
+
+        /**
+         * Initialise la structure de données Q avec une liste de segments donnée.
+         *
+         * @param segments La liste des segments à utiliser pour initialiser la structure de données Q.
+         */
         void InitQ(List<Segment> segments);
 
+        /**
+         * Calcule l'étape suivante dans le traitement de la superposition de carte.
+         *
+         * @return Le prochain point à utiliser dans le traitement de la superposition de carte.
+         */
         Point computeMapOverlayStep();
 
+        /**
+         * Renvoie la structure de données Q utilisée dans le traitement de la superposition de carte.
+         *
+         * @return La structure de données Q utilisée dans le traitement de la superposition de carte.
+         */
         QTree getQTree();
 
+        /**
+         * Renvoie la structure de données T utilisée dans le traitement de la superposition de carte.
+         *
+         * @return La structure de données T utilisée dans le traitement de la superposition de carte.
+         */
         TTree getTTree();
 
+        /**
+         * Change l'état de l'option de détection des auto-intersections.
+         */
         void changeSelfInter();
     }
 

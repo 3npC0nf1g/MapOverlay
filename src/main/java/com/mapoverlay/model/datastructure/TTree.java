@@ -1,15 +1,25 @@
 package com.mapoverlay.model.datastructure;
-
 import com.mapoverlay.model.data.*;
 import com.mapoverlay.model.data.point.Point;
-
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+
+/**
+ * Cette classe représente la structure de donnée T.
+ */
 public class TTree extends AVLTree{
     private TTree parent = null;
     private Point point;
 
+
+    /**
+     * Insère des données dans le noeud T lorsque celui-ci est vide.
+     * Cette méthode est utilisée pour insérer des données dans un noeud vide.
+     * Elle définit les données du noeud, met à jour sa hauteur et crée de nouveaux sous-arbres gauche et droit vides.
+     *
+     * @param d Les données à insérer dans ce noeud.
+     */
     @Override
     protected void insertEmpty(Data d) {
         super.insertEmpty(d);
@@ -17,28 +27,57 @@ public class TTree extends AVLTree{
         setRightTree(new TTree());
     }
 
+    /**
+     * Définit le point actuel pour cet arbre TTree.
+     * @param point Le point actuel à définir.
+     */
     public void setCurrentPoint(Point point) {
         this.point = point;
     }
 
+    /**
+     * Définit le parent de cet arbre TTree.
+     * @param tTree Le parent à définir.
+     */
     private void setParent(TTree tTree) {
         parent = tTree;
     }
+
+    /**
+     * Renvoie le sous-arbre gauche de cet arbre TTree.
+     * @return Le sous-arbre gauche de cet arbre TTree.
+     */
     @Override
     public TTree getLeftTree() {
         return (TTree) this.leftTree;
     }
 
+    /**
+     * Renvoie le sous-arbre droit de cet arbre TTree.
+     * @return Le sous-arbre droit de cet arbre TTree.
+     */
     @Override
     public TTree getRightTree() {
         return (TTree) this.rightTree;
     }
 
+    /**
+     * Renvoie les données stockées dans cet arbre TTree.
+     * @return Les données stockées dans cet arbre TTree.
+     */
     @Override
     public Segment getData() {
         return (Segment) this.data;
     }
 
+    /**
+     * Insère un segment dans l'arbre TTree.
+     * Si l'arbre est vide, insère le segment directement.
+     * Sinon, insère le segment dans le sous-arbre approprié en fonction de la position du point actuel.
+     * Après l'insertion, l'arbre est rééquilibré.
+     *
+     * @param data Le segment à insérer dans cet arbre TTree.
+     */
     @Override
     public void insert(Data data) {
         Segment insertedSegment = (Segment)data;
@@ -72,6 +111,12 @@ public class TTree extends AVLTree{
         }
     }
 
+    /**
+     * Effectue une rotation vers la gauche autour de ce noeud TTree.
+     * Cette rotation réorganise les sous-arbres de manière à ce que le sous-arbre droit devienne la nouvelle racine
+     * et le sous-arbre gauche de ce sous-arbre droit devienne le sous-arbre droit de ce noeud.
+     * La hauteur de l'arbre est recalculée après la rotation.
+     */
     @Override
     protected void RotateLeft() {
         Data d = getData();
@@ -95,6 +140,12 @@ public class TTree extends AVLTree{
         t.computeHeight();
     }
 
+    /**
+     * Effectue une rotation vers la droite autour de ce noeud TTree.
+     * Cette rotation réorganise les sous-arbres de manière à ce que le sous-arbre gauche devienne la nouvelle racine
+     * et le sous-arbre droit de ce sous-arbre gauche devienne le sous-arbre gauche de ce noeud.
+     * La hauteur de l'arbre est recalculée après la rotation.
+     */
     @Override
     protected void RotateRight() {
         Data d = getData();
@@ -118,6 +169,14 @@ public class TTree extends AVLTree{
         t.computeHeight();
     }
 
+    /**
+     * Insère deux segments dans les sous-arbres gauche et droit de ce noeud TTree.
+     * Cette méthode est utilisée lorsque ce noeud TTree est une feuille et que deux segments doivent être insérés.
+     * Chaque segment est inséré dans un sous-arbre différent.
+     *
+     * @param ls Le segment à insérer dans le sous-arbre gauche.
+     * @param rs Le segment à insérer dans le sous-arbre droit.
+     */
     private void insertSegment(Data ls,Data rs){
         getLeftTree().insertEmpty(ls);
         getLeftTree().setParent(this);
@@ -125,7 +184,12 @@ public class TTree extends AVLTree{
         getRightTree().setParent(this);
     }
 
-    // Mettre à jour la node intern avec le max du sous-arbre gauche
+    /**
+     * Renvoie le segment le plus à droite dans l'arbre TTree spécifié.
+     *
+     * @param t L'arbre TTree dans lequel rechercher le segment le plus à droite.
+     * @return Le segment le plus à droite dans l'arbre TTree spécifié.
+     */
     private Segment getMaxOfTree(TTree t){
         if(t.getRightTree().isEmpty()){
             return t.getData();
@@ -134,6 +198,12 @@ public class TTree extends AVLTree{
         }
     }
 
+    /**
+     * Renvoie le segment le plus à gauche dans l'arbre TTree spécifié.
+     *
+     * @param t L'arbre TTree dans lequel rechercher le segment le plus à gauche.
+     * @return Le segment le plus à gauche dans l'arbre TTree spécifié.
+     */
     private Segment getMinOfTree(TTree t){
         if(t.getLeftTree().isEmpty()){
             return t.getData();
@@ -142,6 +212,11 @@ public class TTree extends AVLTree{
         }
     }
 
+    /**
+     * Supprime le segment spécifié de cet arbre TTree.
+     *
+     * @param segment Le segment à supprimer de cet arbre TTree.
+     */
     public void delete(Segment segment){
         Segment currentSegment = this.getData();
         if(this.isLeaf() && currentSegment.equals(segment)){
@@ -191,9 +266,29 @@ public class TTree extends AVLTree{
 
     }
 
+    /**
+     * Remplace les données et les sous-arbres de ce noeud TTree par les valeurs spécifiées.
+     * Cette méthode met à jour les données, les sous-arbres gauche et droit de ce noeud TTree avec les valeurs fournies.
+     * Par défaut, le sous-arbre gauche est placé avant le sous-arbre droit.
+     *
+     * @param data      Les nouvelles données à définir pour ce noeud TTree.
+     * @param leftTree  Le nouveau sous-arbre gauche à définir pour ce noeud TTree.
+     * @param rightTree Le nouveau sous-arbre droit à définir pour ce noeud TTree.
+     */
     private void OverwriteTTree(Data data,TTree leftTree,TTree rightTree){
         OverwriteTTree(data,leftTree,rightTree,true);
     }
+
+    /**
+     * Remplace les données et les sous-arbres de ce noeud TTree par les valeurs spécifiées.
+     * Cette méthode met à jour les données, les sous-arbres gauche et droit de ce noeud TTree avec les valeurs fournies.
+     * La position du sous-arbre gauche par rapport au sous-arbre droit peut être spécifiée à l'aide du paramètre leftBefore.
+     *
+     * @param data        Les nouvelles données à définir pour ce noeud TTree.
+     * @param leftTree    Le nouveau sous-arbre gauche à définir pour ce noeud TTree.
+     * @param rightTree   Le nouveau sous-arbre droit à définir pour ce noeud TTree.
+     * @param leftBefore  Indique si le sous-arbre gauche doit être placé avant le sous-arbre droit (true) ou après (false).
+     */
     private void OverwriteTTree(Data data,TTree leftTree,TTree rightTree,boolean leftBefore){
         this.setData(data);
         if(leftBefore){
@@ -212,7 +307,12 @@ public class TTree extends AVLTree{
         this.computeHeight();
     }
 
-    // Logique pour L(p)
+    /**
+     * Renvoie un ensemble de segments dont la ligne de fin est inférieure (y plus petit) à la coordonnée y du point spécifié.
+     *
+     * @param point Le point utilisé comme référence pour comparer la coordonnée y.
+     * @return Un ensemble de segments dont la ligne de fin est inférieure à la coordonnée y du point spécifié.
+     */
     public Set<Segment> getSegmentsWithLower(Point point) {
 
         Set<Segment> result = new LinkedHashSet<>();
@@ -221,29 +321,50 @@ public class TTree extends AVLTree{
 
     }
 
+    /**
+     * Recherche récursivement les segments dont la ligne de fin est égale à la coordonnée y du point spécifié dans l'arbre AVL.
+     * Les segments trouvés sont ajoutés à l'ensemble de résultats.
+     *
+     * @param tree   L'arbre AVL dans lequel rechercher les segments.
+     * @param point  Le point utilisé comme référence pour comparer la coordonnée y.
+     * @param result L'ensemble dans lequel ajouter les segments trouvés.
+     */
     private void searchSegmentsWithLower(AVLTree tree, Point point, Set<Segment> result) {
         if (tree.getData() == null || point == null) {
-            return; // Arrêtez la recherche si l'arbre est nul ou le point est null
+            return;
         }
 
-        Segment treeNodeSegment = (Segment) tree.getData(); // On récupère un segment dans T
+        Segment treeNodeSegment = (Segment) tree.getData();
 
-        // On vérifie si le point inférieur du segment est égal au point spécifié
+
         if (treeNodeSegment.getEPoint().equals(point)) {
-            // Si c'est le cas, on ajoute ce segment au résultat
+
             result.add(treeNodeSegment);
         }
 
         searchSegmentsWithLower(tree.getLeftTree(), point, result);
         searchSegmentsWithLower(tree.getRightTree(), point, result);
     }
-    // Logique pour C(p)
+
+    /**
+     * Renvoie un ensemble de segments qui contiennent le point spécifié.
+     *
+     * @param point Le point à rechercher dans les segments.
+     * @return Un ensemble de segments qui contiennent le point spécifié.
+     */
     public Set<Segment> getSegmentsContains(Point point) {
         Set<Segment> result = new LinkedHashSet<>();
         searchSegmentsContains(point, result);
         return result;
     }
 
+    /**
+     * Recherche récursivement les segments qui contiennent le point spécifié dans cet arbre TTree.
+     * Les segments trouvés sont ajoutés à l'ensemble de résultats.
+     *
+     * @param point  Le point à rechercher dans les segments.
+     * @param result L'ensemble dans lequel ajouter les segments trouvés.
+     */
     private void searchSegmentsContains(Point point, Set<Segment> result) {
         if (this.getData() == null || point == null) {
             return;
@@ -261,6 +382,13 @@ public class TTree extends AVLTree{
         }
     }
 
+    /**
+     * Recherche le voisin de gauche du point spécifié dans cet arbre TTree.
+     * Le voisin de gauche est le segment dont la ligne de fin est la plus à gauche et dont le point d'intersection avec la ligne de balayage est le plus proche du point spécifié.
+     *
+     * @param point Le point à partir duquel rechercher le voisin de gauche.
+     * @return Le segment voisin de gauche du point spécifié.
+     */
     public Segment findLeftNeighbor(Point point) {
         Segment currentSegment = getData();
         Point currentPoint = currentSegment.getIntersectSweep(point.getY());
@@ -285,6 +413,13 @@ public class TTree extends AVLTree{
         }
     }
 
+    /**
+     * Recherche le voisin de droite du point spécifié dans cet arbre TTree.
+     * Le voisin de droite est le segment dont la ligne de fin est la plus à droite et dont le point d'intersection avec la ligne de balayage est le plus proche du point spécifié.
+     *
+     * @param point Le point à partir duquel rechercher le voisin de droite.
+     * @return Le segment voisin de droite du point spécifié.
+     */
     public Segment findRightNeighbor(Point point) {
         Segment currentSegment = getData();
         Point currentPoint = currentSegment.getIntersectSweep(point.getY());
@@ -304,14 +439,37 @@ public class TTree extends AVLTree{
         }
     }
 
+    /**
+     * Recherche le segment adjacent à gauche du segment spécifié dans cet arbre TTree.
+     * Le segment adjacent à gauche est le segment dont la ligne de fin est la plus à gauche parmi tous les segments dont la ligne de fin est inférieure à celle du segment spécifié.
+     *
+     * @param segment Le segment dont on recherche l'adjacent à gauche.
+     * @return Le segment adjacent à gauche du segment spécifié.
+     */
    public Segment findLeftAdjacentSegment(Segment segment){
         return findLeft(findLeave(segment));
    }
 
+
+    /**
+     * Recherche le segment adjacent à droite du segment spécifié dans cet arbre TTree.
+     * Le segment adjacent à droite est le segment dont la ligne de fin est la plus à droite parmi tous les segments dont la ligne de fin est inférieure à celle du segment spécifié.
+     *
+     * @param segment Le segment dont on recherche l'adjacent à droite.
+     * @return Le segment adjacent à droite du segment spécifié.
+     */
    public Segment findRightAdjacentSegment(Segment segment){
         return findRight(findLeave(segment));
    }
 
+
+    /**
+     * Recherche récursivement le segment adjacent à droite du segment spécifié dans cet arbre TTree.
+     * Le segment adjacent à droite est le segment dont la ligne de fin est la plus à droite parmi tous les segments dont la ligne de fin est inférieure à celle du segment spécifié.
+     *
+     * @param current Le nœud TTree actuellement examiné dans la recherche.
+     * @return Le segment adjacent à droite du segment spécifié.
+     */
     private Segment findRight(TTree current) {
         if(current == null){
             return null;
@@ -329,6 +487,13 @@ public class TTree extends AVLTree{
         }
     }
 
+    /**
+     * Recherche récursivement le segment adjacent à gauche du segment spécifié dans cet arbre TTree.
+     * Le segment adjacent à gauche est le segment dont la ligne de fin est la plus à gauche parmi tous les segments dont la ligne de fin est inférieure à celle du segment spécifié.
+     *
+     * @param current Le nœud TTree actuellement examiné dans la recherche.
+     * @return Le segment adjacent à gauche du segment spécifié.
+     */
     public Segment findLeft(TTree current){
         if(current == null){
             return null;
@@ -346,6 +511,12 @@ public class TTree extends AVLTree{
        }
    }
 
+    /**
+     * Recherche récursivement le nœud feuille contenant le segment spécifié dans cet arbre TTree.
+     *
+     * @param segment Le segment dont on recherche le nœud feuille.
+     * @return Le nœud feuille contenant le segment spécifié.
+     */
     public TTree findLeave(Segment segment){
        Segment currentSegment = getData();
        if(isLeaf()){
@@ -379,6 +550,12 @@ public class TTree extends AVLTree{
        }
     }
 
+    /**
+     * Renvoie le nœud le plus à droite dans cet arbre TTree, en incluant son parent.
+     *
+     * @param t Le nœud à partir duquel commencer la recherche.
+     * @return Le nœud le plus à droite dans cet arbre TTree, en incluant son parent.
+     */
     private TTree getMaxOfTreeWithParent(TTree t){
         if(t.getRightTree().isEmpty()){
             return t;
@@ -387,6 +564,12 @@ public class TTree extends AVLTree{
         }
     }
 
+    /**
+     * Renvoie une représentation sous forme de chaîne de caractères de cet arbre TTree.
+     * Les nœuds sont représentés entre parenthèses et séparés par une barre verticale pour les sous-arbres gauche et droit.
+     *
+     * @return Une représentation sous forme de chaîne de caractères de cet arbre TTree.
+     */
     @Override
     public String toString() {
         if (isEmpty()) {

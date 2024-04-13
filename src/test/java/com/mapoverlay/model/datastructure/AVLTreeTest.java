@@ -1,8 +1,6 @@
 package com.mapoverlay.model.datastructure;
 
-import com.mapoverlay.model.data.Data;
 import com.mapoverlay.model.data.point.Point;
-import com.mapoverlay.model.datastructure.AVLTree;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
