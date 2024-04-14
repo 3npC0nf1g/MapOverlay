@@ -22,9 +22,12 @@ public class QTreeTest {
 
         qTree.insert(p2);
         assertTrue(qTree.contains(p2));
-        assertTrue(qTree.getLeftTree().getData() == p2);
+        assertEquals(qTree.getLeftTree().getData(), p2);
     }
 
+    /**
+     * test la récupération des prochain points de la sweepline
+     */
     @Test
     public void testGetNextPoint(){
         QTree qTree = new QTree();
@@ -43,11 +46,12 @@ public class QTreeTest {
         qTree.insert(p6);
 
         // p5 > p6 > p4 > p3 > p1 > p2
-        assertTrue(qTree.getNextPoint() == p5);
-        assertTrue(qTree.getNextPoint() == p6);
-        assertTrue(qTree.getNextPoint() == p4);
-        assertTrue(qTree.getNextPoint() == p3);
-        assertTrue(qTree.getNextPoint() == p1);
-        assertTrue(qTree.getNextPoint() == p2);
+        // ne peut pas utilisé assertSame car fait utilise une copie du point
+        assertEquals(qTree.getNextPoint(), p5);
+        assertEquals(qTree.getNextPoint(), p6);
+        assertEquals(qTree.getNextPoint(), p4);
+        assertEquals(qTree.getNextPoint(), p3);
+        assertEquals(qTree.getNextPoint(), p1);
+        assertEquals(qTree.getNextPoint(), p2);
     }
 }

@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99203a8e-6b9f-4904-b1d1-ee0ef6b16feb" name="Changes" comment="javadoc_end">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/mapoverlay/model/MapOverlayTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/mapoverlay/model/data/SegmentTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/mapoverlay/model/data/point/PointTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/MapOverlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/MapOverlay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mapoverlay/model/datastructure/AVLTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/mapoverlay/model/datastructure/AVLTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mapoverlay/model/datastructure/MapOverlayTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mapoverlay/model/datastructure/QTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/mapoverlay/model/datastructure/QTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/mapoverlay/model/datastructure/TTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/mapoverlay/model/datastructure/TTreeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +39,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -73,14 +82,24 @@
     "Gradle.AVLTreeTest.testInsert (2).executor": "Run",
     "Gradle.AVLTreeTest.testInsert.executor": "Run",
     "Gradle.MapOverlay [:TestApplicationController.main()].executor": "Debug",
+    "Gradle.MapOverlayTest.findInterSectionsStep.executor": "Run",
+    "Gradle.MapOverlayTest.initQ.executor": "Run",
+    "Gradle.MapOverlayTest.testFindNewEvent.executor": "Run",
+    "Gradle.MapOverlayTest.testHandleEventPoint.executor": "Run",
+    "Gradle.PointTest.testIsHigherThan.executor": "Run",
+    "Gradle.PointTest.testIsLeftOf.executor": "Run",
     "Gradle.QTreeTest.executor": "Run",
     "Gradle.QTreeTest.testGetNextPoint.executor": "Run",
     "Gradle.QTreeTest.testInsert.executor": "Run",
+    "Gradle.SegmentTest.TestIntersectSweep.executor": "Run",
+    "Gradle.SegmentTest.TestIntersection.executor": "Run",
     "Gradle.mapOverlay [:ApplicationController.main()].executor": "Run",
     "Gradle.mapOverlay [:TestApplicationController.main()].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "git-widget-placeholder": "BugZone",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/odanl/Documents/GitHub/MapOverlay",
@@ -100,12 +119,19 @@
       <recent name="$PROJECT_DIR$/src/main/java" />
       <recent name="C:\Users\odanl\Documents\GitHub\MapOverlay\src\main\java\cartes" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.mapoverlay.model.data.point" />
+      <recent name="com.mapoverlay.model" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.mapoverlay.view" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="AVLTreeTest.testAVL" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.PointTest.testIsLeftOf">
+    <configuration name="MapOverlayTest.findInterSectionsStep" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -118,7 +144,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.mapoverlay.model.datastructure.AVLTreeTest.testAVL&quot;" />
+            <option value="&quot;com.mapoverlay.model.MapOverlayTest.findInterSectionsStep&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -129,7 +155,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="AVLTreeTest.testInsert (2)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MapOverlayTest.testFindNewEvent" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -142,7 +168,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.mapoverlay.model.datastructure.AVLTreeTest.testInsert&quot;" />
+            <option value="&quot;com.mapoverlay.model.MapOverlayTest.testFindNewEvent&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -153,7 +179,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="QTreeTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MapOverlayTest.testHandleEventPoint" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -166,7 +192,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.mapoverlay.model.datastructure.QTreeTest&quot;" />
+            <option value="&quot;com.mapoverlay.model.MapOverlayTest.testHandleEventPoint&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -177,7 +203,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="QTreeTest.testGetNextPoint" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="PointTest.testIsHigherThan" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -190,7 +216,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.mapoverlay.model.datastructure.QTreeTest.testGetNextPoint&quot;" />
+            <option value="&quot;com.mapoverlay.model.data.point.PointTest.testIsHigherThan&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -201,7 +227,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="QTreeTest.testInsert" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="PointTest.testIsLeftOf" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -214,7 +240,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.mapoverlay.model.datastructure.QTreeTest.testInsert&quot;" />
+            <option value="&quot;com.mapoverlay.model.data.point.PointTest.testIsLeftOf&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -227,11 +253,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.AVLTreeTest.testAVL" />
-        <item itemvalue="Gradle.QTreeTest" />
-        <item itemvalue="Gradle.QTreeTest.testGetNextPoint" />
-        <item itemvalue="Gradle.QTreeTest.testInsert" />
-        <item itemvalue="Gradle.AVLTreeTest.testInsert (2)" />
+        <item itemvalue="Gradle.PointTest.testIsLeftOf" />
+        <item itemvalue="Gradle.PointTest.testIsHigherThan" />
+        <item itemvalue="Gradle.MapOverlayTest.testHandleEventPoint" />
+        <item itemvalue="Gradle.MapOverlayTest.testFindNewEvent" />
+        <item itemvalue="Gradle.MapOverlayTest.findInterSectionsStep" />
       </list>
     </recent_temporary>
   </component>

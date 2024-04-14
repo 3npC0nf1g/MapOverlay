@@ -131,7 +131,7 @@ public class MapOverlay {
     }
 
 
-    private void FindNewEvent(Segment sl, Segment sr, Point currentPoint) {
+    public void FindNewEvent(Segment sl, Segment sr, Point currentPoint) {
         if (sl != null && sr != null) {
             Point intersectionPoint = sl.ComputeIntesectPoint(sr);
             if (intersectionPoint != null && currentPoint.isHigherThan(intersectionPoint)) {
