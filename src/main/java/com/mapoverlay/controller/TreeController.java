@@ -9,12 +9,21 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Cette classe est responsable de la gestion de l'affichage graphique d'un arbre AVL.
+ */
 public class TreeController {
     Stage stage;
     TreeViewController launchViewController;
 
     GraphicBinaryTree graphicTree;
 
+
+    /**
+     * Constructeur de la classe TreeController.
+     *
+     * @param tree L'arbre AVL à afficher graphiquement.
+     */
     public TreeController(AVLTree tree){
         try {
             stage = new Stage();
@@ -46,21 +55,38 @@ public class TreeController {
             }
         });
     }
-
+    /**
+     * Met à jour l'affichage de l'arbre graphique.
+     */
     public void update(){
         graphicTree.update();
     }
 
     private Listener listener;
 
+    /**
+     * Définit le Listener pour écouter les événements de fermeture de la vue de l'arbre.
+     *
+     * @param listener L'instance de Listener à définir.
+     */
     public void setListener(Listener listener) {
         this.listener = listener;
     }
 
+
+    /**
+     * Définit un nouvel arbre à afficher graphiquement.
+     *
+     * @param tree Le nouvel arbre AVL à afficher.
+     */
     public void setNewTree(AVLTree tree) {
         graphicTree.setNewTree(tree);
     }
 
+
+    /**
+     * Interface pour écouter les événements de fermeture de la vue de l'arbre.
+     */
     public interface Listener {
         void closeTreeView();
     }

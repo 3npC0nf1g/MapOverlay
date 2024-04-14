@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="99203a8e-6b9f-4904-b1d1-ee0ef6b16feb" name="Changes" comment="javadoc_end">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/mapoverlay/model/MapOverlayTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/mapoverlay/model/data/SegmentTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/mapoverlay/model/data/point/PointTest.java" afterDir="false" />
+    <list default="true" id="46286422-c1d9-48f4-b739-65f44b732579" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/MapOverlay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/model/MapOverlay.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/mapoverlay/model/datastructure/AVLTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/mapoverlay/model/datastructure/AVLTreeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/mapoverlay/model/datastructure/MapOverlayTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/mapoverlay/model/datastructure/QTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/mapoverlay/model/datastructure/QTreeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/mapoverlay/model/datastructure/TTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/mapoverlay/model/datastructure/TTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapoverlay/controller/TreeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mapoverlay/controller/TreeController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,30 +23,7 @@
       <ProjectState />
     </projectState>
   </component>
-  <component name="ExternalProjectsManager">
-    <system id="GRADLE">
-      <state>
-        <task path="$PROJECT_DIR$">
-          <activation />
-        </task>
-        <projects_view />
-      </state>
-    </system>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-        <option value="JUnit5 Test Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="InterfaceUpdate" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -63,204 +38,28 @@
     &quot;accountId&quot;: &quot;d04ff92f-e6b5-4b6a-9a01-7959744a7bf4&quot;
   }
 }</component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 6
+  &quot;associatedIndex&quot;: 7
 }</component>
-  <component name="ProjectId" id="2euoNJNav14fAw5Cm4NJZVORbTZ" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="2f5I0pCUsMdcj00I6Ot0OYIaZss" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Gradle.AVLTreeTest.executor": "Run",
-    "Gradle.AVLTreeTest.testAVL.executor": "Run",
-    "Gradle.AVLTreeTest.testInsert (2).executor": "Run",
-    "Gradle.AVLTreeTest.testInsert.executor": "Run",
-    "Gradle.MapOverlay [:TestApplicationController.main()].executor": "Debug",
-    "Gradle.MapOverlayTest.findInterSectionsStep.executor": "Run",
-    "Gradle.MapOverlayTest.initQ.executor": "Run",
-    "Gradle.MapOverlayTest.testFindNewEvent.executor": "Run",
-    "Gradle.MapOverlayTest.testHandleEventPoint.executor": "Run",
-    "Gradle.PointTest.testIsHigherThan.executor": "Run",
-    "Gradle.PointTest.testIsLeftOf.executor": "Run",
-    "Gradle.QTreeTest.executor": "Run",
-    "Gradle.QTreeTest.testGetNextPoint.executor": "Run",
-    "Gradle.QTreeTest.testInsert.executor": "Run",
-    "Gradle.SegmentTest.TestIntersectSweep.executor": "Run",
-    "Gradle.SegmentTest.TestIntersection.executor": "Run",
-    "Gradle.mapOverlay [:ApplicationController.main()].executor": "Run",
     "Gradle.mapOverlay [:TestApplicationController.main()].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "git-widget-placeholder": "BugZone",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/odanl/Documents/GitHub/MapOverlay",
+    "last_opened_file_path": "/Users/3npc0nf1g/Documents/Etude_Mons/Passerelle/Quad-2/Projet SDD2/mapOverlay",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/java/com/mapoverlay/model" />
-      <recent name="$PROJECT_DIR$/src/main/java" />
-      <recent name="C:\Users\odanl\Documents\GitHub\MapOverlay\src\main\java\cartes" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="com.mapoverlay.model.data.point" />
-      <recent name="com.mapoverlay.model" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.mapoverlay.view" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Gradle.PointTest.testIsLeftOf">
-    <configuration name="MapOverlayTest.findInterSectionsStep" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.mapoverlay.model.MapOverlayTest.findInterSectionsStep&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="MapOverlayTest.testFindNewEvent" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.mapoverlay.model.MapOverlayTest.testFindNewEvent&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="MapOverlayTest.testHandleEventPoint" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.mapoverlay.model.MapOverlayTest.testHandleEventPoint&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="PointTest.testIsHigherThan" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.mapoverlay.model.data.point.PointTest.testIsHigherThan&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="PointTest.testIsLeftOf" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.mapoverlay.model.data.point.PointTest.testIsLeftOf&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Gradle.PointTest.testIsLeftOf" />
-        <item itemvalue="Gradle.PointTest.testIsHigherThan" />
-        <item itemvalue="Gradle.MapOverlayTest.testHandleEventPoint" />
-        <item itemvalue="Gradle.MapOverlayTest.testFindNewEvent" />
-        <item itemvalue="Gradle.MapOverlayTest.findInterSectionsStep" />
-      </list>
-    </recent_temporary>
-  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -272,60 +71,17 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="99203a8e-6b9f-4904-b1d1-ee0ef6b16feb" name="Changes" comment="" />
-      <created>1712763784076</created>
+      <changelist id="46286422-c1d9-48f4-b739-65f44b732579" name="Changes" comment="" />
+      <created>1713084292040</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1712763784076</updated>
-      <workItem from="1712763785355" duration="7819000" />
-      <workItem from="1712822887581" duration="98000" />
-      <workItem from="1712838395813" duration="859000" />
-      <workItem from="1712856129690" duration="40000" />
-      <workItem from="1712856174503" duration="9078000" />
-      <workItem from="1712925894094" duration="6734000" />
-      <workItem from="1713035966418" duration="14121000" />
+      <updated>1713084292040</updated>
+      <workItem from="1713084292993" duration="146000" />
+      <workItem from="1713084619238" duration="310000" />
     </task>
-    <task id="LOCAL-00001" summary="javadoc">
-      <option name="closed" value="true" />
-      <created>1713044489777</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1713044489777</updated>
-    </task>
-    <task id="LOCAL-00002" summary="javadoc_end">
-      <option name="closed" value="true" />
-      <created>1713047018059</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1713047018059</updated>
-    </task>
-    <task id="LOCAL-00003" summary="javadoc_end">
-      <option name="closed" value="true" />
-      <created>1713048810920</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1713048810920</updated>
-    </task>
-    <task id="LOCAL-00004" summary="javadoc_end">
-      <option name="closed" value="true" />
-      <created>1713049308977</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1713049308977</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="javadoc" />
-    <MESSAGE value="javadoc_end" />
-    <option name="LAST_COMMIT_MESSAGE" value="javadoc_end" />
   </component>
 </project>

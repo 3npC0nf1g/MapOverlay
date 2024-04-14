@@ -19,6 +19,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * Cette classe est responsable de la gestion de la superposition de cartes dans l'application.
+ */
 public class MapOverlayController {
     private Stage stage;
 
